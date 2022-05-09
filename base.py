@@ -28,9 +28,9 @@ def show_res():
         #print(line.decode())
         return line
       except:
-        continue;  
+        continue
     else:
-      break;
+      break
 def twosComplement_hex(hexval):
     bits = 16
     val = int(hexval, bits)
