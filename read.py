@@ -5,7 +5,7 @@ import time
 
 
 
-ser = serial.Serial('/dev/ttyUSB0',115200,timeout=1)
+ser = serial.Serial('/dev/ttyUSB0',115200,timeout=None)
 #ser = serial.Serial('/dev/ttyUSB0',9600,timeout=1)
 
 def send_req(str):
@@ -24,7 +24,7 @@ def show_res():
     else:
       break;
 
-line = ser.readline()
+#line = ser.readline()
 
 while(True):
     show_res()

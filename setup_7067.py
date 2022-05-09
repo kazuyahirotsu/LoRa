@@ -20,9 +20,9 @@ def show_res():
       try:  
         print(line.decode())
       except:
-        continue;  
+        continue
     else:
-      break;
+      break
 
 line = ser.readline()
 show_res()
