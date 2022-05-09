@@ -1,3 +1,12 @@
 # LoRa
-start base.py in base AP and send messages with screen from mobile AP.
-base.py will send hello message once in 10 seconds to mobile AP and log the message sent by mobile AP
+## pi@lora-gateway-rpi7068.local
+power on  
+select z on ```screen /dev/ttyUSB0 9600```  
+run ```base.py```  
+
+## pi@lora-gateway-rpi7067.local
+power on  
+connect to the same network as mac  
+
+## mac
+run ```gps_ssh_setup.py```, then ```send_gps_mac.py```
