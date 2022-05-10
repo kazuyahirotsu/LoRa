@@ -4,7 +4,7 @@ import serial
 import time
 import logging
 
-logging.basicConfig(format='%(asctime)s %(message)s',filename='rangetest2.log', encoding='utf-8', level=logging.DEBUG)
+logging.basicConfig(format='%(asctime)s %(message)s',filename='rangetest3.log', encoding='utf-8', level=logging.DEBUG)
 # when not sending to file
 # logging.getLogger().setLevel(logging.INFO)
 # define a Handler which writes INFO messages or higher to the sys.stderr
@@ -113,6 +113,7 @@ while(True):
     try:
         logging.info("RSSI="+str(twosComplement_hex(message[:4]))+"dBm, message="+message[12:])
     except:
+        logging.info(message)
         continue
     time.sleep(1)
 

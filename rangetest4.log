@@ -1,0 +1,145 @@
+message: RSSI(-125dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713523333333335,N,139.76179333333334,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 29]
+
+message: RSSI(-125dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713523333333335,N,139.76179333333334,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 20]
+
+message: RSSI(-125dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713485,N,139.76173833333334,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+message: RSSI(-126dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71348166666667,N,139.76173666666668,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 20]
+
+message: RSSI(-124dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713485,N,139.76174166666667,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 20]
+
+message: RSSI(-129dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713483333333336,N,139.76175,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+message: RSSI(-127dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+message: RSSI(-127dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+message: RSSI(-131dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+message: RSSI(-130dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 1F]
+
+message: RSSI(-128dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71346833333333,N,139.76143,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+message: RSSI(-124dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71343666666667,N,139.76157833333335,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+message: RSSI(-132dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71343666666667,N,139.76158333333333,E)message: RSSI(-125dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713523333333335,N,139.76179333333334,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 29]
+
+message: RSSI(-125dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713523333333335,N,139.76179333333334,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 20]
+
+message: RSSI(-125dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713485,N,139.76173833333334,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+message: RSSI(-126dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71348166666667,N,139.76173666666668,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 20]
+
+message: RSSI(-124dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713485,N,139.76174166666667,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 20]
+
+message: RSSI(-129dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713483333333336,N,139.76175,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+message: RSSI(-127dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+message: RSSI(-127dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+message: RSSI(-131dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+message: RSSI(-130dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 1F]
+
+message: RSSI(-128dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71346833333333,N,139.76143,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+message: RSSI(-124dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71343666666667,N,139.76157833333335,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+message: RSSI(-132dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71343666666667,N,139.76158333333333,E)message: RSSI(-125dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713523333333335,N,139.76179333333334,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 29]
+
+message: RSSI(-125dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713523333333335,N,139.76179333333334,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 20]
+
+message: RSSI(-125dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713485,N,139.76173833333334,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+message: RSSI(-126dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71348166666667,N,139.76173666666668,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 20]
+
+message: RSSI(-124dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713485,N,139.76174166666667,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 20]
+
+message: RSSI(-129dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713483333333336,N,139.76175,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+message: RSSI(-127dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+message: RSSI(-127dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+message: RSSI(-131dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+message: RSSI(-130dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 1F]
+
+message: RSSI(-128dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71346833333333,N,139.76143,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+message: RSSI(-124dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71343666666667,N,139.76157833333335,E)
+
+message: --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+message: RSSI(-132dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71343666666667,N,139.76158333333333,E)

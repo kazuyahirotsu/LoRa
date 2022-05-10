@@ -1,0 +1,228 @@
+2022-05-10 13:15:26,565 send data failed
+
+2022-05-10 13:15:26,580 Ack Timeout
+
+2022-05-10 13:15:26,614 <-- send data info[panid = 0001, srcid = 7068, dstid = 7067, length = 03]
+
+2022-05-10 13:15:26,635 send failed bacause now sending packet
+
+2022-05-10 13:15:26,651 send data failed
+
+2022-05-10 13:15:26,663 Ack Timeout
+
+2022-05-10 13:15:26,687 <-- send data info[panid = 0001, srcid = 7068, dstid = 7067, length = 01]
+
+2022-05-10 13:15:26,703 send failed bacause now sending packet
+
+2022-05-10 13:15:26,712 send data failed
+
+2022-05-10 13:15:26,719 Ack Timeout
+
+2022-05-10 13:15:26,743 <-- send data info[panid = 0001, srcid = 7068, dstid = 7067, length = 01]
+
+2022-05-10 13:15:26,815 Ack Timeout
+
+2022-05-10 13:16:05,155 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+2022-05-10 13:16:05,184 RSSI(-130dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+2022-05-10 13:16:08,525 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+2022-05-10 13:16:08,555 RSSI(-129dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+2022-05-10 13:16:29,167 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+2022-05-10 13:16:29,200 RSSI(-133dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+2022-05-10 13:17:19,491 Ack Timeout
+
+2022-05-10 13:17:19,528 <-- send data info[panid = 0001, srcid = 7068, dstid = 7067, length = 03]
+
+2022-05-10 13:17:19,551 send failed bacause now sending packet
+
+2022-05-10 13:17:19,565 send data failed
+
+2022-05-10 13:17:19,574 Ack Timeout
+
+2022-05-10 13:17:19,597 <-- send data info[panid = 0001, srcid = 7068, dstid = 7067, length = 01]
+
+2022-05-10 13:17:19,613 send failed bacause now sending packet
+
+2022-05-10 13:17:19,623 send data failed
+
+2022-05-10 13:17:19,632 Ack Timeout
+
+2022-05-10 13:17:19,656 <-- send data info[panid = 0001, srcid = 7068, dstid = 7067, length = 01]
+
+2022-05-10 13:17:19,745 Ack Timeout
+
+2022-05-10 13:19:22,479 Ack Timeout
+
+2022-05-10 13:19:22,511 <-- send data info[panid = 0001, srcid = 7068, dstid = 7067, length = 03]
+
+2022-05-10 13:19:22,531 send failed bacause now sending packet
+
+2022-05-10 13:19:22,543 send data failed
+
+2022-05-10 13:19:22,553 Ack Timeout
+
+2022-05-10 13:19:22,583 <-- send data info[panid = 0001, srcid = 7068, dstid = 7067, length = 01]
+
+2022-05-10 13:19:22,603 send failed bacause now sending packet
+
+2022-05-10 13:19:22,611 send data failed
+
+2022-05-10 13:19:22,619 Ack Timeout
+
+2022-05-10 13:19:22,641 <-- send data info[panid = 0001, srcid = 7068, dstid = 7067, length = 01]
+
+2022-05-10 13:19:22,723 Ack Timeout
+
+2022-05-10 13:19:27,459 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+2022-05-10 13:19:27,501 RSSI(-129dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71315666666667,N,139.76155833333334,E)
+
+2022-05-10 13:19:30,911 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+2022-05-10 13:19:30,952 RSSI(-129dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71315666666667,N,139.76155833333334,E)
+
+2022-05-10 13:19:34,394 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+2022-05-10 13:19:34,436 RSSI(-129dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71315666666667,N,139.76155833333334,E)
+
+2022-05-10 13:19:37,841 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+2022-05-10 13:19:37,879 RSSI(-128dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71315666666667,N,139.76155833333334,E)
+
+2022-05-10 13:19:41,235 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+2022-05-10 13:19:41,277 RSSI(-126dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71315666666667,N,139.76155833333334,E)
+
+2022-05-10 13:19:44,639 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+2022-05-10 13:19:44,678 RSSI(-129dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71315666666667,N,139.76155833333334,E)
+
+2022-05-10 13:19:48,182 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+2022-05-10 13:19:48,218 RSSI(-127dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71315666666667,N,139.76155833333334,E)
+
+2022-05-10 13:19:51,920 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+2022-05-10 13:19:51,957 RSSI(-126dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71315666666667,N,139.76155833333334,E)
+
+2022-05-10 13:19:57,466 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+2022-05-10 13:19:57,509 RSSI(-124dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71315666666667,N,139.76155833333334,E)
+
+2022-05-10 13:20:11,497 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+2022-05-10 13:20:11,528 RSSI(-126dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+2022-05-10 13:20:20,002 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+2022-05-10 13:20:20,032 RSSI(-119dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+2022-05-10 13:20:23,985 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+2022-05-10 13:20:24,017 RSSI(-117dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+2022-05-10 13:20:27,673 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+2022-05-10 13:20:27,703 RSSI(-121dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+2022-05-10 13:20:31,159 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+2022-05-10 13:20:31,191 RSSI(-130dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+2022-05-10 13:22:06,817 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+2022-05-10 13:22:06,850 RSSI(-126dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+2022-05-10 13:22:13,934 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 18]
+
+2022-05-10 13:22:13,972 RSSI(-126dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713335,N,139.761965,E)
+
+2022-05-10 13:22:17,550 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 20]
+
+2022-05-10 13:22:17,589 RSSI(-128dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713325,N,139.76198166666666,E)
+
+2022-05-10 13:22:28,029 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+2022-05-10 13:22:28,072 RSSI(-129dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71331833333333,N,139.76200166666666,E)
+
+2022-05-10 13:23:13,749 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 21]
+
+2022-05-10 13:23:13,788 RSSI(-125dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713073333333334,N,139.762045,E)
+
+2022-05-10 13:23:17,486 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 17]
+
+2022-05-10 13:23:17,520 RSSI(-109dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713085,N,139.76203,E)
+
+2022-05-10 13:23:21,221 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 1E]
+
+2022-05-10 13:23:21,261 RSSI(-107dBm):PAN ID(0001):Src ID(7067):Receive Data(35.7131,N,139.76201666666665,E)
+
+2022-05-10 13:23:28,226 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 1F]
+
+2022-05-10 13:23:28,265 RSSI(-120dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71312,N,139.76199333333332,E)
+
+2022-05-10 13:23:31,637 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 20]
+
+2022-05-10 13:23:31,676 RSSI(-118dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713125,N,139.76201166666667,E)
+
+2022-05-10 13:23:34,993 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 17]
+
+2022-05-10 13:23:35,031 RSSI(-119dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713275,N,139.76201,E)
+
+2022-05-10 13:23:38,682 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 18]
+
+2022-05-10 13:23:38,717 RSSI(-118dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713285,N,139.762025,E)
+
+2022-05-10 13:23:42,266 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 20]
+
+2022-05-10 13:23:42,301 RSSI(-107dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71328666666667,N,139.762035,E)
+
+2022-05-10 13:23:45,518 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 18]
+
+2022-05-10 13:23:45,556 RSSI(-106dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713305,N,139.762045,E)
+
+2022-05-10 13:23:49,361 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 29]
+
+2022-05-10 13:23:49,403 RSSI(-107dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713303333333336,N,139.76202666666666,E)
+
+2022-05-10 13:23:52,707 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 1F]
+
+2022-05-10 13:23:52,744 RSSI(-102dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71331,N,139.76201166666667,E)
+
+2022-05-10 13:23:56,439 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+2022-05-10 13:23:56,482 RSSI(-103dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71335333333333,N,139.76198166666666,E)
+
+2022-05-10 13:24:00,004 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+2022-05-10 13:24:00,047 RSSI(-107dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71335833333333,N,139.76198666666667,E)
+
+2022-05-10 13:24:03,459 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 20]
+
+2022-05-10 13:24:03,500 RSSI(-105dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713361666666664,N,139.76199,E)
+
+2022-05-10 13:24:06,989 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 29]
+
+2022-05-10 13:24:07,032 RSSI(-103dBm):PAN ID(0001):Src ID(7067):Receive Data(35.713361666666664,N,139.76199833333334,E)
+
+2022-05-10 13:24:10,465 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+2022-05-10 13:24:10,507 RSSI(-101dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71337166666667,N,139.76197666666667,E)
+
+2022-05-10 13:24:13,887 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 28]
+
+2022-05-10 13:24:13,926 RSSI(-100dBm):PAN ID(0001):Src ID(7067):Receive Data(35.71337333333334,N,139.76195666666666,E)
+
+2022-05-10 13:24:16,828 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+2022-05-10 13:24:16,861 RSSI(-110dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
+2022-05-10 13:24:20,314 --> receive data info[panid = 0001, srcid = 7067, dstid = 7068, length = 09]
+
+2022-05-10 13:24:20,346 RSSI(-114dBm):PAN ID(0001):Src ID(7067):Receive Data(gpsnotfix)
+
