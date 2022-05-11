@@ -4,7 +4,7 @@ import serial
 import time
 import logging
 
-logging.basicConfig(format='%(asctime)s %(message)s',filename='rangetest3.log', encoding='utf-8', level=logging.DEBUG)
+logging.basicConfig(format='%(asctime)s %(message)s',filename='rangetest_results/rangetest5.log', encoding='utf-8', level=logging.DEBUG)
 # when not sending to file
 # logging.getLogger().setLevel(logging.INFO)
 # define a Handler which writes INFO messages or higher to the sys.stderr
