@@ -24,8 +24,8 @@ s = signalIQ+noise;
 %% scatter
 scatterplot(s)
 %% Plots
-figure(1);
-spectrogram(s,500,0,500,Fs,'yaxis','centered');
+%figure(1);
+%spectrogram(s,500,0,500,Fs,'yaxis','centered');
 %figure(2);
 %obw(s,Fs);
 %% Received Signal
@@ -52,8 +52,7 @@ for i=-39:0.1:-35
     disp(['Message Received = ' char(message_out)]);
 end
 %% 
-a=zeros(2,3);
-a(1,2)=2;
+dec2bin('Hello World!')
 %% big test
 SF = 10 ;
 BW = 125e3 ;

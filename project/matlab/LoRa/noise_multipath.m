@@ -11,7 +11,8 @@ Sxx = 10*log10(rms(signalIQ).^2);
 disp(['Transmit Power   = ' num2str(Sxx) ' dBm']);
 
 %multipath
-mpChan = [0.8 0 0 0 0 0 0 0 -0.5 0 0 0 0 0 0 0 0.34].';
+%mpChan = [0.8 0 0 0 0 0 0 0 -0.5 0 0 0 0 0 0 0 0.34].';
+mpChan = [0.8 0 0.4 -0.8 0 0 0.1 0 -0.5 0 0.5 0.2 0.4 0 0 0.9 0.34].';
 mpChanOut = filter(mpChan,1,signalIQ);
 
 for i=-39:0.1:-35
@@ -51,11 +52,11 @@ for i=-39:0.1:-33
         end
     end
     res_multi(1,int64((i+39)*10)+1)=i;
-    res_multi(2,int64((i+39)*10)+1)=success/10;
+    res_multi(2,int64((i+39)*10)+1)=success/20;
     disp([num2str(((i+39)*10+1)*100/61) '% done' ])
 end
 %% plot
 figure
-plot(res_multi(1,:),res_multi(2,:)/2)
+plot(res_multi(1,:),res_multi(2,:))
 xlabel('snr(dB)')
 ylabel('success rate')
