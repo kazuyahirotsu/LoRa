@@ -38,7 +38,7 @@ show_res()
 time.sleep(1)
 
 # command d (channel=5) 
-send_req("d 1\r\n")
+send_req("d 5\r\n")
 show_res()
 time.sleep(1)
 
