@@ -22,6 +22,10 @@ stdin, stdout,stderr = client.exec_command("echo b")
 print(stdout.read().decode())
 
 while True:
+    command = input("waiting for Enter:")
+    print(command=="")
+    if command != "":
+        continue
     line = ser.readline()
     splited_line = line.decode().split(",")
     if splited_line[0] == "$GNGGA":

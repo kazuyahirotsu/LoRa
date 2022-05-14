@@ -111,10 +111,11 @@ while(True):
     message = show_res()
     print("message: "+str(message))
     try:
-        logging.info("RSSI="+str(twosComplement_hex(message[:4]))+"dBm, message="+message[12:])
-    except:
-        logging.info(message)
-        continue
+      logging.info("RSSI="+str(twosComplement_hex(message[:4]))+"dBm, message="+message[12:])
+    except Exception as e:
+      print(e.args)
+      logging.info(message)
+      continue
     time.sleep(1)
 
 ser.close()
