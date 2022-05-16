@@ -22,12 +22,13 @@ stdin, stdout,stderr = client.exec_command("echo b")
 print(stdout.read().decode())
 
 while True:
-    command = input("waiting for Enter:")
-    print(command=="")
-    if command != "":
-        continue
+    # command = input("waiting for Enter:")
+    # print(command=="")
+    # if command != "":
+    #     continue
     line = ser.readline()
     splited_line = line.decode().split(",")
+    # print(splited_line)
     if splited_line[0] == "$GNGGA":
         hour =int((splited_line[1])[:2]) + 9
         minute = int((splited_line[1])[2:4])
