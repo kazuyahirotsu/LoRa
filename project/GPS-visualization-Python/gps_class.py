@@ -58,7 +58,7 @@ class GPSVis(object):
         for i in range(len(gps_data)):
             x1, y1 = self.scale_to_img(gps_data[i], (self.result_image.size[0], self.result_image.size[1]))
         #    img_points.append((x1, y1))
-            img_points.append([(x1-3, y1-3),(x1+3,y1+3),gps_rssi_data[i][0]])
+            img_points.append([(x1-2, y1-2),(x1+2,y1+2),gps_rssi_data[i][0]])
 
         draw = ImageDraw.Draw(self.result_image)
         # draw.line(img_points, fill=color, width=width)
