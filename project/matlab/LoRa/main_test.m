@@ -45,7 +45,7 @@ pskModulator = comm.PSKModulator(ModulationOrder=2);
 sampleNum = 200;
 for snr = snr_start:snr_end
     SERAve = 0;
-    repNum = 200;
+    repNum = 20;
     for i = 1:repNum
         message = randi([0 1],sampleNum,1);
         modData = pskModulator(message);
