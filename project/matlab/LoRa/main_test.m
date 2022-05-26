@@ -8,7 +8,7 @@ zeroNum = strlength(message);
 Fs = 10e6 ;
 Fc = 921.5e6 ;
 res_multi_ser=zeros(2,21);
-for i=-60:-40
+for i=-60:30
     SERAve = 0;
     for j=1:20
         signalIQ = LoRa_Tx(message,BW,SF,Power,Fs,Fc - fc);
@@ -45,7 +45,7 @@ pskModulator = comm.PSKModulator(ModulationOrder=2);
 sampleNum = 200;
 for snr = snr_start:snr_end
     SERAve = 0;
-    repNum = 20;
+    repNum = 200;
     for i = 1:repNum
         message = randi([0 1],sampleNum,1);
         modData = pskModulator(message);
