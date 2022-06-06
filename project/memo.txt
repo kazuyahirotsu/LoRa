@@ -1,0 +1,29 @@
+fgdv
+- 国土地理院のツール
+- fgdv -> qgis ->wallman -> proman
+- zipを新規ファイルで読み込む
+- 領域を選択
+- エクスポート　9系　解像度を確認してqgisで使う
+
+qgis
+- 地図の編集
+- 国土地理院から地図をダウンロード
+- レイヤ　レイヤの追加　ベクタレイヤの追加（シェイプ）shpファイルをドラッグ
+- 緯度経度設定
+- ラスタ　編集　ラスタ化（ascで作る、解像度設定）
+- #右クリックして名前をつけて保存する
+- 形式変換　asc -co force_cellsize=true
+- NODATA_value -1を6行目に加える
+
+wallman
+- convert topo asc
+- ascii grid
+- geodic coordinates
+
+proman
+- prediction height どの高さの強度か
+- project edit project parameter
+- sites sitesにアンテナの設定あり
+- sites mesurementで実測値との比較ができる
+- building data 建物の高さデータは国土地理院に申請する
+- setting display setting scale
