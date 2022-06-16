@@ -39,7 +39,7 @@ class GPSVis(object):
         mappable = ax.scatter(self.x, self.y, c=self.z, s=10, cmap=cm)
         fig.colorbar(mappable, ax=ax)
         ax.imshow(self.result_image)
-        ax.plot(218, 28, color="red", marker='*', markersize=10) 
+        # ax.plot(218, 28, color="red", marker='*', markersize=10) 
         ax.set_xlabel('Longitude')
         ax.set_ylabel('Latitude')
         ax.set_xticklabels([])

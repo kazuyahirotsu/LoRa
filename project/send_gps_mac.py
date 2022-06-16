@@ -48,8 +48,9 @@ while True:
         status = splited_line[6]
         if status == "0":
             print("gps not fix")
-            stdin, stdout,stderr = client.exec_command("python send_gps.py gpsnotfix") #sending gps info from ssh lora to base lora
+            stdin, stdout,stderr = client.exec_command("python send_gps.py "+str(send_count)+ ",gpsnotfix") #sending gps info from ssh lora to base lora
             print(stdout.read().decode())
+            send_count += 1
         elif status == "1" or status == "2":
             if status == "1":
                 print("gps fix")

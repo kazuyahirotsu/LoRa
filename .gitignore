@@ -54,3 +54,4 @@ pip-selfcheck.json
 *.ipynb
 *.docx
 *.pdf
+*.dat
