@@ -1,0 +1,1299 @@
+2022-06-15 18:21:21,287 starting thread (client mode): 0x6ebe200
+2022-06-15 18:21:21,287 Local version/idstring: SSH-2.0-paramiko_2.10.4
+2022-06-15 18:21:21,435 Remote version/idstring: SSH-2.0-OpenSSH_7.9p1 Raspbian-10+deb10u1
+2022-06-15 18:21:21,435 Connected (version 2.0, client OpenSSH_7.9p1)
+2022-06-15 18:21:21,446 === Key exchange possibilities ===
+2022-06-15 18:21:21,446 kex algos: curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, diffie-hellman-group14-sha1
+2022-06-15 18:21:21,447 server key: rsa-sha2-512, rsa-sha2-256, ssh-rsa, ecdsa-sha2-nistp256, ssh-ed25519
+2022-06-15 18:21:21,447 client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2022-06-15 18:21:21,447 server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2022-06-15 18:21:21,447 client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2022-06-15 18:21:21,447 server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2022-06-15 18:21:21,447 client compress: none, zlib@openssh.com
+2022-06-15 18:21:21,447 server compress: none, zlib@openssh.com
+2022-06-15 18:21:21,447 client lang: <none>
+2022-06-15 18:21:21,448 server lang: <none>
+2022-06-15 18:21:21,448 kex follows: False
+2022-06-15 18:21:21,448 === Key exchange agreements ===
+2022-06-15 18:21:21,448 Kex: curve25519-sha256@libssh.org
+2022-06-15 18:21:21,448 HostKey: ssh-ed25519
+2022-06-15 18:21:21,448 Cipher: aes128-ctr
+2022-06-15 18:21:21,448 MAC: hmac-sha2-256
+2022-06-15 18:21:21,448 Compression: none
+2022-06-15 18:21:21,448 === End of kex handshake ===
+2022-06-15 18:21:21,530 kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2022-06-15 18:21:21,530 Switch to new keys ...
+2022-06-15 18:21:21,530 Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521'}
+2022-06-15 18:21:21,531 Adding ssh-ed25519 host key for lora-gateway-rpi7067.local: b'ad927c13f7360d29f9a4c452cfefeb29'
+2022-06-15 18:21:21,645 Trying discovered key b'c20ebaaabb5ac4beb038bd0da2eb6f88' in /Users/hirotsu/.ssh/id_rsa
+2022-06-15 18:21:21,688 userauth is OK
+2022-06-15 18:21:21,688 Finalizing pubkey algorithm for key of type 'ssh-rsa'
+2022-06-15 18:21:21,688 Our pubkey algorithm list: ['rsa-sha2-512', 'rsa-sha2-256', 'ssh-rsa']
+2022-06-15 18:21:21,688 Server-side algorithm list: ['ssh-ed25519', 'ssh-rsa', 'rsa-sha2-256', 'rsa-sha2-512', 'ssh-dss', 'ecdsa-sha2-nistp256', 'ecdsa-sha2-nistp384', 'ecdsa-sha2-nistp521']
+2022-06-15 18:21:21,688 Agreed upon 'rsa-sha2-512' pubkey algorithm
+2022-06-15 18:21:21,775 Authentication (publickey) failed.
+2022-06-15 18:21:21,782 userauth is OK
+2022-06-15 18:21:22,224 Authentication (password) successful!
+2022-06-15 18:21:22,241 [chan 0] Max packet in: 32768 bytes
+2022-06-15 18:21:23,451 Received global request "hostkeys-00@openssh.com"
+2022-06-15 18:21:23,451 Rejecting "hostkeys-00@openssh.com" global request from server.
+2022-06-15 18:21:23,493 [chan 0] Max packet out: 32768 bytes
+2022-06-15 18:21:23,493 Secsh channel 0 opened.
+2022-06-15 18:21:23,503 [chan 0] Sesch channel 0 request ok
+2022-06-15 18:21:23,525 [chan 0] EOF received (0)
+2022-06-15 18:21:23,526 [chan 1] Max packet in: 32768 bytes
+2022-06-15 18:21:23,532 [chan 0] EOF sent (0)
+2022-06-15 18:21:23,536 [chan 1] Max packet out: 32768 bytes
+2022-06-15 18:21:23,536 Secsh channel 1 opened.
+2022-06-15 18:21:23,594 [chan 1] Sesch channel 1 request ok
+2022-06-15 18:21:23,616 [chan 1] EOF received (1)
+2022-06-15 18:21:23,617 [chan 1] EOF sent (1)
+2022-06-15 18:21:23,622 0,35.71427166666667,N,139.76294166666668,E
+2022-06-15 18:21:23,622 [chan 2] Max packet in: 32768 bytes
+2022-06-15 18:21:23,673 [chan 2] Max packet out: 32768 bytes
+2022-06-15 18:21:23,673 Secsh channel 2 opened.
+2022-06-15 18:21:23,682 [chan 2] Sesch channel 2 request ok
+2022-06-15 18:21:26,935 [chan 2] EOF received (2)
+2022-06-15 18:21:26,936 [chan 2] EOF sent (2)
+2022-06-15 18:21:26,942 1,35.71427166666667,N,139.76294166666668,E
+2022-06-15 18:21:26,942 [chan 3] Max packet in: 32768 bytes
+2022-06-15 18:21:26,998 [chan 3] Max packet out: 32768 bytes
+2022-06-15 18:21:26,998 Secsh channel 3 opened.
+2022-06-15 18:21:27,012 [chan 3] Sesch channel 3 request ok
+2022-06-15 18:21:30,268 [chan 3] EOF received (3)
+2022-06-15 18:21:30,274 2,35.71427166666667,N,139.76294166666668,E
+2022-06-15 18:21:30,274 [chan 4] Max packet in: 32768 bytes
+2022-06-15 18:21:30,275 [chan 3] EOF sent (3)
+2022-06-15 18:21:30,282 [chan 4] Max packet out: 32768 bytes
+2022-06-15 18:21:30,282 Secsh channel 4 opened.
+2022-06-15 18:21:30,348 [chan 4] Sesch channel 4 request ok
+2022-06-15 18:21:33,654 [chan 4] EOF received (4)
+2022-06-15 18:21:33,655 [chan 4] EOF sent (4)
+2022-06-15 18:21:33,660 3,35.71427166666667,N,139.76294166666668,E
+2022-06-15 18:21:33,660 [chan 5] Max packet in: 32768 bytes
+2022-06-15 18:21:33,744 [chan 5] Max packet out: 32768 bytes
+2022-06-15 18:21:33,744 Secsh channel 5 opened.
+2022-06-15 18:21:33,766 [chan 5] Sesch channel 5 request ok
+2022-06-15 18:21:37,194 [chan 5] EOF received (5)
+2022-06-15 18:21:37,198 [chan 5] EOF sent (5)
+2022-06-15 18:21:37,199 4,35.71426666666667,N,139.76283333333333,E
+2022-06-15 18:21:37,200 [chan 6] Max packet in: 32768 bytes
+2022-06-15 18:21:37,313 [chan 6] Max packet out: 32768 bytes
+2022-06-15 18:21:37,313 Secsh channel 6 opened.
+2022-06-15 18:21:37,329 [chan 6] Sesch channel 6 request ok
+2022-06-15 18:21:40,616 [chan 6] EOF received (6)
+2022-06-15 18:21:40,617 [chan 6] EOF sent (6)
+2022-06-15 18:21:40,624 5,35.71426666666667,N,139.76281666666668,E
+2022-06-15 18:21:40,625 [chan 7] Max packet in: 32768 bytes
+2022-06-15 18:21:40,720 [chan 7] Max packet out: 32768 bytes
+2022-06-15 18:21:40,720 Secsh channel 7 opened.
+2022-06-15 18:21:40,736 [chan 7] Sesch channel 7 request ok
+2022-06-15 18:21:44,342 [chan 7] EOF received (7)
+2022-06-15 18:21:44,342 [chan 7] EOF sent (7)
+2022-06-15 18:21:44,350 6,35.714265,N,139.76280333333332,E
+2022-06-15 18:21:44,350 [chan 8] Max packet in: 32768 bytes
+2022-06-15 18:21:44,404 [chan 8] Max packet out: 32768 bytes
+2022-06-15 18:21:44,404 Secsh channel 8 opened.
+2022-06-15 18:21:44,414 [chan 8] Sesch channel 8 request ok
+2022-06-15 18:21:47,822 [chan 8] EOF received (8)
+2022-06-15 18:21:47,823 [chan 8] EOF sent (8)
+2022-06-15 18:21:47,827 7,35.71427,N,139.7628,E
+2022-06-15 18:21:47,827 [chan 9] Max packet in: 32768 bytes
+2022-06-15 18:21:47,908 [chan 9] Max packet out: 32768 bytes
+2022-06-15 18:21:47,908 Secsh channel 9 opened.
+2022-06-15 18:21:47,918 [chan 9] Sesch channel 9 request ok
+2022-06-15 18:21:51,307 [chan 9] EOF received (9)
+2022-06-15 18:21:51,307 [chan 9] EOF sent (9)
+2022-06-15 18:21:51,311 8,35.71427333333333,N,139.762795,E
+2022-06-15 18:21:51,311 [chan 10] Max packet in: 32768 bytes
+2022-06-15 18:21:51,416 [chan 10] Max packet out: 32768 bytes
+2022-06-15 18:21:51,416 Secsh channel 10 opened.
+2022-06-15 18:21:51,435 [chan 10] Sesch channel 10 request ok
+2022-06-15 18:21:54,858 [chan 10] EOF received (10)
+2022-06-15 18:21:54,858 [chan 10] EOF sent (10)
+2022-06-15 18:21:54,862 9,35.71428,N,139.76279333333332,E
+2022-06-15 18:21:54,862 [chan 11] Max packet in: 32768 bytes
+2022-06-15 18:21:54,907 [chan 11] Max packet out: 32768 bytes
+2022-06-15 18:21:54,907 Secsh channel 11 opened.
+2022-06-15 18:21:54,927 [chan 11] Sesch channel 11 request ok
+2022-06-15 18:21:58,241 [chan 11] EOF received (11)
+2022-06-15 18:21:58,241 [chan 11] EOF sent (11)
+2022-06-15 18:21:58,249 10,35.71428,N,139.76279333333332,E
+2022-06-15 18:21:58,249 [chan 12] Max packet in: 32768 bytes
+2022-06-15 18:21:58,519 [chan 12] Max packet out: 32768 bytes
+2022-06-15 18:21:58,519 Secsh channel 12 opened.
+2022-06-15 18:21:58,529 [chan 12] Sesch channel 12 request ok
+2022-06-15 18:22:01,798 [chan 12] EOF received (12)
+2022-06-15 18:22:01,802 11,35.71427833333333,N,139.76276,E
+2022-06-15 18:22:01,803 [chan 13] Max packet in: 32768 bytes
+2022-06-15 18:22:01,832 [chan 12] EOF sent (12)
+2022-06-15 18:22:01,837 [chan 13] Max packet out: 32768 bytes
+2022-06-15 18:22:01,837 Secsh channel 13 opened.
+2022-06-15 18:22:01,935 [chan 13] Sesch channel 13 request ok
+2022-06-15 18:22:05,256 [chan 13] EOF received (13)
+2022-06-15 18:22:05,257 [chan 13] EOF sent (13)
+2022-06-15 18:22:05,262 12,35.71429833333333,N,139.76278666666667,E
+2022-06-15 18:22:05,262 [chan 14] Max packet in: 32768 bytes
+2022-06-15 18:22:05,353 [chan 14] Max packet out: 32768 bytes
+2022-06-15 18:22:05,354 Secsh channel 14 opened.
+2022-06-15 18:22:05,369 [chan 14] Sesch channel 14 request ok
+2022-06-15 18:22:08,712 [chan 14] EOF received (14)
+2022-06-15 18:22:08,713 [chan 14] EOF sent (14)
+2022-06-15 18:22:08,717 [chan 15] Max packet in: 32768 bytes
+2022-06-15 18:22:08,799 [chan 15] Max packet out: 32768 bytes
+2022-06-15 18:22:08,799 Secsh channel 15 opened.
+2022-06-15 18:22:08,809 [chan 15] Sesch channel 15 request ok
+2022-06-15 18:22:12,099 [chan 15] EOF received (15)
+2022-06-15 18:22:12,100 [chan 15] EOF sent (15)
+2022-06-15 18:22:12,104 13,35.714465,N,139.76293,E
+2022-06-15 18:22:12,104 [chan 16] Max packet in: 32768 bytes
+2022-06-15 18:22:12,410 [chan 16] Max packet out: 32768 bytes
+2022-06-15 18:22:12,410 Secsh channel 16 opened.
+2022-06-15 18:22:12,460 [chan 16] Sesch channel 16 request ok
+2022-06-15 18:22:15,882 [chan 16] EOF received (16)
+2022-06-15 18:22:15,887 14,35.714465,N,139.76293,E
+2022-06-15 18:22:15,887 [chan 17] Max packet in: 32768 bytes
+2022-06-15 18:22:15,889 [chan 16] EOF sent (16)
+2022-06-15 18:22:15,897 [chan 17] Max packet out: 32768 bytes
+2022-06-15 18:22:15,897 Secsh channel 17 opened.
+2022-06-15 18:22:15,981 [chan 17] Sesch channel 17 request ok
+2022-06-15 18:22:19,569 [chan 17] EOF received (17)
+2022-06-15 18:22:19,569 [chan 17] EOF sent (17)
+2022-06-15 18:22:19,575 15,35.714465,N,139.76293,E
+2022-06-15 18:22:19,575 [chan 18] Max packet in: 32768 bytes
+2022-06-15 18:22:19,661 [chan 18] Max packet out: 32768 bytes
+2022-06-15 18:22:19,661 Secsh channel 18 opened.
+2022-06-15 18:22:19,673 [chan 18] Sesch channel 18 request ok
+2022-06-15 18:22:23,070 [chan 18] EOF received (18)
+2022-06-15 18:22:23,071 [chan 18] EOF sent (18)
+2022-06-15 18:22:23,076 16,35.71443333333333,N,139.76290333333333,E
+2022-06-15 18:22:23,076 [chan 19] Max packet in: 32768 bytes
+2022-06-15 18:22:23,175 [chan 19] Max packet out: 32768 bytes
+2022-06-15 18:22:23,175 Secsh channel 19 opened.
+2022-06-15 18:22:23,185 [chan 19] Sesch channel 19 request ok
+2022-06-15 18:22:26,532 [chan 19] EOF received (19)
+2022-06-15 18:22:26,533 [chan 19] EOF sent (19)
+2022-06-15 18:22:26,538 17,35.714416666666665,N,139.76290166666666,E
+2022-06-15 18:22:26,538 [chan 20] Max packet in: 32768 bytes
+2022-06-15 18:22:26,600 [chan 20] Max packet out: 32768 bytes
+2022-06-15 18:22:26,601 Secsh channel 20 opened.
+2022-06-15 18:22:26,617 [chan 20] Sesch channel 20 request ok
+2022-06-15 18:22:30,011 [chan 20] EOF received (20)
+2022-06-15 18:22:30,012 [chan 20] EOF sent (20)
+2022-06-15 18:22:30,018 18,35.71440833333333,N,139.76285666666666,E
+2022-06-15 18:22:30,018 [chan 21] Max packet in: 32768 bytes
+2022-06-15 18:22:30,112 [chan 21] Max packet out: 32768 bytes
+2022-06-15 18:22:30,113 Secsh channel 21 opened.
+2022-06-15 18:22:30,128 [chan 21] Sesch channel 21 request ok
+2022-06-15 18:22:33,395 [chan 21] EOF received (21)
+2022-06-15 18:22:33,399 [chan 21] EOF sent (21)
+2022-06-15 18:22:33,401 19,35.71440166666667,N,139.76285,E
+2022-06-15 18:22:33,402 [chan 22] Max packet in: 32768 bytes
+2022-06-15 18:22:33,477 [chan 22] Max packet out: 32768 bytes
+2022-06-15 18:22:33,478 Secsh channel 22 opened.
+2022-06-15 18:22:33,489 [chan 22] Sesch channel 22 request ok
+2022-06-15 18:22:36,800 [chan 22] EOF received (22)
+2022-06-15 18:22:36,802 [chan 22] EOF sent (22)
+2022-06-15 18:22:36,806 20,35.71440166666667,N,139.76285,E
+2022-06-15 18:22:36,806 [chan 23] Max packet in: 32768 bytes
+2022-06-15 18:22:36,908 [chan 23] Max packet out: 32768 bytes
+2022-06-15 18:22:36,908 Secsh channel 23 opened.
+2022-06-15 18:22:36,920 [chan 23] Sesch channel 23 request ok
+2022-06-15 18:22:40,473 [chan 23] EOF received (23)
+2022-06-15 18:22:40,473 [chan 23] EOF sent (23)
+2022-06-15 18:22:40,477 21,35.71440166666667,N,139.76285,E
+2022-06-15 18:22:40,478 [chan 24] Max packet in: 32768 bytes
+2022-06-15 18:22:40,575 [chan 24] Max packet out: 32768 bytes
+2022-06-15 18:22:40,575 Secsh channel 24 opened.
+2022-06-15 18:22:40,597 [chan 24] Sesch channel 24 request ok
+2022-06-15 18:22:43,939 [chan 24] EOF received (24)
+2022-06-15 18:22:43,940 [chan 24] EOF sent (24)
+2022-06-15 18:22:43,945 22,35.71440166666667,N,139.76285,E
+2022-06-15 18:22:43,945 [chan 25] Max packet in: 32768 bytes
+2022-06-15 18:22:44,007 [chan 25] Max packet out: 32768 bytes
+2022-06-15 18:22:44,007 Secsh channel 25 opened.
+2022-06-15 18:22:44,018 [chan 25] Sesch channel 25 request ok
+2022-06-15 18:22:47,308 [chan 25] EOF received (25)
+2022-06-15 18:22:47,308 [chan 25] EOF sent (25)
+2022-06-15 18:22:47,313 23,35.71440166666667,N,139.76285,E
+2022-06-15 18:22:47,314 [chan 26] Max packet in: 32768 bytes
+2022-06-15 18:22:47,396 [chan 26] Max packet out: 32768 bytes
+2022-06-15 18:22:47,396 Secsh channel 26 opened.
+2022-06-15 18:22:47,411 [chan 26] Sesch channel 26 request ok
+2022-06-15 18:22:50,727 [chan 26] EOF received (26)
+2022-06-15 18:22:50,728 [chan 26] EOF sent (26)
+2022-06-15 18:22:50,734 24,35.71440166666667,N,139.76285,E
+2022-06-15 18:22:50,734 [chan 27] Max packet in: 32768 bytes
+2022-06-15 18:22:50,834 [chan 27] Max packet out: 32768 bytes
+2022-06-15 18:22:50,834 Secsh channel 27 opened.
+2022-06-15 18:22:50,844 [chan 27] Sesch channel 27 request ok
+2022-06-15 18:22:54,177 [chan 27] EOF received (27)
+2022-06-15 18:22:54,178 [chan 27] EOF sent (27)
+2022-06-15 18:22:54,182 25,35.71436166666667,N,139.762725,E
+2022-06-15 18:22:54,182 [chan 28] Max packet in: 32768 bytes
+2022-06-15 18:22:54,258 [chan 28] Max packet out: 32768 bytes
+2022-06-15 18:22:54,259 Secsh channel 28 opened.
+2022-06-15 18:22:54,270 [chan 28] Sesch channel 28 request ok
+2022-06-15 18:22:57,583 [chan 28] EOF received (28)
+2022-06-15 18:22:57,584 [chan 28] EOF sent (28)
+2022-06-15 18:22:57,589 26,35.714348333333334,N,139.76270333333332,E
+2022-06-15 18:22:57,589 [chan 29] Max packet in: 32768 bytes
+2022-06-15 18:22:57,705 [chan 29] Max packet out: 32768 bytes
+2022-06-15 18:22:57,706 Secsh channel 29 opened.
+2022-06-15 18:22:57,719 [chan 29] Sesch channel 29 request ok
+2022-06-15 18:23:01,141 [chan 29] EOF received (29)
+2022-06-15 18:23:01,141 [chan 29] EOF sent (29)
+2022-06-15 18:23:01,146 27,35.71433833333333,N,139.76267166666668,E
+2022-06-15 18:23:01,147 [chan 30] Max packet in: 32768 bytes
+2022-06-15 18:23:01,272 [chan 30] Max packet out: 32768 bytes
+2022-06-15 18:23:01,272 Secsh channel 30 opened.
+2022-06-15 18:23:01,287 [chan 30] Sesch channel 30 request ok
+2022-06-15 18:23:04,560 [chan 30] EOF received (30)
+2022-06-15 18:23:04,561 [chan 30] EOF sent (30)
+2022-06-15 18:23:04,565 28,35.714325,N,139.76266666666666,E
+2022-06-15 18:23:04,566 [chan 31] Max packet in: 32768 bytes
+2022-06-15 18:23:04,627 [chan 31] Max packet out: 32768 bytes
+2022-06-15 18:23:04,627 Secsh channel 31 opened.
+2022-06-15 18:23:04,642 [chan 31] Sesch channel 31 request ok
+2022-06-15 18:23:08,114 [chan 31] EOF received (31)
+2022-06-15 18:23:08,115 [chan 31] EOF sent (31)
+2022-06-15 18:23:08,120 29,35.714315,N,139.76265833333332,E
+2022-06-15 18:23:08,121 [chan 32] Max packet in: 32768 bytes
+2022-06-15 18:23:08,214 [chan 32] Max packet out: 32768 bytes
+2022-06-15 18:23:08,215 Secsh channel 32 opened.
+2022-06-15 18:23:08,228 [chan 32] Sesch channel 32 request ok
+2022-06-15 18:23:11,507 [chan 32] EOF received (32)
+2022-06-15 18:23:11,511 [chan 32] EOF sent (32)
+2022-06-15 18:23:11,513 30,35.71431,N,139.762655,E
+2022-06-15 18:23:11,513 [chan 33] Max packet in: 32768 bytes
+2022-06-15 18:23:11,579 [chan 33] Max packet out: 32768 bytes
+2022-06-15 18:23:11,581 Secsh channel 33 opened.
+2022-06-15 18:23:11,592 [chan 33] Sesch channel 33 request ok
+2022-06-15 18:23:14,853 [chan 33] EOF received (33)
+2022-06-15 18:23:14,853 [chan 33] EOF sent (33)
+2022-06-15 18:23:14,859 31,35.71430333333333,N,139.76265333333333,E
+2022-06-15 18:23:14,859 [chan 34] Max packet in: 32768 bytes
+2022-06-15 18:23:14,915 [chan 34] Max packet out: 32768 bytes
+2022-06-15 18:23:14,915 Secsh channel 34 opened.
+2022-06-15 18:23:14,928 [chan 34] Sesch channel 34 request ok
+2022-06-15 18:23:18,233 [chan 34] EOF received (34)
+2022-06-15 18:23:18,234 [chan 34] EOF sent (34)
+2022-06-15 18:23:18,239 32,35.714305,N,139.76267,E
+2022-06-15 18:23:18,239 [chan 35] Max packet in: 32768 bytes
+2022-06-15 18:23:18,332 [chan 35] Max packet out: 32768 bytes
+2022-06-15 18:23:18,332 Secsh channel 35 opened.
+2022-06-15 18:23:18,344 [chan 35] Sesch channel 35 request ok
+2022-06-15 18:23:21,646 [chan 35] EOF received (35)
+2022-06-15 18:23:21,647 [chan 35] EOF sent (35)
+2022-06-15 18:23:21,652 33,35.71429833333333,N,139.76266833333332,E
+2022-06-15 18:23:21,652 [chan 36] Max packet in: 32768 bytes
+2022-06-15 18:23:21,743 [chan 36] Max packet out: 32768 bytes
+2022-06-15 18:23:21,743 Secsh channel 36 opened.
+2022-06-15 18:23:21,756 [chan 36] Sesch channel 36 request ok
+2022-06-15 18:23:25,103 [chan 36] EOF received (36)
+2022-06-15 18:23:25,104 [chan 36] EOF sent (36)
+2022-06-15 18:23:25,109 34,35.71429166666667,N,139.76267166666668,E
+2022-06-15 18:23:25,109 [chan 37] Max packet in: 32768 bytes
+2022-06-15 18:23:25,120 [chan 37] Max packet out: 32768 bytes
+2022-06-15 18:23:25,120 Secsh channel 37 opened.
+2022-06-15 18:23:25,168 [chan 37] Sesch channel 37 request ok
+2022-06-15 18:23:28,426 [chan 37] EOF received (37)
+2022-06-15 18:23:28,428 [chan 37] EOF sent (37)
+2022-06-15 18:23:28,432 35,35.714288333333336,N,139.76267666666666,E
+2022-06-15 18:23:28,432 [chan 38] Max packet in: 32768 bytes
+2022-06-15 18:23:28,520 [chan 38] Max packet out: 32768 bytes
+2022-06-15 18:23:28,520 Secsh channel 38 opened.
+2022-06-15 18:23:28,531 [chan 38] Sesch channel 38 request ok
+2022-06-15 18:23:31,860 [chan 38] EOF received (38)
+2022-06-15 18:23:31,861 [chan 38] EOF sent (38)
+2022-06-15 18:23:31,866 36,35.714286666666666,N,139.76268666666667,E
+2022-06-15 18:23:31,866 [chan 39] Max packet in: 32768 bytes
+2022-06-15 18:23:31,942 [chan 39] Max packet out: 32768 bytes
+2022-06-15 18:23:31,942 Secsh channel 39 opened.
+2022-06-15 18:23:31,953 [chan 39] Sesch channel 39 request ok
+2022-06-15 18:23:35,252 [chan 39] EOF received (39)
+2022-06-15 18:23:35,252 [chan 39] EOF sent (39)
+2022-06-15 18:23:35,256 37,35.714288333333336,N,139.76269833333333,E
+2022-06-15 18:23:35,257 [chan 40] Max packet in: 32768 bytes
+2022-06-15 18:23:35,350 [chan 40] Max packet out: 32768 bytes
+2022-06-15 18:23:35,350 Secsh channel 40 opened.
+2022-06-15 18:23:35,369 [chan 40] Sesch channel 40 request ok
+2022-06-15 18:23:38,682 [chan 40] EOF received (40)
+2022-06-15 18:23:38,684 [chan 40] EOF sent (40)
+2022-06-15 18:23:38,687 38,35.714288333333336,N,139.762705,E
+2022-06-15 18:23:38,688 [chan 41] Max packet in: 32768 bytes
+2022-06-15 18:23:38,956 [chan 41] Max packet out: 32768 bytes
+2022-06-15 18:23:38,956 Secsh channel 41 opened.
+2022-06-15 18:23:39,033 [chan 41] Sesch channel 41 request ok
+2022-06-15 18:23:42,529 [chan 41] EOF received (41)
+2022-06-15 18:23:42,529 [chan 41] EOF sent (41)
+2022-06-15 18:23:42,533 39,35.71429,N,139.76271333333332,E
+2022-06-15 18:23:42,534 [chan 42] Max packet in: 32768 bytes
+2022-06-15 18:23:42,633 [chan 42] Max packet out: 32768 bytes
+2022-06-15 18:23:42,633 Secsh channel 42 opened.
+2022-06-15 18:23:42,648 [chan 42] Sesch channel 42 request ok
+2022-06-15 18:23:45,991 [chan 42] EOF received (42)
+2022-06-15 18:23:45,991 [chan 42] EOF sent (42)
+2022-06-15 18:23:45,994 40,35.714288333333336,N,139.76272,E
+2022-06-15 18:23:45,995 [chan 43] Max packet in: 32768 bytes
+2022-06-15 18:23:46,054 [chan 43] Max packet out: 32768 bytes
+2022-06-15 18:23:46,054 Secsh channel 43 opened.
+2022-06-15 18:23:46,065 [chan 43] Sesch channel 43 request ok
+2022-06-15 18:23:50,223 starting thread (client mode): 0x6286110
+2022-06-15 18:23:50,223 Local version/idstring: SSH-2.0-paramiko_2.10.4
+2022-06-15 18:23:50,498 Remote version/idstring: SSH-2.0-OpenSSH_7.9p1 Raspbian-10+deb10u1
+2022-06-15 18:23:50,498 Connected (version 2.0, client OpenSSH_7.9p1)
+2022-06-15 18:23:50,539 === Key exchange possibilities ===
+2022-06-15 18:23:50,539 kex algos: curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, diffie-hellman-group14-sha1
+2022-06-15 18:23:50,539 server key: rsa-sha2-512, rsa-sha2-256, ssh-rsa, ecdsa-sha2-nistp256, ssh-ed25519
+2022-06-15 18:23:50,539 client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2022-06-15 18:23:50,539 server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2022-06-15 18:23:50,539 client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2022-06-15 18:23:50,539 server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2022-06-15 18:23:50,539 client compress: none, zlib@openssh.com
+2022-06-15 18:23:50,539 server compress: none, zlib@openssh.com
+2022-06-15 18:23:50,540 client lang: <none>
+2022-06-15 18:23:50,540 server lang: <none>
+2022-06-15 18:23:50,540 kex follows: False
+2022-06-15 18:23:50,540 === Key exchange agreements ===
+2022-06-15 18:23:50,540 Kex: curve25519-sha256@libssh.org
+2022-06-15 18:23:50,540 HostKey: ssh-ed25519
+2022-06-15 18:23:50,540 Cipher: aes128-ctr
+2022-06-15 18:23:50,540 MAC: hmac-sha2-256
+2022-06-15 18:23:50,540 Compression: none
+2022-06-15 18:23:50,540 === End of kex handshake ===
+2022-06-15 18:23:50,640 kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2022-06-15 18:23:50,640 Switch to new keys ...
+2022-06-15 18:23:50,641 Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521'}
+2022-06-15 18:23:50,641 Adding ssh-ed25519 host key for lora-gateway-rpi7067.local: b'ad927c13f7360d29f9a4c452cfefeb29'
+2022-06-15 18:23:50,757 Trying discovered key b'c20ebaaabb5ac4beb038bd0da2eb6f88' in /Users/hirotsu/.ssh/id_rsa
+2022-06-15 18:23:50,766 userauth is OK
+2022-06-15 18:23:50,766 Finalizing pubkey algorithm for key of type 'ssh-rsa'
+2022-06-15 18:23:50,766 Our pubkey algorithm list: ['rsa-sha2-512', 'rsa-sha2-256', 'ssh-rsa']
+2022-06-15 18:23:50,766 Server-side algorithm list: ['ssh-ed25519', 'ssh-rsa', 'rsa-sha2-256', 'rsa-sha2-512', 'ssh-dss', 'ecdsa-sha2-nistp256', 'ecdsa-sha2-nistp384', 'ecdsa-sha2-nistp521']
+2022-06-15 18:23:50,766 Agreed upon 'rsa-sha2-512' pubkey algorithm
+2022-06-15 18:23:50,893 Authentication (publickey) failed.
+2022-06-15 18:23:50,900 userauth is OK
+2022-06-15 18:23:51,348 Authentication (password) successful!
+2022-06-15 18:23:51,365 [chan 0] Max packet in: 32768 bytes
+2022-06-15 18:23:51,727 Received global request "hostkeys-00@openssh.com"
+2022-06-15 18:23:51,728 Rejecting "hostkeys-00@openssh.com" global request from server.
+2022-06-15 18:23:51,735 [chan 0] Max packet out: 32768 bytes
+2022-06-15 18:23:51,735 Secsh channel 0 opened.
+2022-06-15 18:23:51,750 [chan 0] Sesch channel 0 request ok
+2022-06-15 18:23:51,795 [chan 0] EOF received (0)
+2022-06-15 18:23:51,796 [chan 1] Max packet in: 32768 bytes
+2022-06-15 18:23:51,797 [chan 0] EOF sent (0)
+2022-06-15 18:23:51,805 [chan 1] Max packet out: 32768 bytes
+2022-06-15 18:23:51,805 Secsh channel 1 opened.
+2022-06-15 18:23:51,892 [chan 1] Sesch channel 1 request ok
+2022-06-15 18:23:51,915 [chan 1] EOF received (1)
+2022-06-15 18:23:51,917 [chan 1] EOF sent (1)
+2022-06-15 18:23:52,237 0,35.71438,N,139.76296,E
+2022-06-15 18:23:52,237 [chan 2] Max packet in: 32768 bytes
+2022-06-15 18:23:52,253 [chan 2] Max packet out: 32768 bytes
+2022-06-15 18:23:52,253 Secsh channel 2 opened.
+2022-06-15 18:23:52,264 [chan 2] Sesch channel 2 request ok
+2022-06-15 18:23:55,617 [chan 2] EOF received (2)
+2022-06-15 18:23:55,618 [chan 2] EOF sent (2)
+2022-06-15 18:23:55,623 1,35.71443,N,139.76306666666667,E
+2022-06-15 18:23:55,624 [chan 3] Max packet in: 32768 bytes
+2022-06-15 18:23:55,681 [chan 3] Max packet out: 32768 bytes
+2022-06-15 18:23:55,682 Secsh channel 3 opened.
+2022-06-15 18:23:55,692 [chan 3] Sesch channel 3 request ok
+2022-06-15 18:23:58,990 [chan 3] EOF received (3)
+2022-06-15 18:23:58,991 [chan 3] EOF sent (3)
+2022-06-15 18:23:58,997 2,35.714436666666664,N,139.76308333333333,E
+2022-06-15 18:23:58,997 [chan 4] Max packet in: 32768 bytes
+2022-06-15 18:23:59,083 [chan 4] Max packet out: 32768 bytes
+2022-06-15 18:23:59,083 Secsh channel 4 opened.
+2022-06-15 18:23:59,097 [chan 4] Sesch channel 4 request ok
+2022-06-15 18:24:02,438 [chan 4] EOF received (4)
+2022-06-15 18:24:02,439 [chan 4] EOF sent (4)
+2022-06-15 18:24:02,442 3,35.71444,N,139.76309833333335,E
+2022-06-15 18:24:02,442 [chan 5] Max packet in: 32768 bytes
+2022-06-15 18:24:02,552 [chan 5] Max packet out: 32768 bytes
+2022-06-15 18:24:02,552 Secsh channel 5 opened.
+2022-06-15 18:24:02,606 [chan 5] Sesch channel 5 request ok
+2022-06-15 18:24:05,877 [chan 5] EOF received (5)
+2022-06-15 18:24:05,878 [chan 5] EOF sent (5)
+2022-06-15 18:24:05,884 4,35.71444,N,139.76309833333335,E
+2022-06-15 18:24:05,885 [chan 6] Max packet in: 32768 bytes
+2022-06-15 18:24:05,952 [chan 6] Max packet out: 32768 bytes
+2022-06-15 18:24:05,952 Secsh channel 6 opened.
+2022-06-15 18:24:05,968 [chan 6] Sesch channel 6 request ok
+2022-06-15 18:24:09,370 [chan 6] EOF received (6)
+2022-06-15 18:24:09,371 [chan 6] EOF sent (6)
+2022-06-15 18:24:09,376 5,35.71444666666667,N,139.76311,E
+2022-06-15 18:24:09,376 [chan 7] Max packet in: 32768 bytes
+2022-06-15 18:24:09,467 [chan 7] Max packet out: 32768 bytes
+2022-06-15 18:24:09,467 Secsh channel 7 opened.
+2022-06-15 18:24:09,479 [chan 7] Sesch channel 7 request ok
+2022-06-15 18:24:12,820 [chan 7] EOF received (7)
+2022-06-15 18:24:12,820 [chan 7] EOF sent (7)
+2022-06-15 18:24:12,827 6,35.71444666666667,N,139.76310833333332,E
+2022-06-15 18:24:12,827 [chan 8] Max packet in: 32768 bytes
+2022-06-15 18:24:12,886 [chan 8] Max packet out: 32768 bytes
+2022-06-15 18:24:12,887 Secsh channel 8 opened.
+2022-06-15 18:24:12,901 [chan 8] Sesch channel 8 request ok
+2022-06-15 18:24:16,303 [chan 8] EOF received (8)
+2022-06-15 18:24:16,304 [chan 8] EOF sent (8)
+2022-06-15 18:24:16,309 7,35.71444666666667,N,139.76310833333332,E
+2022-06-15 18:24:16,309 [chan 9] Max packet in: 32768 bytes
+2022-06-15 18:24:16,388 [chan 9] Max packet out: 32768 bytes
+2022-06-15 18:24:16,388 Secsh channel 9 opened.
+2022-06-15 18:24:16,397 [chan 9] Sesch channel 9 request ok
+2022-06-15 18:24:19,801 [chan 9] EOF received (9)
+2022-06-15 18:24:19,803 [chan 9] EOF sent (9)
+2022-06-15 18:24:19,807 8,35.71444666666667,N,139.76310833333332,E
+2022-06-15 18:24:19,807 [chan 10] Max packet in: 32768 bytes
+2022-06-15 18:24:19,895 [chan 10] Max packet out: 32768 bytes
+2022-06-15 18:24:19,896 Secsh channel 10 opened.
+2022-06-15 18:24:19,912 [chan 10] Sesch channel 10 request ok
+2022-06-15 18:24:23,297 [chan 10] EOF received (10)
+2022-06-15 18:24:23,298 [chan 10] EOF sent (10)
+2022-06-15 18:24:23,302 9,35.71444666666667,N,139.76310833333332,E
+2022-06-15 18:24:23,303 [chan 11] Max packet in: 32768 bytes
+2022-06-15 18:24:23,310 [chan 11] Max packet out: 32768 bytes
+2022-06-15 18:24:23,311 Secsh channel 11 opened.
+2022-06-15 18:24:23,322 [chan 11] Sesch channel 11 request ok
+2022-06-15 18:24:26,749 [chan 11] EOF received (11)
+2022-06-15 18:24:26,750 [chan 11] EOF sent (11)
+2022-06-15 18:24:26,755 10,35.71444666666667,N,139.76310833333332,E
+2022-06-15 18:24:26,755 [chan 12] Max packet in: 32768 bytes
+2022-06-15 18:24:26,814 [chan 12] Max packet out: 32768 bytes
+2022-06-15 18:24:26,815 Secsh channel 12 opened.
+2022-06-15 18:24:26,827 [chan 12] Sesch channel 12 request ok
+2022-06-15 18:24:30,237 [chan 12] EOF received (12)
+2022-06-15 18:24:30,238 [chan 12] EOF sent (12)
+2022-06-15 18:24:30,243 11,35.71444666666667,N,139.76310833333332,E
+2022-06-15 18:24:30,243 [chan 13] Max packet in: 32768 bytes
+2022-06-15 18:24:30,322 [chan 13] Max packet out: 32768 bytes
+2022-06-15 18:24:30,322 Secsh channel 13 opened.
+2022-06-15 18:24:30,337 [chan 13] Sesch channel 13 request ok
+2022-06-15 18:24:33,733 [chan 13] EOF received (13)
+2022-06-15 18:24:33,734 [chan 13] EOF sent (13)
+2022-06-15 18:24:33,739 12,35.71444666666667,N,139.76310833333332,E
+2022-06-15 18:24:33,739 [chan 14] Max packet in: 32768 bytes
+2022-06-15 18:24:33,755 [chan 14] Max packet out: 32768 bytes
+2022-06-15 18:24:33,756 Secsh channel 14 opened.
+2022-06-15 18:24:33,767 [chan 14] Sesch channel 14 request ok
+2022-06-15 18:24:37,191 [chan 14] EOF received (14)
+2022-06-15 18:24:37,191 [chan 14] EOF sent (14)
+2022-06-15 18:24:37,195 13,35.71444666666667,N,139.76310833333332,E
+2022-06-15 18:24:37,195 [chan 15] Max packet in: 32768 bytes
+2022-06-15 18:24:37,250 [chan 15] Max packet out: 32768 bytes
+2022-06-15 18:24:37,250 Secsh channel 15 opened.
+2022-06-15 18:24:37,263 [chan 15] Sesch channel 15 request ok
+2022-06-15 18:24:40,681 [chan 15] EOF received (15)
+2022-06-15 18:24:40,681 [chan 15] EOF sent (15)
+2022-06-15 18:24:40,686 14,35.71444666666667,N,139.76310833333332,E
+2022-06-15 18:24:40,687 [chan 16] Max packet in: 32768 bytes
+2022-06-15 18:24:40,768 [chan 16] Max packet out: 32768 bytes
+2022-06-15 18:24:40,768 Secsh channel 16 opened.
+2022-06-15 18:24:40,781 [chan 16] Sesch channel 16 request ok
+2022-06-15 18:24:44,368 [chan 16] EOF received (16)
+2022-06-15 18:24:44,368 [chan 16] EOF sent (16)
+2022-06-15 18:24:44,372 15,35.71444666666667,N,139.76310833333332,E
+2022-06-15 18:24:44,372 [chan 17] Max packet in: 32768 bytes
+2022-06-15 18:24:44,469 [chan 17] Max packet out: 32768 bytes
+2022-06-15 18:24:44,469 Secsh channel 17 opened.
+2022-06-15 18:24:44,486 [chan 17] Sesch channel 17 request ok
+2022-06-15 18:24:47,841 [chan 17] EOF received (17)
+2022-06-15 18:24:47,842 [chan 17] EOF sent (17)
+2022-06-15 18:24:47,846 16,35.71444666666667,N,139.76310833333332,E
+2022-06-15 18:24:47,847 [chan 18] Max packet in: 32768 bytes
+2022-06-15 18:24:47,952 [chan 18] Max packet out: 32768 bytes
+2022-06-15 18:24:47,952 Secsh channel 18 opened.
+2022-06-15 18:24:47,965 [chan 18] Sesch channel 18 request ok
+2022-06-15 18:24:51,264 [chan 18] EOF received (18)
+2022-06-15 18:24:51,264 [chan 18] EOF sent (18)
+2022-06-15 18:24:51,269 17,35.71444666666667,N,139.76310833333332,E
+2022-06-15 18:24:51,270 [chan 19] Max packet in: 32768 bytes
+2022-06-15 18:24:51,369 [chan 19] Max packet out: 32768 bytes
+2022-06-15 18:24:51,369 Secsh channel 19 opened.
+2022-06-15 18:24:51,380 [chan 19] Sesch channel 19 request ok
+2022-06-15 18:24:54,668 [chan 19] EOF received (19)
+2022-06-15 18:24:54,668 [chan 19] EOF sent (19)
+2022-06-15 18:24:54,672 18,35.71444666666667,N,139.76310833333332,E
+2022-06-15 18:24:54,673 [chan 20] Max packet in: 32768 bytes
+2022-06-15 18:24:54,762 [chan 20] Max packet out: 32768 bytes
+2022-06-15 18:24:54,762 Secsh channel 20 opened.
+2022-06-15 18:24:54,774 [chan 20] Sesch channel 20 request ok
+2022-06-15 18:24:58,094 [chan 20] EOF received (20)
+2022-06-15 18:24:58,095 [chan 20] EOF sent (20)
+2022-06-15 18:24:58,103 19,35.71444666666667,N,139.76310833333332,E
+2022-06-15 18:24:58,103 [chan 21] Max packet in: 32768 bytes
+2022-06-15 18:24:58,195 [chan 21] Max packet out: 32768 bytes
+2022-06-15 18:24:58,196 Secsh channel 21 opened.
+2022-06-15 18:24:58,210 [chan 21] Sesch channel 21 request ok
+2022-06-15 18:25:01,605 [chan 21] EOF received (21)
+2022-06-15 18:25:01,609 [chan 21] EOF sent (21)
+2022-06-15 18:25:01,611 20,35.71444666666667,N,139.76310833333332,E
+2022-06-15 18:25:01,612 [chan 22] Max packet in: 32768 bytes
+2022-06-15 18:25:01,704 [chan 22] Max packet out: 32768 bytes
+2022-06-15 18:25:01,704 Secsh channel 22 opened.
+2022-06-15 18:25:01,712 [chan 22] Sesch channel 22 request ok
+2022-06-15 18:25:04,264 starting thread (client mode): 0x94ddf60
+2022-06-15 18:25:04,264 Local version/idstring: SSH-2.0-paramiko_2.10.4
+2022-06-15 18:25:04,408 Remote version/idstring: SSH-2.0-OpenSSH_7.9p1 Raspbian-10+deb10u1
+2022-06-15 18:25:04,408 Connected (version 2.0, client OpenSSH_7.9p1)
+2022-06-15 18:25:04,420 === Key exchange possibilities ===
+2022-06-15 18:25:04,420 kex algos: curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, diffie-hellman-group14-sha1
+2022-06-15 18:25:04,420 server key: rsa-sha2-512, rsa-sha2-256, ssh-rsa, ecdsa-sha2-nistp256, ssh-ed25519
+2022-06-15 18:25:04,420 client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2022-06-15 18:25:04,420 server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2022-06-15 18:25:04,420 client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2022-06-15 18:25:04,420 server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2022-06-15 18:25:04,420 client compress: none, zlib@openssh.com
+2022-06-15 18:25:04,420 server compress: none, zlib@openssh.com
+2022-06-15 18:25:04,420 client lang: <none>
+2022-06-15 18:25:04,420 server lang: <none>
+2022-06-15 18:25:04,421 kex follows: False
+2022-06-15 18:25:04,421 === Key exchange agreements ===
+2022-06-15 18:25:04,421 Kex: curve25519-sha256@libssh.org
+2022-06-15 18:25:04,421 HostKey: ssh-ed25519
+2022-06-15 18:25:04,421 Cipher: aes128-ctr
+2022-06-15 18:25:04,421 MAC: hmac-sha2-256
+2022-06-15 18:25:04,421 Compression: none
+2022-06-15 18:25:04,421 === End of kex handshake ===
+2022-06-15 18:25:04,508 kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2022-06-15 18:25:04,508 Switch to new keys ...
+2022-06-15 18:25:04,509 Adding ssh-ed25519 host key for lora-gateway-rpi7067.local: b'ad927c13f7360d29f9a4c452cfefeb29'
+2022-06-15 18:25:04,509 Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521'}
+2022-06-15 18:25:04,645 Trying discovered key b'c20ebaaabb5ac4beb038bd0da2eb6f88' in /Users/hirotsu/.ssh/id_rsa
+2022-06-15 18:25:04,684 userauth is OK
+2022-06-15 18:25:04,684 Finalizing pubkey algorithm for key of type 'ssh-rsa'
+2022-06-15 18:25:04,685 Our pubkey algorithm list: ['rsa-sha2-512', 'rsa-sha2-256', 'ssh-rsa']
+2022-06-15 18:25:04,685 Server-side algorithm list: ['ssh-ed25519', 'ssh-rsa', 'rsa-sha2-256', 'rsa-sha2-512', 'ssh-dss', 'ecdsa-sha2-nistp256', 'ecdsa-sha2-nistp384', 'ecdsa-sha2-nistp521']
+2022-06-15 18:25:04,685 Agreed upon 'rsa-sha2-512' pubkey algorithm
+2022-06-15 18:25:04,773 Authentication (publickey) failed.
+2022-06-15 18:25:04,780 userauth is OK
+2022-06-15 18:25:05,248 Authentication (password) successful!
+2022-06-15 18:25:05,265 [chan 0] Max packet in: 32768 bytes
+2022-06-15 18:25:05,402 Received global request "hostkeys-00@openssh.com"
+2022-06-15 18:25:05,402 Rejecting "hostkeys-00@openssh.com" global request from server.
+2022-06-15 18:25:05,408 [chan 0] Max packet out: 32768 bytes
+2022-06-15 18:25:05,408 Secsh channel 0 opened.
+2022-06-15 18:25:05,419 [chan 0] Sesch channel 0 request ok
+2022-06-15 18:25:05,441 [chan 0] EOF received (0)
+2022-06-15 18:25:05,442 [chan 1] Max packet in: 32768 bytes
+2022-06-15 18:25:05,443 [chan 0] EOF sent (0)
+2022-06-15 18:25:05,448 [chan 1] Max packet out: 32768 bytes
+2022-06-15 18:25:05,448 Secsh channel 1 opened.
+2022-06-15 18:25:05,510 [chan 1] Sesch channel 1 request ok
+2022-06-15 18:25:05,533 [chan 1] EOF received (1)
+2022-06-15 18:25:05,535 [chan 1] EOF sent (1)
+2022-06-15 18:25:06,228 [chan 2] Max packet in: 32768 bytes
+2022-06-15 18:25:06,240 [chan 2] Max packet out: 32768 bytes
+2022-06-15 18:25:06,240 Secsh channel 2 opened.
+2022-06-15 18:25:06,253 [chan 2] Sesch channel 2 request ok
+2022-06-15 18:25:09,549 [chan 2] EOF received (2)
+2022-06-15 18:25:09,549 [chan 2] EOF sent (2)
+2022-06-15 18:25:09,554 [chan 3] Max packet in: 32768 bytes
+2022-06-15 18:25:09,561 [chan 3] Max packet out: 32768 bytes
+2022-06-15 18:25:09,561 Secsh channel 3 opened.
+2022-06-15 18:25:09,610 [chan 3] Sesch channel 3 request ok
+2022-06-15 18:25:12,846 [chan 3] EOF received (3)
+2022-06-15 18:25:12,846 [chan 3] EOF sent (3)
+2022-06-15 18:25:12,852 [chan 4] Max packet in: 32768 bytes
+2022-06-15 18:25:12,946 [chan 4] Max packet out: 32768 bytes
+2022-06-15 18:25:12,946 Secsh channel 4 opened.
+2022-06-15 18:25:12,962 [chan 4] Sesch channel 4 request ok
+2022-06-15 18:25:16,309 [chan 4] EOF received (4)
+2022-06-15 18:25:16,309 [chan 4] EOF sent (4)
+2022-06-15 18:25:16,314 [chan 5] Max packet in: 32768 bytes
+2022-06-15 18:25:16,370 [chan 5] Max packet out: 32768 bytes
+2022-06-15 18:25:16,370 Secsh channel 5 opened.
+2022-06-15 18:25:16,386 [chan 5] Sesch channel 5 request ok
+2022-06-15 18:25:19,789 [chan 5] EOF received (5)
+2022-06-15 18:25:19,790 [chan 5] EOF sent (5)
+2022-06-15 18:25:19,797 [chan 6] Max packet in: 32768 bytes
+2022-06-15 18:25:19,875 [chan 6] Max packet out: 32768 bytes
+2022-06-15 18:25:19,875 Secsh channel 6 opened.
+2022-06-15 18:25:19,894 [chan 6] Sesch channel 6 request ok
+2022-06-15 18:25:23,162 [chan 6] EOF received (6)
+2022-06-15 18:25:23,163 [chan 6] EOF sent (6)
+2022-06-15 18:25:23,167 [chan 7] Max packet in: 32768 bytes
+2022-06-15 18:25:23,290 [chan 7] Max packet out: 32768 bytes
+2022-06-15 18:25:23,290 Secsh channel 7 opened.
+2022-06-15 18:25:23,302 [chan 7] Sesch channel 7 request ok
+2022-06-15 18:25:26,604 [chan 7] EOF received (7)
+2022-06-15 18:25:26,605 [chan 7] EOF sent (7)
+2022-06-15 18:25:26,610 [chan 8] Max packet in: 32768 bytes
+2022-06-15 18:25:26,704 [chan 8] Max packet out: 32768 bytes
+2022-06-15 18:25:26,705 Secsh channel 8 opened.
+2022-06-15 18:25:26,718 [chan 8] Sesch channel 8 request ok
+2022-06-15 18:25:30,031 [chan 8] EOF received (8)
+2022-06-15 18:25:30,032 [chan 8] EOF sent (8)
+2022-06-15 18:25:30,037 [chan 9] Max packet in: 32768 bytes
+2022-06-15 18:25:30,117 [chan 9] Max packet out: 32768 bytes
+2022-06-15 18:25:30,117 Secsh channel 9 opened.
+2022-06-15 18:25:30,131 [chan 9] Sesch channel 9 request ok
+2022-06-15 18:25:33,528 [chan 9] EOF received (9)
+2022-06-15 18:25:33,528 [chan 9] EOF sent (9)
+2022-06-15 18:25:33,534 [chan 10] Max packet in: 32768 bytes
+2022-06-15 18:25:33,627 [chan 10] Max packet out: 32768 bytes
+2022-06-15 18:25:33,628 Secsh channel 10 opened.
+2022-06-15 18:25:33,640 [chan 10] Sesch channel 10 request ok
+2022-06-15 18:25:36,917 [chan 10] EOF received (10)
+2022-06-15 18:25:36,917 [chan 10] EOF sent (10)
+2022-06-15 18:25:36,921 [chan 11] Max packet in: 32768 bytes
+2022-06-15 18:25:36,977 [chan 11] Max packet out: 32768 bytes
+2022-06-15 18:25:36,977 Secsh channel 11 opened.
+2022-06-15 18:25:36,992 [chan 11] Sesch channel 11 request ok
+2022-06-15 18:25:40,474 [chan 11] EOF received (11)
+2022-06-15 18:25:40,474 [chan 11] EOF sent (11)
+2022-06-15 18:25:40,480 [chan 12] Max packet in: 32768 bytes
+2022-06-15 18:25:40,577 [chan 12] Max packet out: 32768 bytes
+2022-06-15 18:25:40,577 Secsh channel 12 opened.
+2022-06-15 18:25:40,589 [chan 12] Sesch channel 12 request ok
+2022-06-15 18:25:43,955 starting thread (client mode): 0x10a15f90
+2022-06-15 18:25:43,956 Local version/idstring: SSH-2.0-paramiko_2.10.4
+2022-06-15 18:25:44,063 Remote version/idstring: SSH-2.0-OpenSSH_7.9p1 Raspbian-10+deb10u1
+2022-06-15 18:25:44,063 Connected (version 2.0, client OpenSSH_7.9p1)
+2022-06-15 18:25:44,078 === Key exchange possibilities ===
+2022-06-15 18:25:44,078 kex algos: curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, diffie-hellman-group14-sha1
+2022-06-15 18:25:44,078 server key: rsa-sha2-512, rsa-sha2-256, ssh-rsa, ecdsa-sha2-nistp256, ssh-ed25519
+2022-06-15 18:25:44,079 client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2022-06-15 18:25:44,079 server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2022-06-15 18:25:44,079 client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2022-06-15 18:25:44,079 server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2022-06-15 18:25:44,079 client compress: none, zlib@openssh.com
+2022-06-15 18:25:44,079 server compress: none, zlib@openssh.com
+2022-06-15 18:25:44,079 client lang: <none>
+2022-06-15 18:25:44,079 server lang: <none>
+2022-06-15 18:25:44,079 kex follows: False
+2022-06-15 18:25:44,079 === Key exchange agreements ===
+2022-06-15 18:25:44,079 Kex: curve25519-sha256@libssh.org
+2022-06-15 18:25:44,079 HostKey: ssh-ed25519
+2022-06-15 18:25:44,079 Cipher: aes128-ctr
+2022-06-15 18:25:44,080 MAC: hmac-sha2-256
+2022-06-15 18:25:44,080 Compression: none
+2022-06-15 18:25:44,080 === End of kex handshake ===
+2022-06-15 18:25:44,164 kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2022-06-15 18:25:44,165 Switch to new keys ...
+2022-06-15 18:25:44,165 Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521'}
+2022-06-15 18:25:44,166 Adding ssh-ed25519 host key for lora-gateway-rpi7067.local: b'ad927c13f7360d29f9a4c452cfefeb29'
+2022-06-15 18:25:44,280 Trying discovered key b'c20ebaaabb5ac4beb038bd0da2eb6f88' in /Users/hirotsu/.ssh/id_rsa
+2022-06-15 18:25:44,303 userauth is OK
+2022-06-15 18:25:44,304 Finalizing pubkey algorithm for key of type 'ssh-rsa'
+2022-06-15 18:25:44,304 Our pubkey algorithm list: ['rsa-sha2-512', 'rsa-sha2-256', 'ssh-rsa']
+2022-06-15 18:25:44,304 Server-side algorithm list: ['ssh-ed25519', 'ssh-rsa', 'rsa-sha2-256', 'rsa-sha2-512', 'ssh-dss', 'ecdsa-sha2-nistp256', 'ecdsa-sha2-nistp384', 'ecdsa-sha2-nistp521']
+2022-06-15 18:25:44,304 Agreed upon 'rsa-sha2-512' pubkey algorithm
+2022-06-15 18:25:44,390 Authentication (publickey) failed.
+2022-06-15 18:25:44,399 userauth is OK
+2022-06-15 18:25:44,981 Authentication (password) successful!
+2022-06-15 18:25:44,996 [chan 0] Max packet in: 32768 bytes
+2022-06-15 18:25:45,018 Received global request "hostkeys-00@openssh.com"
+2022-06-15 18:25:45,019 Rejecting "hostkeys-00@openssh.com" global request from server.
+2022-06-15 18:25:45,026 [chan 0] Max packet out: 32768 bytes
+2022-06-15 18:25:45,026 Secsh channel 0 opened.
+2022-06-15 18:25:45,035 [chan 0] Sesch channel 0 request ok
+2022-06-15 18:25:45,063 [chan 0] EOF received (0)
+2022-06-15 18:25:45,063 [chan 1] Max packet in: 32768 bytes
+2022-06-15 18:25:45,063 [chan 0] EOF sent (0)
+2022-06-15 18:25:45,072 [chan 1] Max packet out: 32768 bytes
+2022-06-15 18:25:45,072 Secsh channel 1 opened.
+2022-06-15 18:25:45,137 [chan 1] Sesch channel 1 request ok
+2022-06-15 18:25:45,165 [chan 1] EOF received (1)
+2022-06-15 18:25:45,166 [chan 1] EOF sent (1)
+2022-06-15 18:25:45,175 0,35.71425166666667,N,139.76273666666665,E
+2022-06-15 18:25:45,175 [chan 2] Max packet in: 32768 bytes
+2022-06-15 18:25:45,253 [chan 2] Max packet out: 32768 bytes
+2022-06-15 18:25:45,254 Secsh channel 2 opened.
+2022-06-15 18:25:45,297 [chan 2] Sesch channel 2 request ok
+2022-06-15 18:25:48,539 [chan 2] EOF received (2)
+2022-06-15 18:25:48,542 [chan 2] EOF sent (2)
+2022-06-15 18:25:48,543 1,35.71426,N,139.76274,E
+2022-06-15 18:25:48,544 [chan 3] Max packet in: 32768 bytes
+2022-06-15 18:25:48,626 [chan 3] Max packet out: 32768 bytes
+2022-06-15 18:25:48,627 Secsh channel 3 opened.
+2022-06-15 18:25:48,642 [chan 3] Sesch channel 3 request ok
+2022-06-15 18:25:51,899 [chan 3] EOF received (3)
+2022-06-15 18:25:51,904 [chan 3] EOF sent (3)
+2022-06-15 18:25:51,905 2,35.71426,N,139.76273333333333,E
+2022-06-15 18:25:51,906 [chan 4] Max packet in: 32768 bytes
+2022-06-15 18:25:52,034 [chan 4] Max packet out: 32768 bytes
+2022-06-15 18:25:52,034 Secsh channel 4 opened.
+2022-06-15 18:25:52,047 [chan 4] Sesch channel 4 request ok
+2022-06-15 18:25:55,302 [chan 4] EOF received (4)
+2022-06-15 18:25:55,306 [chan 4] EOF sent (4)
+2022-06-15 18:25:55,308 3,35.714265,N,139.76272333333333,E
+2022-06-15 18:25:55,309 [chan 5] Max packet in: 32768 bytes
+2022-06-15 18:25:55,370 [chan 5] Max packet out: 32768 bytes
+2022-06-15 18:25:55,371 Secsh channel 5 opened.
+2022-06-15 18:25:55,382 [chan 5] Sesch channel 5 request ok
+2022-06-15 18:25:58,687 [chan 5] EOF received (5)
+2022-06-15 18:25:58,691 4,35.714265,N,139.76272333333333,E
+2022-06-15 18:25:58,691 [chan 6] Max packet in: 32768 bytes
+2022-06-15 18:25:58,692 [chan 5] EOF sent (5)
+2022-06-15 18:25:58,699 [chan 6] Max packet out: 32768 bytes
+2022-06-15 18:25:58,699 Secsh channel 6 opened.
+2022-06-15 18:25:58,787 [chan 6] Sesch channel 6 request ok
+2022-06-15 18:26:02,284 [chan 6] EOF received (6)
+2022-06-15 18:26:02,284 [chan 6] EOF sent (6)
+2022-06-15 18:26:02,288 5,35.714265,N,139.76272333333333,E
+2022-06-15 18:26:02,289 [chan 7] Max packet in: 32768 bytes
+2022-06-15 18:26:02,374 [chan 7] Max packet out: 32768 bytes
+2022-06-15 18:26:02,374 Secsh channel 7 opened.
+2022-06-15 18:26:02,390 [chan 7] Sesch channel 7 request ok
+2022-06-15 18:26:05,667 [chan 7] EOF received (7)
+2022-06-15 18:26:05,670 [chan 7] EOF sent (7)
+2022-06-15 18:26:05,674 6,35.71424833333333,N,139.76271,E
+2022-06-15 18:26:05,675 [chan 8] Max packet in: 32768 bytes
+2022-06-15 18:26:05,973 [chan 8] Max packet out: 32768 bytes
+2022-06-15 18:26:05,973 Secsh channel 8 opened.
+2022-06-15 18:26:05,988 [chan 8] Sesch channel 8 request ok
+2022-06-15 18:26:09,251 [chan 8] EOF received (8)
+2022-06-15 18:26:09,252 [chan 8] EOF sent (8)
+2022-06-15 18:26:09,257 7,35.714263333333335,N,139.76270833333334,E
+2022-06-15 18:26:09,257 [chan 9] Max packet in: 32768 bytes
+2022-06-15 18:26:09,314 [chan 9] Max packet out: 32768 bytes
+2022-06-15 18:26:09,315 Secsh channel 9 opened.
+2022-06-15 18:26:09,328 [chan 9] Sesch channel 9 request ok
+2022-06-15 18:26:12,627 [chan 9] EOF received (9)
+2022-06-15 18:26:12,627 [chan 9] EOF sent (9)
+2022-06-15 18:26:12,632 8,35.71426,N,139.76270166666666,E
+2022-06-15 18:26:12,632 [chan 10] Max packet in: 32768 bytes
+2022-06-15 18:26:12,720 [chan 10] Max packet out: 32768 bytes
+2022-06-15 18:26:12,720 Secsh channel 10 opened.
+2022-06-15 18:26:12,731 [chan 10] Sesch channel 10 request ok
+2022-06-15 18:26:16,062 [chan 10] EOF received (10)
+2022-06-15 18:26:16,063 [chan 10] EOF sent (10)
+2022-06-15 18:26:16,067 9,35.714261666666665,N,139.76269666666667,E
+2022-06-15 18:26:16,067 [chan 11] Max packet in: 32768 bytes
+2022-06-15 18:26:16,135 [chan 11] Max packet out: 32768 bytes
+2022-06-15 18:26:16,135 Secsh channel 11 opened.
+2022-06-15 18:26:16,146 [chan 11] Sesch channel 11 request ok
+2022-06-15 18:48:38,612 starting thread (client mode): 0x27d9e40
+2022-06-15 18:48:38,613 Local version/idstring: SSH-2.0-paramiko_2.10.4
+2022-06-15 18:48:39,055 Remote version/idstring: SSH-2.0-OpenSSH_7.9p1 Raspbian-10+deb10u1
+2022-06-15 18:48:39,055 Connected (version 2.0, client OpenSSH_7.9p1)
+2022-06-15 18:48:39,224 === Key exchange possibilities ===
+2022-06-15 18:48:39,224 kex algos: curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, diffie-hellman-group14-sha1
+2022-06-15 18:48:39,224 server key: rsa-sha2-512, rsa-sha2-256, ssh-rsa, ecdsa-sha2-nistp256, ssh-ed25519
+2022-06-15 18:48:39,224 client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2022-06-15 18:48:39,224 server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2022-06-15 18:48:39,224 client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2022-06-15 18:48:39,224 server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2022-06-15 18:48:39,225 client compress: none, zlib@openssh.com
+2022-06-15 18:48:39,225 server compress: none, zlib@openssh.com
+2022-06-15 18:48:39,225 client lang: <none>
+2022-06-15 18:48:39,225 server lang: <none>
+2022-06-15 18:48:39,225 kex follows: False
+2022-06-15 18:48:39,225 === Key exchange agreements ===
+2022-06-15 18:48:39,225 Kex: curve25519-sha256@libssh.org
+2022-06-15 18:48:39,225 HostKey: ssh-ed25519
+2022-06-15 18:48:39,225 Cipher: aes128-ctr
+2022-06-15 18:48:39,225 MAC: hmac-sha2-256
+2022-06-15 18:48:39,225 Compression: none
+2022-06-15 18:48:39,225 === End of kex handshake ===
+2022-06-15 18:48:39,435 kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2022-06-15 18:48:39,435 Switch to new keys ...
+2022-06-15 18:48:39,435 Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521'}
+2022-06-15 18:48:39,435 Adding ssh-ed25519 host key for lora-gateway-rpi7067.local: b'ad927c13f7360d29f9a4c452cfefeb29'
+2022-06-15 18:48:39,592 Trying discovered key b'c20ebaaabb5ac4beb038bd0da2eb6f88' in /Users/hirotsu/.ssh/id_rsa
+2022-06-15 18:48:39,705 userauth is OK
+2022-06-15 18:48:39,705 Finalizing pubkey algorithm for key of type 'ssh-rsa'
+2022-06-15 18:48:39,705 Our pubkey algorithm list: ['rsa-sha2-512', 'rsa-sha2-256', 'ssh-rsa']
+2022-06-15 18:48:39,706 Server-side algorithm list: ['ssh-ed25519', 'ssh-rsa', 'rsa-sha2-256', 'rsa-sha2-512', 'ssh-dss', 'ecdsa-sha2-nistp256', 'ecdsa-sha2-nistp384', 'ecdsa-sha2-nistp521']
+2022-06-15 18:48:39,706 Agreed upon 'rsa-sha2-512' pubkey algorithm
+2022-06-15 18:48:39,949 Authentication (publickey) failed.
+2022-06-15 18:48:39,965 userauth is OK
+2022-06-15 18:48:40,686 Authentication (password) successful!
+2022-06-15 18:48:40,701 [chan 0] Max packet in: 32768 bytes
+2022-06-15 18:48:41,595 Received global request "hostkeys-00@openssh.com"
+2022-06-15 18:48:41,595 Rejecting "hostkeys-00@openssh.com" global request from server.
+2022-06-15 18:48:41,603 [chan 0] Max packet out: 32768 bytes
+2022-06-15 18:48:41,603 Secsh channel 0 opened.
+2022-06-15 18:48:41,662 [chan 0] Sesch channel 0 request ok
+2022-06-15 18:48:41,673 [chan 0] EOF received (0)
+2022-06-15 18:48:41,674 [chan 1] Max packet in: 32768 bytes
+2022-06-15 18:48:41,674 [chan 0] EOF sent (0)
+2022-06-15 18:48:41,680 [chan 1] Max packet out: 32768 bytes
+2022-06-15 18:48:41,681 Secsh channel 1 opened.
+2022-06-15 18:48:41,748 [chan 1] Sesch channel 1 request ok
+2022-06-15 18:48:41,767 [chan 1] EOF received (1)
+2022-06-15 18:48:41,769 [chan 1] EOF sent (1)
+2022-06-15 18:48:41,773 0,35.71438166666667,N,139.76251333333335,E
+2022-06-15 18:48:41,773 [chan 2] Max packet in: 32768 bytes
+2022-06-15 18:48:41,866 [chan 2] Max packet out: 32768 bytes
+2022-06-15 18:48:41,866 Secsh channel 2 opened.
+2022-06-15 18:48:41,878 [chan 2] Sesch channel 2 request ok
+2022-06-15 18:48:45,154 [chan 2] EOF received (2)
+2022-06-15 18:48:45,155 [chan 2] EOF sent (2)
+2022-06-15 18:48:45,160 1,35.71438666666667,N,139.762505,E
+2022-06-15 18:48:45,160 [chan 3] Max packet in: 32768 bytes
+2022-06-15 18:48:45,246 [chan 3] Max packet out: 32768 bytes
+2022-06-15 18:48:45,246 Secsh channel 3 opened.
+2022-06-15 18:48:45,257 [chan 3] Sesch channel 3 request ok
+2022-06-15 18:48:48,530 [chan 3] EOF received (3)
+2022-06-15 18:48:48,531 [chan 3] EOF sent (3)
+2022-06-15 18:48:48,535 2,35.71438666666667,N,139.762505,E
+2022-06-15 18:48:48,536 [chan 4] Max packet in: 32768 bytes
+2022-06-15 18:48:48,622 [chan 4] Max packet out: 32768 bytes
+2022-06-15 18:48:48,623 Secsh channel 4 opened.
+2022-06-15 18:48:48,636 [chan 4] Sesch channel 4 request ok
+2022-06-15 18:48:52,077 [chan 4] EOF received (4)
+2022-06-15 18:48:52,077 [chan 4] EOF sent (4)
+2022-06-15 18:48:52,082 3,35.71438666666667,N,139.762505,E
+2022-06-15 18:48:52,082 [chan 5] Max packet in: 32768 bytes
+2022-06-15 18:48:52,145 [chan 5] Max packet out: 32768 bytes
+2022-06-15 18:48:52,145 Secsh channel 5 opened.
+2022-06-15 18:48:52,159 [chan 5] Sesch channel 5 request ok
+2022-06-15 18:48:55,561 [chan 5] EOF received (5)
+2022-06-15 18:48:55,562 [chan 5] EOF sent (5)
+2022-06-15 18:48:55,571 4,35.71438666666667,N,139.762505,E
+2022-06-15 18:48:55,573 [chan 6] Max packet in: 32768 bytes
+2022-06-15 18:48:55,627 [chan 6] Max packet out: 32768 bytes
+2022-06-15 18:48:55,627 Secsh channel 6 opened.
+2022-06-15 18:48:55,639 [chan 6] Sesch channel 6 request ok
+2022-06-15 18:48:58,905 [chan 6] EOF received (6)
+2022-06-15 18:48:58,912 5,35.71438666666667,N,139.762505,E
+2022-06-15 18:48:58,912 [chan 7] Max packet in: 32768 bytes
+2022-06-15 18:48:58,913 [chan 6] EOF sent (6)
+2022-06-15 18:48:58,950 [chan 7] Max packet out: 32768 bytes
+2022-06-15 18:48:58,950 Secsh channel 7 opened.
+2022-06-15 18:48:59,040 [chan 7] Sesch channel 7 request ok
+2022-06-15 18:49:02,294 [chan 7] EOF received (7)
+2022-06-15 18:49:02,294 [chan 7] EOF sent (7)
+2022-06-15 18:49:02,300 6,35.71438666666667,N,139.762505,E
+2022-06-15 18:49:02,300 [chan 8] Max packet in: 32768 bytes
+2022-06-15 18:49:02,388 [chan 8] Max packet out: 32768 bytes
+2022-06-15 18:49:02,388 Secsh channel 8 opened.
+2022-06-15 18:49:02,398 [chan 8] Sesch channel 8 request ok
+2022-06-15 18:49:05,675 [chan 8] EOF received (8)
+2022-06-15 18:49:05,676 [chan 8] EOF sent (8)
+2022-06-15 18:49:05,682 7,35.71438666666667,N,139.762505,E
+2022-06-15 18:49:05,683 [chan 9] Max packet in: 32768 bytes
+2022-06-15 18:49:05,748 [chan 9] Max packet out: 32768 bytes
+2022-06-15 18:49:05,748 Secsh channel 9 opened.
+2022-06-15 18:49:05,759 [chan 9] Sesch channel 9 request ok
+2022-06-15 18:49:09,076 [chan 9] EOF received (9)
+2022-06-15 18:49:09,083 8,35.71438666666667,N,139.762505,E
+2022-06-15 18:49:09,083 [chan 10] Max packet in: 32768 bytes
+2022-06-15 18:49:09,084 [chan 9] EOF sent (9)
+2022-06-15 18:49:09,091 [chan 10] Max packet out: 32768 bytes
+2022-06-15 18:49:09,091 Secsh channel 10 opened.
+2022-06-15 18:49:09,169 [chan 10] Sesch channel 10 request ok
+2022-06-15 18:49:12,496 [chan 10] EOF received (10)
+2022-06-15 18:49:12,497 [chan 10] EOF sent (10)
+2022-06-15 18:49:12,502 9,35.71438666666667,N,139.762505,E
+2022-06-15 18:49:12,502 [chan 11] Max packet in: 32768 bytes
+2022-06-15 18:49:12,527 [chan 11] Max packet out: 32768 bytes
+2022-06-15 18:49:12,528 Secsh channel 11 opened.
+2022-06-15 18:49:12,544 [chan 11] Sesch channel 11 request ok
+2022-06-15 18:49:15,834 [chan 11] EOF received (11)
+2022-06-15 18:49:15,835 [chan 11] EOF sent (11)
+2022-06-15 18:49:15,842 10,35.71438,N,139.76250333333334,E
+2022-06-15 18:49:15,842 [chan 12] Max packet in: 32768 bytes
+2022-06-15 18:49:15,920 [chan 12] Max packet out: 32768 bytes
+2022-06-15 18:49:15,920 Secsh channel 12 opened.
+2022-06-15 18:49:15,932 [chan 12] Sesch channel 12 request ok
+2022-06-15 18:49:19,336 [chan 12] EOF received (12)
+2022-06-15 18:49:19,337 [chan 12] EOF sent (12)
+2022-06-15 18:49:19,343 11,35.714376666666666,N,139.762505,E
+2022-06-15 18:49:19,343 [chan 13] Max packet in: 32768 bytes
+2022-06-15 18:49:19,435 [chan 13] Max packet out: 32768 bytes
+2022-06-15 18:49:19,435 Secsh channel 13 opened.
+2022-06-15 18:49:19,462 [chan 13] Sesch channel 13 request ok
+2022-06-15 18:49:22,799 [chan 13] EOF received (13)
+2022-06-15 18:49:22,800 [chan 13] EOF sent (13)
+2022-06-15 18:49:22,806 12,35.714376666666666,N,139.76250666666667,E
+2022-06-15 18:49:22,806 [chan 14] Max packet in: 32768 bytes
+2022-06-15 18:49:22,878 [chan 14] Max packet out: 32768 bytes
+2022-06-15 18:49:22,879 Secsh channel 14 opened.
+2022-06-15 18:49:22,889 [chan 14] Sesch channel 14 request ok
+2022-06-15 18:49:26,297 [chan 14] EOF received (14)
+2022-06-15 18:49:26,299 [chan 14] EOF sent (14)
+2022-06-15 18:49:26,305 13,35.71438,N,139.76250833333333,E
+2022-06-15 18:49:26,306 [chan 15] Max packet in: 32768 bytes
+2022-06-15 18:49:26,367 [chan 15] Max packet out: 32768 bytes
+2022-06-15 18:49:26,367 Secsh channel 15 opened.
+2022-06-15 18:49:26,383 [chan 15] Sesch channel 15 request ok
+2022-06-15 18:49:29,684 [chan 15] EOF received (15)
+2022-06-15 18:49:29,687 [chan 15] EOF sent (15)
+2022-06-15 18:49:29,693 14,35.71438166666667,N,139.762515,E
+2022-06-15 18:49:29,693 [chan 16] Max packet in: 32768 bytes
+2022-06-15 18:49:29,774 [chan 16] Max packet out: 32768 bytes
+2022-06-15 18:49:29,774 Secsh channel 16 opened.
+2022-06-15 18:49:29,788 [chan 16] Sesch channel 16 request ok
+2022-06-15 18:49:33,140 [chan 16] EOF received (16)
+2022-06-15 18:49:33,141 [chan 16] EOF sent (16)
+2022-06-15 18:49:33,147 15,35.71438166666667,N,139.762515,E
+2022-06-15 18:49:33,147 [chan 17] Max packet in: 32768 bytes
+2022-06-15 18:49:33,205 [chan 17] Max packet out: 32768 bytes
+2022-06-15 18:49:33,205 Secsh channel 17 opened.
+2022-06-15 18:49:33,220 [chan 17] Sesch channel 17 request ok
+2022-06-15 18:49:36,519 [chan 17] EOF received (17)
+2022-06-15 18:49:36,519 [chan 17] EOF sent (17)
+2022-06-15 18:49:36,525 16,35.71438166666667,N,139.762515,E
+2022-06-15 18:49:36,525 [chan 18] Max packet in: 32768 bytes
+2022-06-15 18:49:36,606 [chan 18] Max packet out: 32768 bytes
+2022-06-15 18:49:36,606 Secsh channel 18 opened.
+2022-06-15 18:49:36,620 [chan 18] Sesch channel 18 request ok
+2022-06-15 18:49:40,111 [chan 18] EOF received (18)
+2022-06-15 18:49:40,111 [chan 18] EOF sent (18)
+2022-06-15 18:49:40,118 17,35.71438166666667,N,139.762515,E
+2022-06-15 18:49:40,118 [chan 19] Max packet in: 32768 bytes
+2022-06-15 18:49:40,224 [chan 19] Max packet out: 32768 bytes
+2022-06-15 18:49:40,224 Secsh channel 19 opened.
+2022-06-15 18:49:40,243 [chan 19] Sesch channel 19 request ok
+2022-06-15 18:49:43,523 [chan 19] EOF received (19)
+2022-06-15 18:49:43,524 [chan 19] EOF sent (19)
+2022-06-15 18:49:43,528 18,35.71438166666667,N,139.762515,E
+2022-06-15 18:49:43,529 [chan 20] Max packet in: 32768 bytes
+2022-06-15 18:49:43,620 [chan 20] Max packet out: 32768 bytes
+2022-06-15 18:49:43,620 Secsh channel 20 opened.
+2022-06-15 18:49:43,631 [chan 20] Sesch channel 20 request ok
+2022-06-15 18:49:47,169 [chan 20] EOF received (20)
+2022-06-15 18:49:47,169 [chan 20] EOF sent (20)
+2022-06-15 18:49:47,175 19,35.71438166666667,N,139.762515,E
+2022-06-15 18:49:47,176 [chan 21] Max packet in: 32768 bytes
+2022-06-15 18:49:47,233 [chan 21] Max packet out: 32768 bytes
+2022-06-15 18:49:47,233 Secsh channel 21 opened.
+2022-06-15 18:49:47,247 [chan 21] Sesch channel 21 request ok
+2022-06-15 18:49:49,648 starting thread (client mode): 0xf0d1d80
+2022-06-15 18:49:49,649 Local version/idstring: SSH-2.0-paramiko_2.10.4
+2022-06-15 18:49:49,830 Remote version/idstring: SSH-2.0-OpenSSH_7.9p1 Raspbian-10+deb10u1
+2022-06-15 18:49:49,830 Connected (version 2.0, client OpenSSH_7.9p1)
+2022-06-15 18:49:49,841 === Key exchange possibilities ===
+2022-06-15 18:49:49,841 kex algos: curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, diffie-hellman-group14-sha1
+2022-06-15 18:49:49,841 server key: rsa-sha2-512, rsa-sha2-256, ssh-rsa, ecdsa-sha2-nistp256, ssh-ed25519
+2022-06-15 18:49:49,841 client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2022-06-15 18:49:49,841 server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2022-06-15 18:49:49,841 client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2022-06-15 18:49:49,841 server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2022-06-15 18:49:49,842 client compress: none, zlib@openssh.com
+2022-06-15 18:49:49,842 server compress: none, zlib@openssh.com
+2022-06-15 18:49:49,842 client lang: <none>
+2022-06-15 18:49:49,842 server lang: <none>
+2022-06-15 18:49:49,842 kex follows: False
+2022-06-15 18:49:49,842 === Key exchange agreements ===
+2022-06-15 18:49:49,842 Kex: curve25519-sha256@libssh.org
+2022-06-15 18:49:49,842 HostKey: ssh-ed25519
+2022-06-15 18:49:49,842 Cipher: aes128-ctr
+2022-06-15 18:49:49,842 MAC: hmac-sha2-256
+2022-06-15 18:49:49,842 Compression: none
+2022-06-15 18:49:49,842 === End of kex handshake ===
+2022-06-15 18:49:49,968 kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2022-06-15 18:49:49,969 Switch to new keys ...
+2022-06-15 18:49:49,970 Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521'}
+2022-06-15 18:49:49,970 Adding ssh-ed25519 host key for lora-gateway-rpi7067.local: b'ad927c13f7360d29f9a4c452cfefeb29'
+2022-06-15 18:49:50,089 Trying discovered key b'c20ebaaabb5ac4beb038bd0da2eb6f88' in /Users/hirotsu/.ssh/id_rsa
+2022-06-15 18:49:50,101 userauth is OK
+2022-06-15 18:49:50,101 Finalizing pubkey algorithm for key of type 'ssh-rsa'
+2022-06-15 18:49:50,101 Our pubkey algorithm list: ['rsa-sha2-512', 'rsa-sha2-256', 'ssh-rsa']
+2022-06-15 18:49:50,101 Server-side algorithm list: ['ssh-ed25519', 'ssh-rsa', 'rsa-sha2-256', 'rsa-sha2-512', 'ssh-dss', 'ecdsa-sha2-nistp256', 'ecdsa-sha2-nistp384', 'ecdsa-sha2-nistp521']
+2022-06-15 18:49:50,102 Agreed upon 'rsa-sha2-512' pubkey algorithm
+2022-06-15 18:49:50,254 Authentication (publickey) failed.
+2022-06-15 18:49:50,269 userauth is OK
+2022-06-15 18:49:50,683 Authentication (password) successful!
+2022-06-15 18:49:50,698 [chan 0] Max packet in: 32768 bytes
+2022-06-15 18:49:51,059 Received global request "hostkeys-00@openssh.com"
+2022-06-15 18:49:51,059 Rejecting "hostkeys-00@openssh.com" global request from server.
+2022-06-15 18:49:51,069 [chan 0] Max packet out: 32768 bytes
+2022-06-15 18:49:51,069 Secsh channel 0 opened.
+2022-06-15 18:49:51,079 [chan 0] Sesch channel 0 request ok
+2022-06-15 18:49:51,128 [chan 0] EOF received (0)
+2022-06-15 18:49:51,128 [chan 0] EOF sent (0)
+2022-06-15 18:49:51,128 [chan 1] Max packet in: 32768 bytes
+2022-06-15 18:49:51,218 [chan 1] Max packet out: 32768 bytes
+2022-06-15 18:49:51,218 Secsh channel 1 opened.
+2022-06-15 18:49:51,226 [chan 1] Sesch channel 1 request ok
+2022-06-15 18:49:51,251 [chan 1] EOF received (1)
+2022-06-15 18:49:51,252 [chan 1] EOF sent (1)
+2022-06-15 18:49:51,477 0,35.714393333333334,N,139.76258,E
+2022-06-15 18:49:51,477 [chan 2] Max packet in: 32768 bytes
+2022-06-15 18:49:51,490 [chan 2] Max packet out: 32768 bytes
+2022-06-15 18:49:51,491 Secsh channel 2 opened.
+2022-06-15 18:49:51,503 [chan 2] Sesch channel 2 request ok
+2022-06-15 18:49:54,951 [chan 2] EOF received (2)
+2022-06-15 18:49:54,951 [chan 2] EOF sent (2)
+2022-06-15 18:49:54,959 1,35.71439,N,139.76258333333334,E
+2022-06-15 18:49:54,959 [chan 3] Max packet in: 32768 bytes
+2022-06-15 18:49:55,014 [chan 3] Max packet out: 32768 bytes
+2022-06-15 18:49:55,014 Secsh channel 3 opened.
+2022-06-15 18:49:55,025 [chan 3] Sesch channel 3 request ok
+2022-06-15 18:49:58,432 [chan 3] EOF received (3)
+2022-06-15 18:49:58,433 [chan 3] EOF sent (3)
+2022-06-15 18:49:58,439 2,35.714385,N,139.76258333333334,E
+2022-06-15 18:49:58,440 [chan 4] Max packet in: 32768 bytes
+2022-06-15 18:49:58,521 [chan 4] Max packet out: 32768 bytes
+2022-06-15 18:49:58,521 Secsh channel 4 opened.
+2022-06-15 18:49:58,533 [chan 4] Sesch channel 4 request ok
+2022-06-15 18:50:01,924 [chan 4] EOF received (4)
+2022-06-15 18:50:01,925 [chan 4] EOF sent (4)
+2022-06-15 18:50:01,935 3,35.714385,N,139.76258833333333,E
+2022-06-15 18:50:01,935 [chan 5] Max packet in: 32768 bytes
+2022-06-15 18:50:01,946 [chan 5] Max packet out: 32768 bytes
+2022-06-15 18:50:01,946 Secsh channel 5 opened.
+2022-06-15 18:50:01,958 [chan 5] Sesch channel 5 request ok
+2022-06-15 18:50:05,395 [chan 5] EOF received (5)
+2022-06-15 18:50:05,396 [chan 5] EOF sent (5)
+2022-06-15 18:50:05,403 4,35.71438333333333,N,139.76259166666668,E
+2022-06-15 18:50:05,403 [chan 6] Max packet in: 32768 bytes
+2022-06-15 18:50:05,449 [chan 6] Max packet out: 32768 bytes
+2022-06-15 18:50:05,449 Secsh channel 6 opened.
+2022-06-15 18:50:05,461 [chan 6] Sesch channel 6 request ok
+2022-06-15 18:50:08,883 [chan 6] EOF received (6)
+2022-06-15 18:50:08,883 [chan 6] EOF sent (6)
+2022-06-15 18:50:08,890 5,35.71438,N,139.762595,E
+2022-06-15 18:50:08,890 [chan 7] Max packet in: 32768 bytes
+2022-06-15 18:50:08,965 [chan 7] Max packet out: 32768 bytes
+2022-06-15 18:50:08,965 Secsh channel 7 opened.
+2022-06-15 18:50:08,975 [chan 7] Sesch channel 7 request ok
+2022-06-15 18:50:12,365 [chan 7] EOF received (7)
+2022-06-15 18:50:12,366 [chan 7] EOF sent (7)
+2022-06-15 18:50:12,372 6,35.71438,N,139.762595,E
+2022-06-15 18:50:12,373 [chan 8] Max packet in: 32768 bytes
+2022-06-15 18:50:12,380 [chan 8] Max packet out: 32768 bytes
+2022-06-15 18:50:12,380 Secsh channel 8 opened.
+2022-06-15 18:50:12,393 [chan 8] Sesch channel 8 request ok
+2022-06-15 18:50:15,872 [chan 8] EOF received (8)
+2022-06-15 18:50:15,876 [chan 8] EOF sent (8)
+2022-06-15 18:50:15,881 7,35.71438,N,139.762595,E
+2022-06-15 18:50:15,881 [chan 9] Max packet in: 32768 bytes
+2022-06-15 18:50:15,970 [chan 9] Max packet out: 32768 bytes
+2022-06-15 18:50:15,970 Secsh channel 9 opened.
+2022-06-15 18:50:15,981 [chan 9] Sesch channel 9 request ok
+2022-06-15 18:50:19,324 [chan 9] EOF received (9)
+2022-06-15 18:50:19,325 [chan 9] EOF sent (9)
+2022-06-15 18:50:19,332 8,35.71438,N,139.762595,E
+2022-06-15 18:50:19,333 [chan 10] Max packet in: 32768 bytes
+2022-06-15 18:50:19,396 [chan 10] Max packet out: 32768 bytes
+2022-06-15 18:50:19,396 Secsh channel 10 opened.
+2022-06-15 18:50:19,415 [chan 10] Sesch channel 10 request ok
+2022-06-15 18:50:22,679 [chan 10] EOF received (10)
+2022-06-15 18:50:22,680 [chan 10] EOF sent (10)
+2022-06-15 18:50:22,688 9,35.71438,N,139.762595,E
+2022-06-15 18:50:22,688 [chan 11] Max packet in: 32768 bytes
+2022-06-15 18:50:22,745 [chan 11] Max packet out: 32768 bytes
+2022-06-15 18:50:22,745 Secsh channel 11 opened.
+2022-06-15 18:50:22,755 [chan 11] Sesch channel 11 request ok
+2022-06-15 18:50:26,099 [chan 11] EOF received (11)
+2022-06-15 18:50:26,099 [chan 11] EOF sent (11)
+2022-06-15 18:50:26,104 10,35.71438,N,139.762595,E
+2022-06-15 18:50:26,104 [chan 12] Max packet in: 32768 bytes
+2022-06-15 18:50:26,200 [chan 12] Max packet out: 32768 bytes
+2022-06-15 18:50:26,200 Secsh channel 12 opened.
+2022-06-15 18:50:26,217 [chan 12] Sesch channel 12 request ok
+2022-06-15 18:50:29,609 [chan 12] EOF received (12)
+2022-06-15 18:50:29,610 [chan 12] EOF sent (12)
+2022-06-15 18:50:29,617 11,35.71438,N,139.762595,E
+2022-06-15 18:50:29,618 [chan 13] Max packet in: 32768 bytes
+2022-06-15 18:50:29,624 [chan 13] Max packet out: 32768 bytes
+2022-06-15 18:50:29,624 Secsh channel 13 opened.
+2022-06-15 18:50:29,637 [chan 13] Sesch channel 13 request ok
+2022-06-15 18:50:32,930 [chan 13] EOF received (13)
+2022-06-15 18:50:32,931 [chan 13] EOF sent (13)
+2022-06-15 18:50:32,937 12,35.71437,N,139.76260166666665,E
+2022-06-15 18:50:32,937 [chan 14] Max packet in: 32768 bytes
+2022-06-15 18:50:33,025 [chan 14] Max packet out: 32768 bytes
+2022-06-15 18:50:33,025 Secsh channel 14 opened.
+2022-06-15 18:50:33,036 [chan 14] Sesch channel 14 request ok
+2022-06-15 18:50:36,350 [chan 14] EOF received (14)
+2022-06-15 18:50:36,352 [chan 14] EOF sent (14)
+2022-06-15 18:50:36,357 13,35.71437,N,139.762605,E
+2022-06-15 18:50:36,357 [chan 15] Max packet in: 32768 bytes
+2022-06-15 18:50:36,451 [chan 15] Max packet out: 32768 bytes
+2022-06-15 18:50:36,451 Secsh channel 15 opened.
+2022-06-15 18:50:36,461 [chan 15] Sesch channel 15 request ok
+2022-06-15 18:50:40,019 [chan 15] EOF received (15)
+2022-06-15 18:50:40,020 [chan 15] EOF sent (15)
+2022-06-15 18:50:40,029 14,35.714373333333334,N,139.76260666666667,E
+2022-06-15 18:50:40,029 [chan 16] Max packet in: 32768 bytes
+2022-06-15 18:50:40,113 [chan 16] Max packet out: 32768 bytes
+2022-06-15 18:50:40,113 Secsh channel 16 opened.
+2022-06-15 18:50:40,124 [chan 16] Sesch channel 16 request ok
+2022-06-15 18:50:43,402 [chan 16] EOF received (16)
+2022-06-15 18:50:43,406 [chan 16] EOF sent (16)
+2022-06-15 18:50:43,411 15,35.71437,N,139.76261,E
+2022-06-15 18:50:43,411 [chan 17] Max packet in: 32768 bytes
+2022-06-15 18:50:43,539 [chan 17] Max packet out: 32768 bytes
+2022-06-15 18:50:43,539 Secsh channel 17 opened.
+2022-06-15 18:50:43,552 [chan 17] Sesch channel 17 request ok
+2022-06-15 18:50:46,991 [chan 17] EOF received (17)
+2022-06-15 18:50:46,992 [chan 17] EOF sent (17)
+2022-06-15 18:50:46,997 16,35.71437,N,139.76261,E
+2022-06-15 18:50:46,997 [chan 18] Max packet in: 32768 bytes
+2022-06-15 18:50:47,044 [chan 18] Max packet out: 32768 bytes
+2022-06-15 18:50:47,044 Secsh channel 18 opened.
+2022-06-15 18:50:47,060 [chan 18] Sesch channel 18 request ok
+2022-06-15 18:50:50,334 [chan 18] EOF received (18)
+2022-06-15 18:50:50,342 17,35.71437,N,139.76261,E
+2022-06-15 18:50:50,342 [chan 19] Max packet in: 32768 bytes
+2022-06-15 18:50:50,366 [chan 18] EOF sent (18)
+2022-06-15 18:50:50,369 [chan 19] Max packet out: 32768 bytes
+2022-06-15 18:50:50,369 Secsh channel 19 opened.
+2022-06-15 18:50:50,473 [chan 19] Sesch channel 19 request ok
+2022-06-15 18:50:53,858 [chan 19] EOF received (19)
+2022-06-15 18:50:53,858 [chan 19] EOF sent (19)
+2022-06-15 18:50:53,864 18,35.71437,N,139.76261,E
+2022-06-15 18:50:53,865 [chan 20] Max packet in: 32768 bytes
+2022-06-15 18:50:53,891 [chan 20] Max packet out: 32768 bytes
+2022-06-15 18:50:53,891 Secsh channel 20 opened.
+2022-06-15 18:50:53,903 [chan 20] Sesch channel 20 request ok
+2022-06-15 18:50:57,215 [chan 20] EOF received (20)
+2022-06-15 18:50:57,216 [chan 20] EOF sent (20)
+2022-06-15 18:50:57,220 19,35.71437,N,139.76261,E
+2022-06-15 18:50:57,221 [chan 21] Max packet in: 32768 bytes
+2022-06-15 18:50:57,339 [chan 21] Max packet out: 32768 bytes
+2022-06-15 18:50:57,340 Secsh channel 21 opened.
+2022-06-15 18:50:57,409 [chan 21] Sesch channel 21 request ok
+2022-06-15 18:51:00,723 [chan 21] EOF received (21)
+2022-06-15 18:51:00,724 [chan 21] EOF sent (21)
+2022-06-15 18:51:00,731 20,35.71437,N,139.76261,E
+2022-06-15 18:51:00,731 [chan 22] Max packet in: 32768 bytes
+2022-06-15 18:51:00,820 [chan 22] Max packet out: 32768 bytes
+2022-06-15 18:51:00,820 Secsh channel 22 opened.
+2022-06-15 18:51:00,830 [chan 22] Sesch channel 22 request ok
+2022-06-15 18:51:04,092 [chan 22] EOF received (22)
+2022-06-15 18:51:04,099 [chan 22] EOF sent (22)
+2022-06-15 18:51:04,100 21,35.71437,N,139.76261,E
+2022-06-15 18:51:04,100 [chan 23] Max packet in: 32768 bytes
+2022-06-15 18:51:04,194 [chan 23] Max packet out: 32768 bytes
+2022-06-15 18:51:04,194 Secsh channel 23 opened.
+2022-06-15 18:51:04,265 [chan 23] Sesch channel 23 request ok
+2022-06-15 18:51:07,495 [chan 23] EOF received (23)
+2022-06-15 18:51:07,498 [chan 23] EOF sent (23)
+2022-06-15 18:51:07,501 22,35.71437,N,139.76261,E
+2022-06-15 18:51:07,501 [chan 24] Max packet in: 32768 bytes
+2022-06-15 18:51:07,584 [chan 24] Max packet out: 32768 bytes
+2022-06-15 18:51:07,584 Secsh channel 24 opened.
+2022-06-15 18:51:07,596 [chan 24] Sesch channel 24 request ok
+2022-06-15 18:51:10,931 [chan 24] EOF received (24)
+2022-06-15 18:51:10,931 [chan 24] EOF sent (24)
+2022-06-15 18:51:10,935 23,35.71437,N,139.76261,E
+2022-06-15 18:51:10,935 [chan 25] Max packet in: 32768 bytes
+2022-06-15 18:51:11,003 [chan 25] Max packet out: 32768 bytes
+2022-06-15 18:51:11,003 Secsh channel 25 opened.
+2022-06-15 18:51:11,013 [chan 25] Sesch channel 25 request ok
+2022-06-15 18:51:14,412 [chan 25] EOF received (25)
+2022-06-15 18:51:14,413 [chan 25] EOF sent (25)
+2022-06-15 18:51:14,417 24,35.71437,N,139.76261,E
+2022-06-15 18:51:14,418 [chan 26] Max packet in: 32768 bytes
+2022-06-15 18:51:14,496 [chan 26] Max packet out: 32768 bytes
+2022-06-15 18:51:14,496 Secsh channel 26 opened.
+2022-06-15 18:51:14,508 [chan 26] Sesch channel 26 request ok
+2022-06-15 18:51:17,894 [chan 26] EOF received (26)
+2022-06-15 18:51:17,894 [chan 26] EOF sent (26)
+2022-06-15 18:51:17,898 25,35.71437,N,139.76261,E
+2022-06-15 18:51:17,899 [chan 27] Max packet in: 32768 bytes
+2022-06-15 18:51:17,951 [chan 27] Max packet out: 32768 bytes
+2022-06-15 18:51:17,951 Secsh channel 27 opened.
+2022-06-15 18:51:17,960 [chan 27] Sesch channel 27 request ok
+2022-06-15 18:51:21,379 [chan 27] EOF received (27)
+2022-06-15 18:51:21,380 [chan 27] EOF sent (27)
+2022-06-15 18:51:21,386 26,35.71437,N,139.76261,E
+2022-06-15 18:51:21,386 [chan 28] Max packet in: 32768 bytes
+2022-06-15 18:51:21,471 [chan 28] Max packet out: 32768 bytes
+2022-06-15 18:51:21,472 Secsh channel 28 opened.
+2022-06-15 18:51:21,486 [chan 28] Sesch channel 28 request ok
+2022-06-15 18:51:26,500 starting thread (client mode): 0xfd5de40
+2022-06-15 18:51:26,500 Local version/idstring: SSH-2.0-paramiko_2.10.4
+2022-06-15 18:51:26,650 Remote version/idstring: SSH-2.0-OpenSSH_7.9p1 Raspbian-10+deb10u1
+2022-06-15 18:51:26,651 Connected (version 2.0, client OpenSSH_7.9p1)
+2022-06-15 18:51:26,662 === Key exchange possibilities ===
+2022-06-15 18:51:26,662 kex algos: curve25519-sha256, curve25519-sha256@libssh.org, ecdh-sha2-nistp256, ecdh-sha2-nistp384, ecdh-sha2-nistp521, diffie-hellman-group-exchange-sha256, diffie-hellman-group16-sha512, diffie-hellman-group18-sha512, diffie-hellman-group14-sha256, diffie-hellman-group14-sha1
+2022-06-15 18:51:26,662 server key: rsa-sha2-512, rsa-sha2-256, ssh-rsa, ecdsa-sha2-nistp256, ssh-ed25519
+2022-06-15 18:51:26,662 client encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2022-06-15 18:51:26,662 server encrypt: chacha20-poly1305@openssh.com, aes128-ctr, aes192-ctr, aes256-ctr, aes128-gcm@openssh.com, aes256-gcm@openssh.com
+2022-06-15 18:51:26,662 client mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2022-06-15 18:51:26,662 server mac: umac-64-etm@openssh.com, umac-128-etm@openssh.com, hmac-sha2-256-etm@openssh.com, hmac-sha2-512-etm@openssh.com, hmac-sha1-etm@openssh.com, umac-64@openssh.com, umac-128@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-sha1
+2022-06-15 18:51:26,662 client compress: none, zlib@openssh.com
+2022-06-15 18:51:26,663 server compress: none, zlib@openssh.com
+2022-06-15 18:51:26,663 client lang: <none>
+2022-06-15 18:51:26,663 server lang: <none>
+2022-06-15 18:51:26,663 kex follows: False
+2022-06-15 18:51:26,663 === Key exchange agreements ===
+2022-06-15 18:51:26,663 Kex: curve25519-sha256@libssh.org
+2022-06-15 18:51:26,663 HostKey: ssh-ed25519
+2022-06-15 18:51:26,663 Cipher: aes128-ctr
+2022-06-15 18:51:26,663 MAC: hmac-sha2-256
+2022-06-15 18:51:26,663 Compression: none
+2022-06-15 18:51:26,663 === End of kex handshake ===
+2022-06-15 18:51:26,746 kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+2022-06-15 18:51:26,746 Switch to new keys ...
+2022-06-15 18:51:26,747 Got EXT_INFO: {'server-sig-algs': b'ssh-ed25519,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521'}
+2022-06-15 18:51:26,747 Adding ssh-ed25519 host key for lora-gateway-rpi7067.local: b'ad927c13f7360d29f9a4c452cfefeb29'
+2022-06-15 18:51:26,868 Trying discovered key b'c20ebaaabb5ac4beb038bd0da2eb6f88' in /Users/hirotsu/.ssh/id_rsa
+2022-06-15 18:51:26,878 userauth is OK
+2022-06-15 18:51:26,878 Finalizing pubkey algorithm for key of type 'ssh-rsa'
+2022-06-15 18:51:26,878 Our pubkey algorithm list: ['rsa-sha2-512', 'rsa-sha2-256', 'ssh-rsa']
+2022-06-15 18:51:26,878 Server-side algorithm list: ['ssh-ed25519', 'ssh-rsa', 'rsa-sha2-256', 'rsa-sha2-512', 'ssh-dss', 'ecdsa-sha2-nistp256', 'ecdsa-sha2-nistp384', 'ecdsa-sha2-nistp521']
+2022-06-15 18:51:26,878 Agreed upon 'rsa-sha2-512' pubkey algorithm
+2022-06-15 18:51:26,975 Authentication (publickey) failed.
+2022-06-15 18:51:26,984 userauth is OK
+2022-06-15 18:51:27,314 Authentication (password) successful!
+2022-06-15 18:51:27,331 [chan 0] Max packet in: 32768 bytes
+2022-06-15 18:51:27,607 Received global request "hostkeys-00@openssh.com"
+2022-06-15 18:51:27,607 Rejecting "hostkeys-00@openssh.com" global request from server.
+2022-06-15 18:51:27,612 [chan 0] Max packet out: 32768 bytes
+2022-06-15 18:51:27,612 Secsh channel 0 opened.
+2022-06-15 18:51:27,623 [chan 0] Sesch channel 0 request ok
+2022-06-15 18:51:27,668 [chan 0] EOF received (0)
+2022-06-15 18:51:27,669 [chan 0] EOF sent (0)
+2022-06-15 18:51:27,669 [chan 1] Max packet in: 32768 bytes
+2022-06-15 18:51:27,762 [chan 1] Max packet out: 32768 bytes
+2022-06-15 18:51:27,763 Secsh channel 1 opened.
+2022-06-15 18:51:27,787 [chan 1] Sesch channel 1 request ok
+2022-06-15 18:51:27,841 [chan 1] EOF received (1)
+2022-06-15 18:51:27,842 [chan 1] EOF sent (1)
+2022-06-15 18:51:28,360 0,35.714465,N,139.76257166666667,E
+2022-06-15 18:51:28,360 [chan 2] Max packet in: 32768 bytes
+2022-06-15 18:51:28,390 [chan 2] Max packet out: 32768 bytes
+2022-06-15 18:51:28,390 Secsh channel 2 opened.
+2022-06-15 18:51:28,400 [chan 2] Sesch channel 2 request ok
+2022-06-15 18:51:31,820 [chan 2] EOF received (2)
+2022-06-15 18:51:31,822 [chan 2] EOF sent (2)
+2022-06-15 18:51:31,827 1,35.714465,N,139.76257166666667,E
+2022-06-15 18:51:31,828 [chan 3] Max packet in: 32768 bytes
+2022-06-15 18:51:31,900 [chan 3] Max packet out: 32768 bytes
+2022-06-15 18:51:31,900 Secsh channel 3 opened.
+2022-06-15 18:51:31,910 [chan 3] Sesch channel 3 request ok
+2022-06-15 18:51:35,507 [chan 3] EOF received (3)
+2022-06-15 18:51:35,508 [chan 3] EOF sent (3)
+2022-06-15 18:51:35,514 2,35.714465,N,139.76257166666667,E
+2022-06-15 18:51:35,514 [chan 4] Max packet in: 32768 bytes
+2022-06-15 18:51:35,576 [chan 4] Max packet out: 32768 bytes
+2022-06-15 18:51:35,577 Secsh channel 4 opened.
+2022-06-15 18:51:35,588 [chan 4] Sesch channel 4 request ok
+2022-06-15 18:51:38,991 [chan 4] EOF received (4)
+2022-06-15 18:51:38,992 [chan 4] EOF sent (4)
+2022-06-15 18:51:38,997 3,35.714465,N,139.76257166666667,E
+2022-06-15 18:51:38,998 [chan 5] Max packet in: 32768 bytes
+2022-06-15 18:51:39,007 [chan 5] Max packet out: 32768 bytes
+2022-06-15 18:51:39,007 Secsh channel 5 opened.
+2022-06-15 18:51:39,018 [chan 5] Sesch channel 5 request ok
+2022-06-15 18:51:42,496 [chan 5] EOF received (5)
+2022-06-15 18:51:42,496 [chan 5] EOF sent (5)
+2022-06-15 18:51:42,501 4,35.714465,N,139.76257166666667,E
+2022-06-15 18:51:42,501 [chan 6] Max packet in: 32768 bytes
+2022-06-15 18:51:42,633 [chan 6] Max packet out: 32768 bytes
+2022-06-15 18:51:42,633 Secsh channel 6 opened.
+2022-06-15 18:51:42,644 [chan 6] Sesch channel 6 request ok
+2022-06-15 18:51:45,951 [chan 6] EOF received (6)
+2022-06-15 18:51:45,952 [chan 6] EOF sent (6)
+2022-06-15 18:51:45,959 5,35.714465,N,139.76257166666667,E
+2022-06-15 18:51:45,959 [chan 7] Max packet in: 32768 bytes
+2022-06-15 18:51:46,043 [chan 7] Max packet out: 32768 bytes
+2022-06-15 18:51:46,043 Secsh channel 7 opened.
+2022-06-15 18:51:46,056 [chan 7] Sesch channel 7 request ok
+2022-06-15 18:51:49,457 [chan 7] EOF received (7)
+2022-06-15 18:51:49,458 [chan 7] EOF sent (7)
+2022-06-15 18:51:49,465 6,35.714465,N,139.76257166666667,E
+2022-06-15 18:51:49,465 [chan 8] Max packet in: 32768 bytes
+2022-06-15 18:51:49,473 [chan 8] Max packet out: 32768 bytes
+2022-06-15 18:51:49,473 Secsh channel 8 opened.
+2022-06-15 18:51:49,486 [chan 8] Sesch channel 8 request ok
+2022-06-15 18:51:52,916 [chan 8] EOF received (8)
+2022-06-15 18:51:52,917 [chan 8] EOF sent (8)
+2022-06-15 18:51:52,923 7,35.714465,N,139.76257166666667,E
+2022-06-15 18:51:52,923 [chan 9] Max packet in: 32768 bytes
+2022-06-15 18:51:53,060 [chan 9] Max packet out: 32768 bytes
+2022-06-15 18:51:53,060 Secsh channel 9 opened.
+2022-06-15 18:51:53,075 [chan 9] EOF sent (9)
+2022-06-15 18:51:53,076 Dropping user packet because connection is dead.
+2022-06-15 18:51:53,076 Dropping user packet because connection is dead.

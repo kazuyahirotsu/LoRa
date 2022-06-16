@@ -21,9 +21,6 @@ class GPSVis(object):
         self.result_image = Image
         self.x_ticks = []
         self.y_ticks = []
-        self.x = []
-        self.y = []
-        self.z = []
 
     def plot_map(self, output='save', save_as='resultMap.png'):
         """
@@ -33,30 +30,13 @@ class GPSVis(object):
         :return:
         """
         self.get_ticks()
-        cm = plt.cm.get_cmap('PiYG')
-        fig = plt.figure()
-        ax = fig.add_subplot(1, 1, 1)
-        mappable = ax.scatter(self.x, self.y, c=self.z, s=10, cmap=cm)
-        fig.colorbar(mappable, ax=ax)
-        ax.imshow(self.result_image)
-        ax.plot(218, 28, color="red", marker='*', markersize=10) 
-        ax.set_xlabel('Longitude')
-        ax.set_ylabel('Latitude')
-        ax.set_xticklabels([])
-        ax.set_yticklabels([])
-        ax.tick_params(width=0)
-        # ax.set_title("RSSI value of the signal from the star mark")
-        # ax.set_xticklabels(self.x_ticks)
-        # ax.set_yticklabels(self.y_ticks)
-
-        # self.get_ticks()
-        # fig, axis1 = plt.subplots(figsize=(10, 10))
-        # axis1.imshow(self.result_image)
-        # axis1.set_xlabel('Longitude')
-        # axis1.set_ylabel('Latitude')
-        # axis1.set_xticklabels(self.x_ticks)
-        # axis1.set_yticklabels(self.y_ticks)
-        # axis1.grid()
+        fig, axis1 = plt.subplots(figsize=(10, 10))
+        axis1.imshow(self.result_image)
+        axis1.set_xlabel('Longitude')
+        axis1.set_ylabel('Latitude')
+        axis1.set_xticklabels(self.x_ticks)
+        axis1.set_yticklabels(self.y_ticks)
+        axis1.grid()
         if output == 'save':
             plt.savefig(save_as)
         else:
@@ -78,17 +58,14 @@ class GPSVis(object):
         for i in range(len(gps_data)):
             x1, y1 = self.scale_to_img(gps_data[i], (self.result_image.size[0], self.result_image.size[1]))
         #    img_points.append((x1, y1))
-            img_points.append([x1,y1,gps_rssi_data[i][0]])
+            img_points.append([(x1-0.5, y1-0.5),(x1+0.5,y1+0.5),gps_rssi_data[i][0]])
 
-        #draw = ImageDraw.Draw(self.result_image)
+        draw = ImageDraw.Draw(self.result_image)
         # draw.line(img_points, fill=color, width=width)
         for i in range(len(img_points)):
             # rgb=self.rgb(90,130,-1*img_points[i][2])
-            #rgb=self.rgb(min([-1*j[2] for j in img_points]),max([-1*j[2] for j in img_points]),-1*img_points[i][2])
-            self.x.append(img_points[i][0])
-            self.y.append(img_points[i][1])
-            self.z.append(img_points[i][2])
-            #draw.ellipse(img_points[i][:2], fill=rgb, width=1)
+            rgb=self.rgb(min([-1*j[2] for j in img_points]),max([-1*j[2] for j in img_points]),-1*img_points[i][2])
+            draw.ellipse(img_points[i][:2], fill=rgb, width=1)
 
     def scale_to_img(self, lat_lon, h_w):
         """
@@ -116,7 +93,7 @@ class GPSVis(object):
         """
         self.x_ticks = map(
             lambda x: round(x, 4),
-            np.linspace(self.points[1], self.points[3], num=9))
+            np.linspace(self.points[1], self.points[3], num=7))
         y_ticks = map(
             lambda x: round(x, 4),
             np.linspace(self.points[2], self.points[0], num=8))

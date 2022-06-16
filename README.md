@@ -10,13 +10,21 @@ $ pip list
 ```  
 
 ## pi@lora-gateway-rpi7068.local
-power on  
-select z on ```$ screen /dev/ttyUSB0 9600```  
-run ```base.py```  
+ssh to this machine and run  
+```
+$ python setup_7068.py  
+$ python base.py
+```  
 
 ## pi@lora-gateway-rpi7067.local
-power on  
-connect to the same network as mac  
+ssh to this machine and run  
+```
+$ python setup_7067.py  
+```  
 
 ## mac
-run ```gps_ssh_setup.py```, then ```send_gps_mac.py```
+connect gps module and run  
+```
+$ python gps_ssh_setup.py
+$ python send_gps_mac.py /dev/cu.usbserial-0001
+```

@@ -21,15 +21,29 @@ Snr = 10;
 noise = randn(size(signalIQ))*std(signalIQ)/db2mag(Snr);
 disp(['SNR = ' num2str(snr(signalIQ,noise))]);
 s = signalIQ+noise;
+y=fft(s);
+n=length(s);
+f=(0:n-1)*(Fs/n);
+power2=abs(y).^2/n;
+plot(f,power2)
+%% Add Noise2
+snr = 10;
+channel = comm.AWGNChannel("NoiseMethod","Signal to noise ratio (SNR)","SNR",snr);
+channelOutput = channel(signalIQ);
+y=fft(channelOutput);
+n=length(channelOutput);
+f=(0:n-1)*(Fs/n);
+power2=abs(y).^2/n;
+plot(f,power2)
 %% scatter
-scatterplot(s)
+scatterplot(channelOutput)
 %% Plots
 %figure(1);
 %spectrogram(s,500,0,500,Fs,'yaxis','centered');
 %figure(2);
 %obw(s,Fs);
 %% Received Signal
-message_out = LoRa_Rx(s,BW,SF,2,Fs,Fc - fc);
+message_out = LoRa_Rx(channelOutput,BW,SF,2,Fs,Fc - fc);
 %% Message Out
 disp(['Message Received = ' char(message_out)]);
 %% test
@@ -43,12 +57,12 @@ Fc = 921.5e6 ;
 signalIQ = LoRa_Tx(message,BW,SF,Power,Fs,Fc - fc);
 Sxx = 10*log10(rms(signalIQ).^2);
 disp(['Transmit Power   = ' num2str(Sxx) ' dBm']);
-for i=-39:0.1:-35
-    Snr = i;
-    noise = randn(size(signalIQ))*std(signalIQ)/db2mag(Snr);
-    disp(['SNR = ' num2str(snr(signalIQ,noise))]);
-    s = signalIQ+noise;
-    message_out = LoRa_Rx(s,BW,SF,2,Fs,Fc - fc);
+for i=-50:0.1:-40
+    disp(['SNR = ' num2str(i)]);
+    snr = i;
+    channel = comm.AWGNChannel("NoiseMethod","Signal to noise ratio (SNR)","SNR",snr);
+    channelOutput = channel(signalIQ);
+    message_out = LoRa_Rx(channelOutput,BW,SF,2,Fs,Fc - fc);
     disp(['Message Received = ' char(message_out)]);
 end
 %% 
@@ -66,10 +80,14 @@ for i=-39:0.1:-35
     success = 0;
     for j=1:20
         signalIQ = LoRa_Tx(message,BW,SF,Power,Fs,Fc - fc);
-        Snr = i;
-        noise = randn(size(signalIQ))*std(signalIQ)/db2mag(Snr);
-        s = signalIQ+noise;
-        message_out = LoRa_Rx(s,BW,SF,2,Fs,Fc - fc);
+        %Snr = i;
+        %noise = randn(size(signalIQ))*std(signalIQ)/db2mag(Snr);
+        %s = signalIQ+noise;
+        %message_out = LoRa_Rx(s,BW,SF,2,Fs,Fc - fc);
+        snr = i;
+        channel = comm.AWGNChannel("NoiseMethod","Signal to noise ratio (SNR)","SNR",snr);
+        channelOutput = channel(signalIQ);
+        message_out = LoRa_Rx(channelOutput,BW,SF,2,Fs,Fc - fc);
         if char(message_out)==message
             success = success+1;
         end
@@ -104,8 +122,8 @@ for i=-33.9:0.1:-33
     disp([num2str(((i+33.9)*10+1)*100/10) '% done' ])
 end
 %% plot
-res_m = cat(2,res_m,res3);
+%res_m = cat(2,res_m,res3);
 figure
-plot(res_m(1,:),res_m(2,:)/2)
+plot(res(1,:),res(2,:)/2)
 xlabel('snr(dB)')
 ylabel('success rate')

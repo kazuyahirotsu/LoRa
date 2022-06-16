@@ -17,7 +17,7 @@ snr_end = 20;
 res_qpsk=zeros(2,snr_end-snr_start);
 
 pskModulator = comm.PSKModulator(ModulationOrder=4);
-sampleNum = 2000;
+sampleNum = 200;
 for snr = snr_start:snr_end
     SERAve = 0;
     repNum = 200;
@@ -26,10 +26,12 @@ for snr = snr_start:snr_end
         modData = pskModulator(message);
         channel = comm.AWGNChannel("NoiseMethod","Signal to noise ratio (SNR)","SNR",snr);
         channelOutput = channel(modData);
+        mpChan = [0.8 0 0 0 0 0 0 0 -0.5 0 0 0 0 0 0 0 0.34].';
+        mpChanOut = filter(mpChan,1,channelOutput);
         %scatterplot(modData)
         %scatterplot(channelOutput)
         pskDemodulator = comm.PSKDemodulator(ModulationOrder=4);
-        demodData = pskDemodulator(channelOutput);
+        demodData = pskDemodulator(mpChanOut);
         SER = 1- nnz(message-demodData)/sampleNum;
         SERAve = SER + SER/repNum;
     end
