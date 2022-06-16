@@ -52,3 +52,5 @@ pip-selfcheck.json
 
 .DS_Store
 *.ipynb
+*.docx
+*.pdf
