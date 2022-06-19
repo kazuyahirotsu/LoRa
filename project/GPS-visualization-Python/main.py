@@ -1,4 +1,4 @@
-from gps_class import GPSVis
+from gps_class_id_fail import GPSVis
 
 # vis = GPSVis(data_path='data.csv',
 #              map_path='map.png',  # Path to map downloaded from the OSM.
@@ -15,7 +15,7 @@ from gps_class import GPSVis
 #              points=(38.7259, 141.0753, 38.7136, 141.0987)) # Two coordinates of the map (upper left, lower right)
 
 # izunuma big
-vis = GPSVis(data_path='data.csv',
+vis = GPSVis(data_path='test_6_16_id.csv',
              map_path='map.png',  # Path to map downloaded from the OSM.
              points=(38.7266, 141.0751, 38.7090, 141.1293)) # Two coordinates of the map (upper left, lower right)
 
