@@ -33,13 +33,14 @@ void LoRa_write(char msg[]) {
 
 void setup() {
   // コンピュータとの通信速度を定義します
-  Serial.begin(9600);
+  //Serial.begin(9600);
+  Serial.begin(115200);
   while(!Serial){
     //wait till Serial
   }
   // SoftwareSerialでPrivate LoRa通信モジュールとの通信を定義します
-  //LoRa_ss.begin(115200, SWSERIAL_8N1, UART_TX, UART_RX, false,256); // ES920LRのデフォルトボーレート(115200bps)
-  LoRa_ss.begin(9600);
+  //LoRa_ss.begin(9600);
+  LoRa_ss.begin(115200);
   
   Serial.println("Start!!");
 
@@ -57,7 +58,7 @@ void setup() {
   digitalWrite(LoRa_Rst, LOW);
   delay(1000);
   digitalWrite(LoRa_Rst, HIGH);
-  delay(1000);
+  delay(3000);
 
   // Private LoRa通信モジュールからのメッセージを受信します
   LoRa_read();
@@ -67,8 +68,8 @@ void setup() {
   delay(1000);
 
   // ES920LRの設定を全て初期設定に戻す
-  //LoRa_write("load\r\n");
-  //delay(100);
+  LoRa_write("load\r\n");
+  delay(100);
   
   // 帯域幅を125kHzに設定します
   LoRa_write("baudrate 1\r\n");
@@ -79,23 +80,23 @@ void setup() {
   delay(100);
 
   // 拡散率を7に設定します
-  LoRa_write("sf 7\r\n");
+  LoRa_write("sf 11\r\n");
   delay(100);
 
   // 無線チャンネル番号を1に設定します
-  LoRa_write("channel 1\r\n");
+  LoRa_write("channel 5\r\n");
   delay(100);
 
   // PANネットワークアドレスをABCDに設定します
-  LoRa_write("panid ABCD\r\n");
+  LoRa_write("panid 0001\r\n");
   delay(100);
 
   // 自ノードのネットワークアドレスを1000に設定します
-  LoRa_write("ownid 1000\r\n");
+  LoRa_write("ownid 7069\r\n");
   delay(100);
 
   // 送信先ノードのネットワークアドレスを0000に設定します
-  LoRa_write("dstid 0000\r\n");
+  LoRa_write("dstid 7068\r\n");
   delay(100);
 
   // 設定した内容を内蔵FlashROMに保存します
