@@ -10,8 +10,7 @@ SoftwareSerial LoRa_ss(UART_TX, UART_RX); // Private LoRa通信モジュール�
 RTC_DS1307 rtc;
 
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-char* data0002;
-
+String data0002;
 // Private LoRa通信モジュールからのメッセージを受信します
 void LoRa_read() {
   if (LoRa_ss.available())Serial.print("from LoRa >>");
@@ -23,28 +22,30 @@ void LoRa_read() {
     delay(1);
   }
 }
-
 void LoRa_read_data(int id) {
   //read and rewrites the data to send for each child
   if (id == 2){
-    char message[30] = {'\0'};
     if (LoRa_ss.available())Serial.print("from LoRa >>");
-    int idx = 0;
-    while (LoRa_ss.available()) {
-      char c = {LoRa_ss.read()};
-      Serial.print(c);
-      message[idx] = c;
-      idx += 1;
-      //strcat(message, c);
-      delay(1);
+    if (LoRa_ss.available()) {
+      data0002 = LoRa_ss.readString();
+      Serial.print(data0002);
     }
-    data0002 = message;
   }else{
     Serial.print("No such id exists");
   }
 }
 
 // Private LoRa通信モジュールへメッセージを送信します
+void LoRa_write_string(String msg) {
+  char str_array[msg.length()];
+  msg.toCharArray(str_array, msg.length());
+  LoRa_ss.write(str_array);
+  Serial.print("to   LoRa >>");
+  Serial.println(str_array);
+  delay(500);
+  LoRa_read();
+}
+
 void LoRa_write(char msg[]) {
   LoRa_ss.write(msg);
   Serial.print("to   LoRa >>");
@@ -54,9 +55,29 @@ void LoRa_write(char msg[]) {
 }
 
 void setup() {
+  // RTC setting up
+  if (! rtc.begin()) {
+    Serial.println("Couldn't find RTC");
+    Serial.flush();
+    while (1) delay(10);
+  }
 
-  
-  
+  if (! rtc.isrunning()) {
+    Serial.println("RTC is NOT running, let's set the time!");
+    // When time needs to be set on a new device, or after a power loss, the
+    // following line sets the RTC to the date & time this sketch was compiled
+    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+    // This line sets the RTC with an explicit date & time, for example to set
+    // January 21, 2014 at 3am you would call:
+    // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
+  }
+
+  // When time needs to be re-set on a previously configured device, the
+  // following line sets the RTC to the date & time this sketch was compiled
+  rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+  // This line sets the RTC with an explicit date & time, for example to set
+  // January 21, 2014 at 3am you would call:
+  // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
   // コンピュータとの通信速度を定義します
   Serial.begin(9600);
   //Serial.begin(115200);
@@ -121,7 +142,7 @@ void setup() {
   delay(100);
 
   // 送信先ノードのネットワークアドレスを0000に設定します
-  LoRa_write("dstid FFFF\r\n");
+  LoRa_write("dstid 7068\r\n");
   delay(100);
 
   // 設定した内容を内蔵FlashROMに保存します
@@ -132,29 +153,7 @@ void setup() {
   LoRa_write("start\r\n");
   delay(1000);
 
-// RTC setting up
-  if (! rtc.begin()) {
-    Serial.println("Couldn't find RTC");
-    Serial.flush();
-    while (1) delay(10);
-  }
 
-  if (! rtc.isrunning()) {
-    Serial.println("RTC is NOT running, let's set the time!");
-    // When time needs to be set on a new device, or after a power loss, the
-    // following line sets the RTC to the date & time this sketch was compiled
-    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-    // This line sets the RTC with an explicit date & time, for example to set
-    // January 21, 2014 at 3am you would call:
-    // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
-  }
-
-  // When time needs to be re-set on a previously configured device, the
-  // following line sets the RTC to the date & time this sketch was compiled
-  // rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-  // This line sets the RTC with an explicit date & time, for example to set
-  // January 21, 2014 at 3am you would call:
-  // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
 }
 
 void loop() {
@@ -176,33 +175,45 @@ void loop() {
   Serial.print(now.second(), DEC);
   Serial.println();
 
-  if(now.minute()%4==0){
+  if(now.minute()%2==0){
     Serial.println("Receiving data from children");
-    data0002 = {'\0'};
     LoRa_read_data(2);
     delay(3000);
     
-  }else if(now.minute()%4==1){
-    Serial.println("Buffer Time");
-    delay(3000);
-    
-  }else if(now.minute()%4==2){
-    Serial.println("Sending data to Raspberry pi");
-    LoRa_write(data0002);
-    delay(3000); 
-    
   }else{
-    Serial.println("Buffer Time");
+    Serial.println("Sending data to Raspberry pi");
+    LoRa_write_string(data0002);
     delay(3000);
     
   }
-  if(now.minute()==2){
-    Serial.println("Sending time to calibrate");
-    char datetosend[16];
-    itoa(now.unixtime(), datetosend, 10);
-    strcat(datetosend, "\r\n");
-    LoRa_write(datetosend);
-    delay(3000);
-  }
+
+//  if(now.minute()%4==0){
+//    Serial.println("Receiving data from children");
+//    data0002 = {'\0'};
+//    LoRa_read_data(2);
+//    delay(3000);
+//    
+//  }else if(now.minute()%4==1){
+//    Serial.println("Buffer Time");
+//    delay(3000);
+//    
+//  }else if(now.minute()%4==2){
+//    Serial.println("Sending data to Raspberry pi");
+//    LoRa_write(data0002);
+//    delay(3000); 
+//    
+//  }else{
+//    Serial.println("Buffer Time");
+//    delay(3000);
+//    
+//  }
+//  if(now.minute()==2){
+//    Serial.println("Sending time to calibrate");
+//    char datetosend[16];
+//    itoa(now.unixtime(), datetosend, 10);
+//    strcat(datetosend, "\r\n");
+//    LoRa_write(datetosend);
+//    delay(3000);
+//  }
 
 }

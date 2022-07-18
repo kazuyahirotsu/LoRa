@@ -56,7 +56,29 @@ void LoRa_write(char msg[]) {
 
 void setup() {
 
-  
+  // RTC setting up
+  if (! rtc.begin()) {
+    Serial.println("Couldn't find RTC");
+    Serial.flush();
+    while (1) delay(10);
+  }
+
+  if (! rtc.isrunning()) {
+    Serial.println("RTC is NOT running, let's set the time!");
+    // When time needs to be set on a new device, or after a power loss, the
+    // following line sets the RTC to the date & time this sketch was compiled
+    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+    // This line sets the RTC with an explicit date & time, for example to set
+    // January 21, 2014 at 3am you would call:
+    // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
+  }
+
+  // When time needs to be re-set on a previously configured device, the
+  // following line sets the RTC to the date & time this sketch was compiled
+  rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+  // This line sets the RTC with an explicit date & time, for example to set
+  // January 21, 2014 at 3am you would call:
+  // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
   
   // コンピュータとの通信速度を定義します
   Serial.begin(9600);
@@ -133,29 +155,7 @@ void setup() {
   LoRa_write("start\r\n");
   delay(1000);
 
-// RTC setting up
-  if (! rtc.begin()) {
-    Serial.println("Couldn't find RTC");
-    Serial.flush();
-    while (1) delay(10);
-  }
 
-  if (! rtc.isrunning()) {
-    Serial.println("RTC is NOT running, let's set the time!");
-    // When time needs to be set on a new device, or after a power loss, the
-    // following line sets the RTC to the date & time this sketch was compiled
-    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-    // This line sets the RTC with an explicit date & time, for example to set
-    // January 21, 2014 at 3am you would call:
-    // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
-  }
-
-  // When time needs to be re-set on a previously configured device, the
-  // following line sets the RTC to the date & time this sketch was compiled
-  // rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-  // This line sets the RTC with an explicit date & time, for example to set
-  // January 21, 2014 at 3am you would call:
-  // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
 }
 
 void loop() {
@@ -177,25 +177,32 @@ void loop() {
   Serial.print(now.second(), DEC);
   Serial.println();
 
-  if(now.minute()%4==0){
-    Serial.println("Sending time to calibrate");
+//  if(now.minute()%4==0){
+//    Serial.println("Sending time to calibrate");
+//    char datetosend[16];
+//    itoa(now.unixtime(), datetosend, 10);
+//    strcat(datetosend, "\r\n");
+//    LoRa_write(datetosend);
+//    delay(3000);
+//    
+//  }else if(now.minute()%4==1){
+//    Serial.println("Buffer Time");
+//    delay(3000);
+//    
+//  }else if(now.minute()%4==2){
+//    Serial.println("Parent is sending data to Raspberry pi");
+//    delay(3000); 
+//  }else{
+//    Serial.println("Buffer Time");
+//    delay(3000);
+//    
+//  }
+
+    Serial.println("Sending time");
     char datetosend[16];
     itoa(now.unixtime(), datetosend, 10);
     strcat(datetosend, "\r\n");
     LoRa_write(datetosend);
     delay(3000);
-    
-  }else if(now.minute()%4==1){
-    Serial.println("Buffer Time");
-    delay(3000);
-    
-  }else if(now.minute()%4==2){
-    Serial.println("Parent is sending data to Raspberry pi");
-    delay(3000); 
-  }else{
-    Serial.println("Buffer Time");
-    delay(3000);
-    
-  }
 
 }
