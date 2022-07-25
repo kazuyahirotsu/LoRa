@@ -22,3 +22,9 @@ for trial in trials:
     p_list.append(p)
 print(trials)
 print(p_list)
+
+################################################################################################
+slot_num = 5
+slot_length = 0.5
+time_length = 60
+print((time_length-slot_length*slot_num)**slot_num/(time_length-slot_length)**slot_num)
