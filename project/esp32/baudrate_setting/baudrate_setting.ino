@@ -33,20 +33,26 @@ void LoRa_write(char msg[]) {
 
 void setup() {
   // コンピュータとの通信速度を定義します
-  //Serial.begin(9600);
-  Serial.begin(115200);
+  Serial.begin(9600);
+  //Serial.begin(19200);
+  //Serial.begin(115200);
   while(!Serial){
     //wait till Serial
   }
   // SoftwareSerialでPrivate LoRa通信モジュールとの通信を定義します
-  //LoRa_ss.begin(9600);
-  LoRa_ss.begin(115200);
+  LoRa_ss.begin(9600);
+  //LoRa_ss.begin(19200);
+  //LoRa_ss.begin(115200);
   
   Serial.println("Start!!");
 
   // ES920LRをコンフィグレーションモードに移行します
   LoRa_write("config\r\n");
-
+  delay(1000);
+  LoRa_write("config\r\n");
+  delay(1000);
+  LoRa_write("config\r\n");
+  delay(1000);
   // Private LoRa通信モジュールをリセットするピンを定義します
   pinMode(LoRa_Rst , OUTPUT);
   delay(1000);
@@ -68,8 +74,8 @@ void setup() {
   delay(1000);
 
   // ES920LRの設定を全て初期設定に戻す
-  LoRa_write("load\r\n");
-  delay(100);
+  //LoRa_write("load\r\n");
+  //delay(100);
   
   // 帯域幅を125kHzに設定します
   LoRa_write("baudrate 1\r\n");
