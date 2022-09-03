@@ -29,8 +29,9 @@ void LoRa_write(char msg[]) {
 
 void setup() {
   // コンピュータとの通信速度を定義します
-  //Serial.begin(9600);
-  Serial.begin(115200);
+  Serial.begin(9600);
+  //Serial.begin(19200);
+  //Serial.begin(115200);
   while(!Serial){
     //wait till Serial
   }
@@ -44,7 +45,11 @@ void setup() {
 
   // ES920LRをコンフィグレーションモードに移行します
   LoRa_write("config\r\n");
-
+  delay(1000);
+  LoRa_write("config\r\n");
+  delay(1000);
+  LoRa_write("config\r\n");
+  delay(1000);
   // Private LoRa通信モジュールをリセットするピンを定義します
   pinMode(LoRa_Rst , OUTPUT);
   delay(1000);
