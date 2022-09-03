@@ -1,12 +1,12 @@
 #include <SoftwareSerial.h> // SoftwareSerialライブラリ
 
+
 #define UART_RX 17  // ES920LRの8ピン(TX)に接続します
 #define UART_TX 16  // ES920LRの9ピン(RX)に接続します
 #define LoRa_Rst 5 //  ES920LRの24ピン(RESETB)に接続します
 
 SoftwareSerial LoRa_ss(UART_TX, UART_RX); // Private LoRa通信モジュールとのSoftwareSerialを定義します
 
-char message;
 
 // Private LoRa通信モジュールからのメッセージを受信します
 void LoRa_read() {
@@ -18,6 +18,7 @@ void LoRa_read() {
   }
 }
 
+
 // Private LoRa通信モジュールへメッセージを送信します
 void LoRa_write(char msg[]) {
   LoRa_ss.write(msg);
@@ -28,15 +29,16 @@ void LoRa_write(char msg[]) {
 }
 
 void setup() {
+
   // コンピュータとの通信速度を定義します
-  //Serial.begin(9600);
-  Serial.begin(115200);
+  Serial.begin(9600);
+  //Serial.begin(115200);
   while(!Serial){
     //wait till Serial
   }
   // SoftwareSerialでPrivate LoRa通信モジュールとの通信を定義します
-  //LoRa_ss.begin(9600);
-  LoRa_ss.begin(115200);
+  LoRa_ss.begin(9600);
+  //LoRa_ss.begin(115200);
   while(!LoRa_ss){
     //wait till Serial
   }
@@ -66,13 +68,13 @@ void setup() {
   delay(1000);
 
   // ES920LRの設定を全て初期設定に戻す
-  // LoRa_write("load\r\n");
-  // delay(100);
+  //LoRa_write("load\r\n");
+//  delay(100);
   
   // 帯域幅を125kHzに設定します
   LoRa_write("baudrate 1\r\n");
   delay(100);
-
+  
   // 帯域幅を125kHzに設定します
   LoRa_write("bw 4\r\n");
   delay(100);
@@ -90,11 +92,11 @@ void setup() {
   delay(100);
 
   // 自ノードのネットワークアドレスを1000に設定します
-  LoRa_write("ownid 7069\r\n");
+  LoRa_write("ownid 0003\r\n");
   delay(100);
 
   // 送信先ノードのネットワークアドレスを0000に設定します
-  LoRa_write("dstid 7068\r\n");
+  LoRa_write("dstid 0001\r\n");
   delay(100);
 
   // 設定した内容を内蔵FlashROMに保存します
@@ -104,9 +106,12 @@ void setup() {
   // ES920LRをオペレーションモードに移行します
   LoRa_write("start\r\n");
   delay(1000);
+
+
 }
 
 void loop() {
   LoRa_write("test\r\n");
   delay(3000);
+
 }
