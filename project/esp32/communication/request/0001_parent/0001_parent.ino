@@ -1,18 +1,20 @@
-#include <SoftwareSerial.h> // SoftwareSerialライブラリ
+#include <SoftwareSerial.h>
 #include "RTClib.h"
 
-#define UART_RX 17  // ES920LRの8ピン(TX)に接続します
-#define UART_TX 16  // ES920LRの9ピン(RX)に接続します
-#define LoRa_Rst 5 //  ES920LRの24ピン(RESETB)に接続します
+#define UART_RX 17  // ES920LR 8(TX)
+#define UART_TX 16  // ES920LR 9(RX)
+#define LoRa_Rst 5 //  ES920LR 24(RESETB)
 
-SoftwareSerial LoRa_ss(UART_TX, UART_RX); // Private LoRa通信モジュールとのSoftwareSerialを定義します
+SoftwareSerial LoRa_ss(UART_TX, UART_RX);
 
 RTC_DS1307 rtc;
 
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 String data0002;
-// Private LoRa通信モジュールからのメッセージを受信します
+String data0003;
+
 void LoRa_read() {
+  // just read message
   if (LoRa_ss.available())Serial.print("from LoRa >>");
   while (LoRa_ss.available()) {
     char c = LoRa_ss.read();
@@ -22,31 +24,46 @@ void LoRa_read() {
     delay(1);
   }
 }
+
 void LoRa_read_data(int id) {
-  //read and rewrites the data to send for each child
+  // if there is another broadcast, this need to change since serial buffer will contain data that this edge didn't request
+  // for example if there is unexpected data between (reading after sending to raspberry pi) and (sending to 0002), the first readStringUntil('\n') will be the unexpected data
+  // it might be a good idea to clean it every loop
+  // read message and update the data to send 
   if (id == 2){
     if (LoRa_ss.available())Serial.print("from LoRa >>");
     if (LoRa_ss.available()) {
-      data0002 = LoRa_ss.readString();
+      String ok = LoRa_ss.readStringUntil('\n');
+      Serial.print(ok);
+      data0002 = LoRa_ss.readStringUntil('\n');
       Serial.print(data0002);
+    }
+  }
+  else if (id == 3){
+    if (LoRa_ss.available())Serial.print("from LoRa >>");
+    if (LoRa_ss.available()) {
+      String ok = LoRa_ss.readStringUntil('\n');
+      Serial.print(ok);
+      data0003 = LoRa_ss.readStringUntil('\n');
+      Serial.print(data0003);
     }
   }else{
     Serial.print("No such id exists");
   }
 }
 
-// Private LoRa通信モジュールへメッセージを送信します
 void LoRa_write_string(String msg) {
+  // write message
   char str_array[msg.length()];
   msg.toCharArray(str_array, msg.length());
   LoRa_ss.write(str_array);
   Serial.print("to   LoRa >>");
   Serial.println(str_array);
-  delay(500);
-  LoRa_read();
+  LoRa_ss.write("\r\n");
 }
 
 void LoRa_write(char msg[]) {
+  // write message
   LoRa_ss.write(msg);
   Serial.print("to   LoRa >>");
   Serial.print(msg);
@@ -55,6 +72,7 @@ void LoRa_write(char msg[]) {
 }
 
 void setup() {
+
   // RTC setting up
   if (! rtc.begin()) {
     Serial.println("Couldn't find RTC");
@@ -79,78 +97,73 @@ void setup() {
   // January 21, 2014 at 3am you would call:
   // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
   
-  // コンピュータとの通信速度を定義します
   Serial.begin(9600);
-  //Serial.begin(115200);
   while(!Serial){
     //wait till Serial
   }
-  // SoftwareSerialでPrivate LoRa通信モジュールとの通信を定義します
   LoRa_ss.begin(9600);
-  //LoRa_ss.begin(115200);
   
   Serial.println("Start!!");
 
-  // ES920LRをコンフィグレーションモードに移行します
   LoRa_write("config\r\n");
 
-  // Private LoRa通信モジュールをリセットするピンを定義します
+  // define reset
   pinMode(LoRa_Rst , OUTPUT);
   delay(1000);
   digitalWrite(LoRa_Rst, HIGH);
   delay(1000);
 
-  // Private LoRa通信モジュールを一度リセットします
+  // reset
   Serial.println("Reset");
   digitalWrite(LoRa_Rst, LOW);
   delay(1000);
   digitalWrite(LoRa_Rst, HIGH);
   delay(3000);
 
-  // Private LoRa通信モジュールからのメッセージを受信します
+  // read
   LoRa_read();
 
-  // ES920LRのプロセッサーモードを選択します
+  // select processor mode
   LoRa_write("processor\r\n");
   delay(1000);
 
-  // ES920LRの設定を全て初期設定に戻す
-  //LoRa_write("load\r\n");
-//  delay(100);
+  // default config
+  // LoRa_write("load\r\n");
+  // delay(100);
   
-  // 帯域幅を125kHzに設定します
+  // baudrate 9600
   LoRa_write("baudrate 1\r\n");
   delay(100);
   
-  // 帯域幅を125kHzに設定します
+  // 125kHz
   LoRa_write("bw 4\r\n");
   delay(100);
 
-  // 拡散率を7に設定します
+  // spreading factor 11
   LoRa_write("sf 11\r\n");
   delay(100);
 
-  // 無線チャンネル番号を1に設定します
+  // channel 5
   LoRa_write("channel 5\r\n");
   delay(100);
 
-  // PANネットワークアドレスをABCDに設定します
+  // PAN
   LoRa_write("panid 0001\r\n");
   delay(100);
 
-  // 自ノードのネットワークアドレスを1000に設定します
+  // own network id
   LoRa_write("ownid 0001\r\n");
   delay(100);
 
-  // 送信先ノードのネットワークアドレスを0000に設定します
-  LoRa_write("dstid 7068\r\n");
+  // destination network id (broadcast)
+  LoRa_write("dstid FFFF\r\n");
   delay(100);
 
-  // 設定した内容を内蔵FlashROMに保存します
+  // save
   LoRa_write("save\r\n");
   delay(10000);
 
-  // ES920LRをオペレーションモードに移行します
+  // into operation mode
   LoRa_write("start\r\n");
   delay(1000);
 
@@ -176,45 +189,34 @@ void loop() {
   Serial.print(now.second(), DEC);
   Serial.println();
 
-  if(now.minute()%2==0){
-    Serial.println("Receiving data from children");
-    LoRa_read_data(2);
-    delay(3000);
-    
-  }else{
-    Serial.println("Sending data to Raspberry pi");
-    LoRa_write_string(data0002);
-    delay(3000);
-    
-  }
+  // clear the buffer
+  while(LoRa_ss.available())LoRa_ss.read();
 
-//  if(now.minute()%4==0){
-//    Serial.println("Receiving data from children");
-//    data0002 = {'\0'};
-//    LoRa_read_data(2);
-//    delay(3000);
-//    
-//  }else if(now.minute()%4==1){
-//    Serial.println("Buffer Time");
-//    delay(3000);
-//    
-//  }else if(now.minute()%4==2){
-//    Serial.println("Sending data to Raspberry pi");
-//    LoRa_write(data0002);
-//    delay(3000); 
-//    
-//  }else{
-//    Serial.println("Buffer Time");
-//    delay(3000);
-//    
-//  }
-//  if(now.minute()==2){
-//    Serial.println("Sending time to calibrate");
-//    char datetosend[16];
-//    itoa(now.unixtime(), datetosend, 10);
-//    strcat(datetosend, "\r\n");
-//    LoRa_write(datetosend);
-//    delay(3000);
-//  }
+  for(int i=2;i<4;i++){
+    // using delayed date
+    // send calibration date and the edge id to request data to
+    String i_string = String(i);
+
+    char datetosend[16];
+    itoa(rtc.now().unixtime(), datetosend, 10);
+
+    String custom_data = i_string + "," + datetosend;
+    LoRa_write_string(custom_data);
+    delay(5000);
+
+    // read data from edge i
+    LoRa_read_data(i);
+    delay(5000);
+  }
+  
+    String data = "";
+    data.concat(data0002);
+    data.concat(",");
+    data.concat(data0003);
+    Serial.println("Sending data to Raspberry pi");
+    LoRa_write_string(data);
+    delay(1000);
+    LoRa_read();
+    delay(3000);
 
 }

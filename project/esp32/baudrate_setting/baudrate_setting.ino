@@ -1,3 +1,5 @@
+// This is not working well
+
 #include <SoftwareSerial.h> // SoftwareSerialライブラリ
 
 #define UART_RX 17  // ES920LRの8ピン(TX)に接続します
@@ -36,18 +38,14 @@ void setup() {
     //wait till Serial
   }
   // SoftwareSerialでPrivate LoRa通信モジュールとの通信を定義します
-  //LoRa_ss.begin(9600);
-  LoRa_ss.begin(115200);
+  LoRa_ss.begin(9600);
+  //LoRa_ss.begin(115200);
   while(!LoRa_ss){
     //wait till Serial
   }
   Serial.println("Start!!");
 
   // ES920LRをコンフィグレーションモードに移行します
-  LoRa_write("config\r\n");
-  delay(1000);
-  LoRa_write("config\r\n");
-  delay(1000);
   LoRa_write("config\r\n");
   delay(1000);
   // Private LoRa通信モジュールをリセットするピンを定義します

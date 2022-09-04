@@ -1,0 +1,4 @@
+Receiving data from children
+from LoRa >>1662296443
+1662296446
+こんな感じでデータが２個同時に読まれる事がたまにある
