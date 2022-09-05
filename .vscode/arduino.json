@@ -2,5 +2,5 @@
     "configuration": "PSRAM=disabled,PartitionScheme=default,CPUFreq=240,FlashMode=qio,FlashFreq=80,FlashSize=4M,UploadSpeed=921600,DebugLevel=none",
     "board": "esp32:esp32:esp32",
     "port": "/dev/tty.usbserial-14430",
-    "sketch": "project/esp32/communication/request/0002_child/0002_child.ino"
+    "sketch": "project/esp32/communication/request/0002_child_do/0002_child_do.ino"
 }

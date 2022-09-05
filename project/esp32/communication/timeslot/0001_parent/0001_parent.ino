@@ -47,8 +47,8 @@ void LoRa_read_data(int id) {
 
 void LoRa_write_string(String msg) {
   // write message
-  char str_array[msg.length()];
-  msg.toCharArray(str_array, msg.length());
+  char str_array[msg.length()+1];
+  msg.toCharArray(str_array, msg.length()+1);
   LoRa_ss.write(str_array);
   Serial.print("to   LoRa >>");
   Serial.println(str_array);
