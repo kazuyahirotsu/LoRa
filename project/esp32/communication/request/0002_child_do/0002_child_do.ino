@@ -87,10 +87,39 @@ int split(String data, char delimiter, String *dst){
     return (index + 1);
 }
 
+void do_send(String msg, boolean sensor_data){
+      do_ss.print(msg);
+      Serial.print("send: "+msg);
+      waiting_for_respond = true;
+
+      while(waiting_for_respond){
+          while (do_ss.available()){                              //if the hardware serial port_0 receives a char
+          Serial.print("received: ");
+          if(sensor_data){
+            sensorstring = do_ss.readStringUntil(13);           //read the string until we see a <CR>
+            Serial.println(sensorstring);
+          }else{
+            String received_message = do_ss.readStringUntil(13);           //read the string until we see a <CR>
+            Serial.println(received_message);
+          }
+          received_message_num += 1;
+          }
+          if(received_message_num == 1){
+              received_message_num = 0;
+              waiting_for_respond = false;
+          }
+          delay(100);
+      }
+}
+
 void setup() {
   // DO setup
   do_ss.begin(9600);                                //set baud rate for software serial port_3 to 9600
+  while(!do_ss){
+    //wait till Serial
+  }
   sensorstring.reserve(30);                           //set aside some bytes for receiving data from Atlas Scientific product
+  do_send("sleep\r", false);
 
 
   // RTC setting up
@@ -217,27 +246,12 @@ void loop() {
     // send data if this edge is requested to send data
     if (parsed_data[0].equals("2")){
       Serial.println("It's my turn!!");
-    
-      do_ss.print("r\r");
-      Serial.println("send: r");
-      waiting_for_respond = true;
 
-      while(waiting_for_respond){
-          while (do_ss.available()){                              //if the hardware serial port_0 receives a char
-          Serial.print("received: ");
-          sensorstring = do_ss.readStringUntil(13);           //read the string until we see a <CR>
-          Serial.println(sensorstring);
-          received_message_num += 1;
-          }
-          if(received_message_num == 1){
-              received_message_num = 0;
-              waiting_for_respond = false;
-          }
-          delay(100);
-      }
+      do_send("wakeup\r", false);
+      do_send("r\r", true);
+      do_send("sleep\r", false);
 
       LoRa_write_string(sensorstring);
-
     }else{
       Serial.println("Not my turn :(");
     }
