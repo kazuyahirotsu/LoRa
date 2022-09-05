@@ -71,6 +71,68 @@ void LoRa_write(char msg[]) {
   LoRa_read();
 }
 
+void change_config(String dstid) {
+  digitalWrite(LoRa_Rst, HIGH);
+  delay(1000);
+
+  // reset
+  Serial.println("Reset");
+  digitalWrite(LoRa_Rst, LOW);
+  delay(1000);
+  digitalWrite(LoRa_Rst, HIGH);
+  delay(3000);
+
+  // read
+  LoRa_read();
+
+  // select processor mode
+  LoRa_write("processor\r\n");
+  delay(100);
+
+  // // default config
+  // LoRa_write("load\r\n");
+  // delay(100);
+  
+  // // baudrate 9600
+  // LoRa_write("baudrate 1\r\n");
+  // delay(100);
+  
+  // // 125kHz
+  // LoRa_write("bw 4\r\n");
+  // delay(100);
+
+  // // spreading factor 11
+  // LoRa_write("sf 11\r\n");
+  // delay(100);
+
+  // // channel 5
+  // LoRa_write("channel 5\r\n");
+  // delay(100);
+
+  // // PAN
+  // LoRa_write("panid 0001\r\n");
+  // delay(100);
+
+  // // own network id
+  // LoRa_write("ownid 0001\r\n");
+  // delay(100);
+
+  // destination network id (broadcast)
+  LoRa_write_string("dstid "+ dstid);
+  delay(500);
+  LoRa_read();
+  delay(100);
+
+  // save
+  LoRa_write("save\r\n");
+  delay(100);
+
+  // into operation mode
+  LoRa_write("start\r\n");
+  delay(100);
+
+}
+
 void setup() {
 
   // RTC setting up
@@ -110,64 +172,8 @@ void setup() {
   // define reset
   pinMode(LoRa_Rst , OUTPUT);
   delay(1000);
-  digitalWrite(LoRa_Rst, HIGH);
-  delay(1000);
-
-  // reset
-  Serial.println("Reset");
-  digitalWrite(LoRa_Rst, LOW);
-  delay(1000);
-  digitalWrite(LoRa_Rst, HIGH);
-  delay(3000);
-
-  // read
-  LoRa_read();
-
-  // select processor mode
-  LoRa_write("processor\r\n");
-  delay(1000);
-
-  // default config
-  // LoRa_write("load\r\n");
-  // delay(100);
-  
-  // baudrate 9600
-  LoRa_write("baudrate 1\r\n");
-  delay(100);
-  
-  // 125kHz
-  LoRa_write("bw 4\r\n");
-  delay(100);
-
-  // spreading factor 11
-  LoRa_write("sf 11\r\n");
-  delay(100);
-
-  // channel 5
-  LoRa_write("channel 5\r\n");
-  delay(100);
-
-  // PAN
-  LoRa_write("panid 0001\r\n");
-  delay(100);
-
-  // own network id
-  LoRa_write("ownid 0001\r\n");
-  delay(100);
-
-  // destination network id (broadcast)
-  LoRa_write("dstid FFFF\r\n");
-  delay(100);
-
-  // save
-  LoRa_write("save\r\n");
-  delay(10000);
-
-  // into operation mode
-  LoRa_write("start\r\n");
-  delay(1000);
-
-
+  // setup
+  change_config("FFFF");
 }
 
 void loop() {
@@ -193,6 +199,8 @@ void loop() {
   while(LoRa_ss.available())LoRa_ss.read();
 
   for(int i=2;i<4;i++){
+    // change destination id
+    change_config("000"+String(i));
     // using delayed date
     // send calibration date and the edge id to request data to
     String i_string = String(i);
@@ -213,6 +221,7 @@ void loop() {
     data.concat(data0002);
     data.concat(",");
     data.concat(data0003);
+    change_config("7086");
     Serial.println("Sending data to Raspberry pi");
     LoRa_write_string(data);
     delay(1000);
