@@ -1,6 +1,6 @@
 // disable continuous reading and ok response with this script
 #include <SoftwareSerial.h> 
-SoftwareSerial do_ss(18, 19);
+SoftwareSerial do_ss(25, 26);
 
 String inputstring = "";                              //a string to hold incoming data from the PC
 String sensorstring = "";                             //a string to hold the data from the Atlas Scientific product
