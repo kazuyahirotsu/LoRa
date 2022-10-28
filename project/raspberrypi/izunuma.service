@@ -1,0 +1,11 @@
+// put this here -> /etc/systemd/system/izunuma.service
+
+[Unit]
+Description=izunuma data upload service
+After=multi-user.target
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/python /root/lora-gateway/hirotsu/LoRa/project/timestream.py
+[Install]
+WantedBy=multi-user.target
