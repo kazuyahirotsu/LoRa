@@ -19,7 +19,7 @@ SoftwareSerial do_ss2(26, 25);
 RTC_DS1307 rtc;
 
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-char* data0002;
+char* data0003;
 
 String sensorstring = "";                             //a string to hold the data from the Atlas Scientific product
 String sensorstring2 = "";                             //a string to hold the data from the Atlas Scientific product
@@ -41,26 +41,26 @@ void LoRa_read() {
   }
 }
 
-void LoRa_read_data(int id) {
-  //read and rewrites the data to send for each child
-  if (id == 2){
-    char message[30] = {'\0'};
-    if (LoRa_ss.available())Serial.print("from LoRa >>");
-    int idx = 0;
-    while (LoRa_ss.available()) {
-      char c = {LoRa_ss.read()};
-      Serial.print(c);
-      message[idx] = c;
-      idx += 1;
-      //strcat(message, c);
-      delay(1);
-    }
-    data0002 = message;
-    Serial.print(data0002);
-  }else{
-    Serial.print("No such id exists");
-  }
-}
+// void LoRa_read_data(int id) {
+//   //read and rewrites the data to send for each child
+//   if (id == 2){
+//     char message[30] = {'\0'};
+//     if (LoRa_ss.available())Serial.print("from LoRa >>");
+//     int idx = 0;
+//     while (LoRa_ss.available()) {
+//       char c = {LoRa_ss.read()};
+//       Serial.print(c);
+//       message[idx] = c;
+//       idx += 1;
+//       //strcat(message, c);
+//       delay(1);
+//     }
+//     data0002 = message;
+//     Serial.print(data0002);
+//   }else{
+//     Serial.print("No such id exists");
+//   }
+// }
 
 void LoRa_write(char msg[]) {
   // write message
@@ -246,11 +246,11 @@ void setup() {
   delay(100);
 
   // own network id
-  LoRa_write("ownid 7067\r\n");
+  LoRa_write("ownid 0003\r\n");
   delay(100);
 
   // destination network id (parent)
-  LoRa_write("dstid FFFF\r\n");
+  LoRa_write("dstid 0001\r\n");
   delay(100);
 
   // retry num
@@ -272,33 +272,33 @@ void loop() {
     DateTime now = rtc.now();
     now_minute = now.minute();
 
-//    if(now_minute!=before_minute){
-    if(true){
-        Serial.println(now.minute(), DEC);
-        Serial.println("It's my turn!!");
-
-        do_send("wakeup\r", false);
-        do_send("r\r", true);
-        do_send("sleep\r", false);
-
-        do_send2("wakeup\r", false);
-        do_send2("r\r", true);
-        do_send2("sleep\r", false);
-
-        float reading = analogRead(TEMP);
-        Serial.println(reading);
-        float voltage = (reading*3.3)/ANALOG_MAX;
-        Serial.println(voltage);
-        String temp = String((voltage-1.058)/0.009);
-        Serial.println((voltage-1.058)/0.009);
-        Serial.println(temp);
-
-        LoRa_write_string(sensorstring+", "+sensorstring2+", "+temp);
-        delay(500);
-        LoRa_read();
-    }
-
-    before_minute = now.minute();
+////    if(now_minute!=before_minute){
+//    if(true){
+//        Serial.println(now.minute(), DEC);
+//        Serial.println("It's my turn!!");
+//
+//        do_send("wakeup\r", false);
+//        do_send("r\r", true);
+//        do_send("sleep\r", false);
+//
+//        do_send2("wakeup\r", false);
+//        do_send2("r\r", true);
+//        do_send2("sleep\r", false);
+//
+//        float reading = analogRead(TEMP);
+//        Serial.println(reading);
+//        float voltage = (reading*3.3)/ANALOG_MAX;
+//        Serial.println(voltage);
+//        String temp = String((voltage-1.058)/0.009);
+//        Serial.println((voltage-1.058)/0.009);
+//        Serial.println(temp);
+//
+//        LoRa_write_string(sensorstring+", "+sensorstring2+", "+temp);
+//        delay(500);
+//        LoRa_read();
+//    }
+//
+//    before_minute = now.minute();
 
 //   if (LoRa_ss.available()){
 //     DateTime now = rtc.now();
@@ -318,33 +318,50 @@ void loop() {
 //     // Serial.println();
     
     
-//     // get data from LoRa and parse it
-//     Serial.print("from LoRa >>");
-//     String data = LoRa_ss.readString();
-//     Serial.print(data);
-//     int index = split(data, ',', parsed_data);
-//     // send data if this edge is requested to send data
-//     if (parsed_data[0].equals("2")){
-//       Serial.println("It's my turn!!");
+    // get data from LoRa and parse it
+    Serial.print("from LoRa >>");
+    String data = LoRa_ss.readString();
+    Serial.print(data);
+    int index = split(data, ',', parsed_data);
+    // send data if this edge is requested to send data
+    if (parsed_data[0].equals("2")){
+      Serial.println("It's my turn!!");
+      
 
-//       do_send("wakeup\r", false);
-//       do_send("r\r", true);
-//       do_send("sleep\r", false);
+      Serial.print("setting time to ");
+      Serial.println(parsed_data[1].toInt());
+      rtc.adjust(DateTime(parsed_data[1].toInt()));
+      Serial.print("time is now ");
+      Serial.println(String(rtc.now().unixtime()));
+      
+      do_send("wakeup\r", false);
+      do_send("r\r", true);
+      do_send("sleep\r", false);
 
-//       LoRa_write_string(sensorstring);
-//     }else{
-//       Serial.println("Not my turn :(");
-//     }
-//     // if (parsed_data[0].equals("2")){
-//     //   Serial.println("It's my turn!!");
-//     //   char datetosend[16];
-//     //   itoa(now.unixtime(), datetosend, 10);
-//     //   strcat(datetosend, "\r\n");
-//     //   LoRa_write(datetosend);
-//     // }else{
-//     //   Serial.println("Not my turn :(");
-//     // }
-//   }
-  delay(1000);
+      do_send2("wakeup\r", false);
+      do_send2("r\r", true);
+      do_send2("sleep\r", false);
 
-}
+      float reading = analogRead(TEMP);
+      Serial.println(reading);
+      float voltage = (reading*3.3)/ANALOG_MAX;
+      Serial.println(voltage);
+      String temp = String((voltage-1.058)/0.009);
+      Serial.println((voltage-1.058)/0.009);
+      Serial.println(temp);
+
+      LoRa_write_string("0003,"+sensorstring+","+sensorstring2+","+temp);
+
+    }else{
+      Serial.println("Not my turn :(");
+    }
+    // if (parsed_data[0].equals("2")){
+    //   Serial.println("It's my turn!!");
+    //   char datetosend[16];
+    //   itoa(now.unixtime(), datetosend, 10);
+    //   strcat(datetosend, "\r\n");
+    //   LoRa_write(datetosend);
+    // }else{
+    //   Serial.println("Not my turn :(");
+    // }
+  }

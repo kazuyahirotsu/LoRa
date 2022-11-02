@@ -8,10 +8,6 @@
 
 const float ANALOG_MAX = 4096;
 
-// SoftwareSerial LoRa_ss(UART_TX, UART_RX);
-// SoftwareSerial do_ss(18, 19);
-// SoftwareSerial do_ss2(25, 26);
-
 SoftwareSerial LoRa_ss(UART_RX, UART_TX);
 SoftwareSerial do_ss(19, 18);
 SoftwareSerial do_ss2(26, 25);
@@ -19,7 +15,9 @@ SoftwareSerial do_ss2(26, 25);
 RTC_DS1307 rtc;
 
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-char* data0002;
+String data0001;
+String data0002;
+String data0003;
 
 String sensorstring = "";                             //a string to hold the data from the Atlas Scientific product
 String sensorstring2 = "";                             //a string to hold the data from the Atlas Scientific product
@@ -42,21 +40,27 @@ void LoRa_read() {
 }
 
 void LoRa_read_data(int id) {
-  //read and rewrites the data to send for each child
+  // if there is another broadcast, this need to change since serial buffer will contain data that this edge didn't request
+  // for example if there is unexpected data between (reading after sending to raspberry pi) and (sending to 0002), the first readStringUntil('\n') will be the unexpected data
+  // it might be a good idea to clean it every loop
+  // read message and update the data to send 
   if (id == 2){
-    char message[30] = {'\0'};
     if (LoRa_ss.available())Serial.print("from LoRa >>");
-    int idx = 0;
-    while (LoRa_ss.available()) {
-      char c = {LoRa_ss.read()};
-      Serial.print(c);
-      message[idx] = c;
-      idx += 1;
-      //strcat(message, c);
-      delay(1);
+    if (LoRa_ss.available()) {
+      String ok = LoRa_ss.readStringUntil('\n');
+      Serial.print(ok);
+      data0002 = LoRa_ss.readStringUntil('\n');
+      Serial.print(data0002);
     }
-    data0002 = message;
-    Serial.print(data0002);
+  }
+  else if (id == 3){
+    if (LoRa_ss.available())Serial.print("from LoRa >>");
+    if (LoRa_ss.available()) {
+      String ok = LoRa_ss.readStringUntil('\n');
+      Serial.print(ok);
+      data0003 = LoRa_ss.readStringUntil('\n');
+      Serial.print(data0003);
+    }
   }else{
     Serial.print("No such id exists");
   }
@@ -147,6 +151,68 @@ void do_send2(String msg, boolean sensor_data){
           }
           delay(100);
       }
+}
+
+void change_config(String dstid) {
+  digitalWrite(LoRa_Rst, HIGH);
+  delay(1000);
+
+  // reset
+  Serial.println("Reset");
+  digitalWrite(LoRa_Rst, LOW);
+  delay(1000);
+  digitalWrite(LoRa_Rst, HIGH);
+  delay(3000);
+
+  // read
+  LoRa_read();
+
+  // select processor mode
+  LoRa_write("processor\r\n");
+  delay(100);
+
+  // // default config
+  // LoRa_write("load\r\n");
+  // delay(100);
+  
+  // // baudrate 9600
+  // LoRa_write("baudrate 1\r\n");
+  // delay(100);
+  
+  // // 125kHz
+  // LoRa_write("bw 4\r\n");
+  // delay(100);
+
+  // // spreading factor 11
+  // LoRa_write("sf 11\r\n");
+  // delay(100);
+
+  // // channel 5
+  // LoRa_write("channel 5\r\n");
+  // delay(100);
+
+  // // PAN
+  // LoRa_write("panid 0001\r\n");
+  // delay(100);
+
+  // // own network id
+  // LoRa_write("ownid 0001\r\n");
+  // delay(100);
+
+  // destination network id (broadcast)
+  LoRa_write_string("dstid "+ dstid);
+  delay(500);
+  LoRa_read();
+  delay(100);
+
+  // save
+  LoRa_write("save\r\n");
+  delay(100);
+
+  // into operation mode
+  LoRa_write("start\r\n");
+  delay(100);
+
 }
 
 void setup() {
@@ -246,7 +312,7 @@ void setup() {
   delay(100);
 
   // own network id
-  LoRa_write("ownid 7067\r\n");
+  LoRa_write("ownid 0001\r\n");
   delay(100);
 
   // destination network id (parent)
@@ -254,7 +320,7 @@ void setup() {
   delay(100);
 
   // retry num
-  LoRa_write("retry 3\r\n");
+  LoRa_write("retry 0\r\n");
   delay(100);
 
   // save
@@ -270,35 +336,109 @@ void setup() {
 
 void loop() {
     DateTime now = rtc.now();
-    now_minute = now.minute();
 
-//    if(now_minute!=before_minute){
-    if(true){
-        Serial.println(now.minute(), DEC);
-        Serial.println("It's my turn!!");
+    // get my data
+    Serial.println(now.minute(), DEC);
+    Serial.println("It's my turn!!");
 
-        do_send("wakeup\r", false);
-        do_send("r\r", true);
-        do_send("sleep\r", false);
+    do_send("wakeup\r", false);
+    do_send("r\r", true);
+    do_send("sleep\r", false);
 
-        do_send2("wakeup\r", false);
-        do_send2("r\r", true);
-        do_send2("sleep\r", false);
+    do_send2("wakeup\r", false);
+    do_send2("r\r", true);
+    do_send2("sleep\r", false);
 
-        float reading = analogRead(TEMP);
-        Serial.println(reading);
-        float voltage = (reading*3.3)/ANALOG_MAX;
-        Serial.println(voltage);
-        String temp = String((voltage-1.058)/0.009);
-        Serial.println((voltage-1.058)/0.009);
-        Serial.println(temp);
+    float reading = analogRead(TEMP);
+    Serial.println(reading);
+    float voltage = (reading*3.3)/ANALOG_MAX;
+    Serial.println(voltage);
+    String temp = String((voltage-1.058)/0.009);
+    Serial.println((voltage-1.058)/0.009);
+    Serial.println(temp);
 
-        LoRa_write_string(sensorstring+", "+sensorstring2+", "+temp);
-        delay(500);
-        LoRa_read();
+    // LoRa_write_string(sensorstring+", "+sensorstring2+", "+temp);
+    data0001 = "0001,"+sensorstring+","+sensorstring2+","+temp;
+    // delay(500);
+    // LoRa_read();
+
+    // clear the buffer
+    while(LoRa_ss.available())LoRa_ss.read();
+
+    for(int i=2;i<4;i++){
+        // change destination id
+        change_config("000"+String(i));
+        // using delayed date
+        // send calibration date and the edge id to request data to
+        String i_string = String(i);
+
+        char datetosend[16];
+        itoa(rtc.now().unixtime(), datetosend, 10);
+
+        String custom_data = i_string + "," + datetosend;
+        LoRa_write_string(custom_data);
+        delay(10000);
+
+        // read data from edge i
+        LoRa_read_data(i);
+        delay(5000);
+    }
+  
+//    String data = "";
+//    data.concat(data0001);
+//    data.concat(",");
+//    data.concat(data0002);
+//    data.concat(",");
+//    data.concat(data0003);
+//    change_config("7068");
+//    Serial.println("Sending data to Raspberry pi");
+//    LoRa_write_string(data);
+//    delay(1000);
+//    LoRa_read();
+//    delay(3000);
+    
+    change_config("7068");
+    Serial.println("Sending data to Raspberry pi");
+    if(!data0001.equals("")){
+      LoRa_write_string(data0001);
+      delay(3000);
+      LoRa_read();
+    }
+    if(!data0002.equals("")){
+      LoRa_write_string(data0002);
+      delay(3000);
+      LoRa_read();
+    }
+    if(!data0003.equals("")){
+      LoRa_write_string(data0003);
+      delay(3000);
+      LoRa_read();
     }
 
-    before_minute = now.minute();
+    data0001 = "";
+    data0002 = "";
+    data0003 = "";
+
+    // now_minute = now.minute();
+
+    // if(now_minute!=before_minute){
+    //     Serial.println(now.minute(), DEC);
+    //     Serial.println("It's my turn!!");
+
+    //     do_send("wakeup\r", false);
+    //     do_send("r\r", true);
+    //     do_send("sleep\r", false);
+
+    //     do_send2("wakeup\r", false);
+    //     do_send2("r\r", true);
+    //     do_send2("sleep\r", false);
+
+    //     LoRa_write_string(sensorstring+", "+sensorstring2);
+    //     delay(500);
+    //     LoRa_read();
+    // }
+
+    // before_minute = now.minute();
 
 //   if (LoRa_ss.available()){
 //     DateTime now = rtc.now();
@@ -345,6 +485,6 @@ void loop() {
 //     //   Serial.println("Not my turn :(");
 //     // }
 //   }
-  delay(1000);
+  delay(100);
 
 }
