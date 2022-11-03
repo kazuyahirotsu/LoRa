@@ -6,6 +6,6 @@ After=multi-user.target
 [Service]
 Type=simple
 Restart=always
-ExecStart=/usr/bin/python /root/lora-gateway/hirotsu/LoRa/project/timestream.py
+ExecStart=/usr/bin/python /root/lora-gateway/hirotsu/LoRa/project/esp32_to_aws.py
 [Install]
 WantedBy=multi-user.target

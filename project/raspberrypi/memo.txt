@@ -1,3 +1,6 @@
 // to change wifi setting, see this file
 // nmcli won't work
 root@lora-gateway-rpi7068:/etc/network# cat /etc/wpa_supplicant/wpa_supplicant.conf
+
+// see the log with this command
+journalctl -u izunuma.service -f
