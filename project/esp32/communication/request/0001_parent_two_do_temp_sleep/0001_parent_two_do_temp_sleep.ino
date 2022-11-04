@@ -1,5 +1,5 @@
 #include <SoftwareSerial.h>
-#include "RTClib.h"
+#include <RTClib.h>
 
 #define UART_RX 16  // ES920LR 8(TX)
 #define UART_TX 17  // ES920LR 9(RX)
@@ -29,6 +29,7 @@ int received_message_num = 0;
 
 int now_minute=0;
 int before_minute=0;
+boolean wait_for_time = true;
 
 void LoRa_read() {
   // just read message
@@ -243,6 +244,7 @@ void setup() {
   while(!Serial){
     //wait till Serial
   }
+  delay(1000); // DON'T COMMENT OUT THIS
 
   //Increment boot number and print it every reboot
   ++bootCount;
@@ -347,7 +349,7 @@ void setup() {
   delay(100);
 
   // destination network id (parent)
-  LoRa_write("dstid FFFF\r\n");
+  LoRa_write("dstid 7068\r\n");
   delay(100);
 
   // retry num
@@ -362,11 +364,35 @@ void setup() {
   LoRa_write("start\r\n");
   delay(1000);
 
-
+  Serial.println("waiting for time");
+  
 }
 
 void loop() {
 
+    while(wait_for_time){
+      delay(100);
+      if (LoRa_ss.available()){
+        Serial.print("from LoRa >>");
+        String data = LoRa_ss.readString();
+        Serial.println(data);      
+        delay(100);
+        int index = split(data, ',', parsed_data);
+        // send data if this edge is requested to send data
+        if (parsed_data[0].equals("7068")){
+          Serial.println("time received!!");
+          Serial.print("setting time to ");
+          Serial.println(parsed_data[1].toInt());
+          rtc.adjust(DateTime(parsed_data[1].toInt()));
+          Serial.print("time is now ");
+          Serial.println(String(rtc.now().unixtime()));
+          wait_for_time = false;
+          LoRa_write("0001\r\n");
+          delay(100);
+        } 
+      }
+    }
+    
     // get my data
     Serial.println("It's my turn!!");
 
@@ -495,6 +521,17 @@ void loop() {
     }else {
         Serial.println("Alarm set");
     }
+
+//    // schedule an alarm 10 seconds in the future
+//    if(!rtc.setAlarm1(
+//            rtc.now() + TimeSpan(10),
+//            DS3231_A1_Second // this mode triggers the alarm when the seconds match. See Doxygen for other options
+//    )) {
+//        Serial.println("Error, alarm wasn't set!");
+//    }else {
+//        Serial.println("Alarm will happen in 10 seconds!");
+//    }
+
       esp_sleep_enable_ext0_wakeup(GPIO_NUM_4,0); //1 = High, 0 = Low
     
       //Go to sleep now

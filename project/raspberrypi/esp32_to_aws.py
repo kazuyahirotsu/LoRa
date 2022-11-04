@@ -78,15 +78,19 @@ def setup():
   # show_res()
   # time.sleep(1)
 
-
-  # # command g dstID
-  # send_req("g 7067\r\n")
+  #  # command g dstID
+  # send_req("g 0001\r\n")
   # show_res()
   # time.sleep(1)
 
   # # command l ack off (2) 
   # # command l ack on (1) 
   # send_req("l 1\r\n")
+  # show_res()
+  # time.sleep(1)
+   
+  # # command retry
+  # send_req("m 0\r\n")
   # show_res()
   # time.sleep(1)
 
@@ -187,7 +191,39 @@ def send(values):
 
 if __name__ == "__main__":
   setup()
+  time_to_send = False
+#  send_minute = int(time.strftime("%M")) + (10-int(time.strftime("%M"))%10)
+  send_minute = int(time.strftime("%M")) + 1
+
+  if send_minute == 60:
+    send_minute = 0
+  logging.info("send time at "+str(send_minute)+"m")
+
   while True:
+    if int(time.strftime("%M")) == send_minute:
+      time_to_send = True
+      send_minute += 10
+      # send_minute += 1
+      if send_minute == 60:
+        send_minute = 0
+      logging.info("next send time at "+str(send_minute)+"m")
+
+    while time_to_send:
+      time_message = "7068,"+str(int(time.time())) + "\r\n"
+      send_req(time_message)
+      time.sleep(3)
+      ok = show_res()
+      ack_0001 = show_res()
+      if ok is not None:
+        ok = ok.replace('\n', '').replace('\r', '')
+      if ack_0001 is not None:
+        ack_0001 = ack_0001[12:].replace('\n', '').replace('\r', '')
+      if ok == "OK" and ack_0001 == "0001":
+        time_to_send = False
+        logging.info("waiting for the data")
+      if int(time.strftime("%M")) >= send_minute+9:
+        time_to_send = False
+
     message = show_res()
     if message is not None:
       message = message.replace('\n', ' ').replace('\r', '')

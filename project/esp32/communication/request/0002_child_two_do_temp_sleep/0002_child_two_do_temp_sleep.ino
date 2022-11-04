@@ -173,7 +173,8 @@ void setup() {
   while(!Serial){
     //wait till Serial
   }
-
+  delay(1000); // DON'T COMMENT OUT THIS
+  
   //Increment boot number and print it every reboot
   ++bootCount;
   Serial.println("Boot number: " + String(bootCount));
