@@ -37,6 +37,21 @@ void setup() {
     Serial.begin(9600);
     
     delay(1000); //Take some time to open up the Serial Monitor
+
+    pinMode(13,OUTPUT);
+    
+    Serial.println("LOW");
+    digitalWrite(13,LOW);
+    delay(2500);
+    
+    Serial.println("HIGH");
+    digitalWrite(13,HIGH);
+    delay(2500);
+    
+    Serial.println("LOW");
+    digitalWrite(13,LOW);
+    delay(2500);
+    
     
     //Increment boot number and print it every reboot
     ++bootCount;
@@ -98,25 +113,25 @@ void setup() {
     Serial.print(wakeup_time.second(), DEC);
     Serial.println();
     
-    // schedule an alarm on *0 minute
-    if(!rtc.setAlarm1(
-            wakeup_time,
-            DS3231_A1_Minute // this mode triggers the alarm when the seconds match. See Doxygen for other options
-    )) {
-        Serial.println("Error, alarm wasn't set!");
-    }else {
-        Serial.println("Alarm set");
-    }
-    
-//    // schedule an alarm 10 seconds in the future
+//    // schedule an alarm on *0 minute
 //    if(!rtc.setAlarm1(
-//            rtc.now() + TimeSpan(10),
-//            DS3231_A1_Second // this mode triggers the alarm when the seconds match. See Doxygen for other options
+//            wakeup_time,
+//            DS3231_A1_Minute // this mode triggers the alarm when the seconds match. See Doxygen for other options
 //    )) {
 //        Serial.println("Error, alarm wasn't set!");
 //    }else {
-//        Serial.println("Alarm will happen in 10 seconds!");
+//        Serial.println("Alarm set");
 //    }
+    
+    // schedule an alarm 10 seconds in the future
+    if(!rtc.setAlarm1(
+            rtc.now() + TimeSpan(10),
+            DS3231_A1_Second // this mode triggers the alarm when the seconds match. See Doxygen for other options
+    )) {
+        Serial.println("Error, alarm wasn't set!");
+    }else {
+        Serial.println("Alarm will happen in 10 seconds!");
+    }
 
           /*
       First we configure the wake up source

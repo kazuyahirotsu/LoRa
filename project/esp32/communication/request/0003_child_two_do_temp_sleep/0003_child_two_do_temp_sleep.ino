@@ -169,6 +169,9 @@ void onAlarm() {
 }
 
 void setup() {
+  pinMode(13,OUTPUT);
+  digitalWrite(13,HIGH);
+
   Serial.begin(9600);
   while(!Serial){
     //wait till Serial
@@ -380,6 +383,10 @@ void loop() {
       Serial.println(temp);
 
       LoRa_write_string("0003,"+sensorstring+","+sensorstring2+","+temp);
+      delay(3000);
+      LoRa_read();
+      
+      digitalWrite(13,LOW);
 
       //we don't need the 32K Pin, so disable it
       rtc.disable32K();

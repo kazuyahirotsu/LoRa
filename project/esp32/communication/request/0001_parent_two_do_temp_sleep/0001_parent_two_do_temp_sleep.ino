@@ -240,10 +240,14 @@ void onAlarm() {
 }
 
 void setup() {
+  pinMode(13,OUTPUT);
+  digitalWrite(13,HIGH);
+  
   Serial.begin(9600);
   while(!Serial){
     //wait till Serial
   }
+
   delay(1000); // DON'T COMMENT OUT THIS
 
   //Increment boot number and print it every reboot
@@ -252,7 +256,8 @@ void setup() {
 
   //Print the wakeup reason for ESP32
   print_wakeup_reason();
-
+  
+  
   // DO setup
   do_ss.begin(9600);                                //set baud rate for software serial port_3 to 9600
   while(!do_ss){
@@ -474,6 +479,7 @@ void loop() {
     data0002 = "";
     data0003 = "";
 
+    digitalWrite(13,LOW);
 
     //we don't need the 32K Pin, so disable it
     rtc.disable32K();

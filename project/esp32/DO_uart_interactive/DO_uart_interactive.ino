@@ -3,7 +3,7 @@
 // *OK,0
 // R
 #include <SoftwareSerial.h> 
-SoftwareSerial do_ss(19, 18);
+SoftwareSerial do_ss(26, 25);
 
 String inputstring = "";                              //a string to hold incoming data from the PC
 String sensorstring = "";                             //a string to hold the data from the Atlas Scientific product
@@ -12,7 +12,12 @@ boolean sensor_string_complete = false;               //have we received all the
 float DO;                                             //used to hold a floating point number that is the DO
 
 
-void setup() {                                        //set up the hardware
+void setup() {
+  pinMode(13,OUTPUT);
+  digitalWrite(13,HIGH);
+  delay(1000);
+
+  //set up the hardware
   Serial.begin(9600);                                 //set baud rate for the hardware serial port_0 to 9600
   do_ss.begin(9600);                                //set baud rate for software serial port_3 to 9600
   inputstring.reserve(10);                            //set aside some bytes for receiving data from the PC
