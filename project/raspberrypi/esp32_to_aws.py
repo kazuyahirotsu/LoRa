@@ -23,9 +23,9 @@ logging.getLogger('').addHandler(console)
 
 # setup aws
 session = boto3.Session()
-write_client = session.client('timestream-write', region_name='us-west-2', config=Config(read_timeout=20, max_pool_connections = 5000, retries={'max_attempts': 10}))
-DatabaseName='solarpanel_test'
-TableName='solarpanel_test'
+write_client = session.client('timestream-write', region_name='ap-northeast-1', config=Config(read_timeout=20, max_pool_connections = 5000, retries={'max_attempts': 10}))
+DatabaseName='izunuma'
+TableName='izunuma'
 dimensions = [
         {'Name': 'Location', 'Value': 'Tokyo'},
 ]
