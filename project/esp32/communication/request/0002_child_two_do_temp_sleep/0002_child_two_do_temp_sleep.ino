@@ -7,8 +7,6 @@
 #define TEMP 32
 #define CLOCK_INTERRUPT_PIN 4
 
-RTC_DATA_ATTR int bootCount = 0;
-
 const float ANALOG_MAX = 4096;
 
 SoftwareSerial LoRa_ss(UART_RX, UART_TX);
@@ -102,6 +100,7 @@ void do_send(String msg, boolean sensor_data){
       do_ss.print(msg);
       Serial.println("send: "+msg);
       waiting_for_respond = true;
+      int t0 = rtc.now().unixtime();
 
       while(waiting_for_respond){
           while (do_ss.available()){                              //if the hardware serial port_0 receives a char
@@ -119,6 +118,9 @@ void do_send(String msg, boolean sensor_data){
               received_message_num = 0;
               waiting_for_respond = false;
           }
+          if(rtc.now().unixtime() - t0 >= 5){
+            waiting_for_respond = false;
+          }
           delay(100);
       }
 }
@@ -127,6 +129,7 @@ void do_send2(String msg, boolean sensor_data){
       do_ss2.print(msg);
       Serial.println("send: "+msg);
       waiting_for_respond = true;
+      int t0 = rtc.now().unixtime();
 
       while(waiting_for_respond){
           while (do_ss2.available()){                              //if the hardware serial port_0 receives a char
@@ -143,6 +146,9 @@ void do_send2(String msg, boolean sensor_data){
           if(received_message_num == 1){
               received_message_num = 0;
               waiting_for_respond = false;
+          }
+          if(rtc.now().unixtime() - t0 >= 5){
+            waiting_for_respond = false;
           }
           delay(100);
       }
@@ -177,31 +183,9 @@ void setup() {
     //wait till Serial
   }
   delay(1000); // DON'T COMMENT OUT THIS
-  
-  //Increment boot number and print it every reboot
-  ++bootCount;
-  Serial.println("Boot number: " + String(bootCount));
 
   //Print the wakeup reason for ESP32
   print_wakeup_reason();
-
-  // DO setup
-  do_ss.begin(9600);                                //set baud rate for software serial port_3 to 9600
-  while(!do_ss){
-    //wait till Serial
-  }
-
-  do_ss2.begin(9600);                                //set baud rate for software serial port_3 to 9600
-  while(!do_ss2){
-    //wait till Serial
-  }
-  delay(2000);
-  
-  sensorstring.reserve(30);                           //set aside some bytes for receiving data from Atlas Scientific product
-  do_send("sleep\r", false);
-
-  sensorstring2.reserve(30);                           //set aside some bytes for receiving data from Atlas Scientific product
-  do_send2("sleep\r", false);
 
   // RTC setting up
   if (! rtc.begin()) {
@@ -227,6 +211,23 @@ void setup() {
   // January 21, 2014 at 3am you would call:
   // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
   
+  // DO setup
+  do_ss.begin(9600);                                //set baud rate for software serial port_3 to 9600
+  while(!do_ss){
+    //wait till Serial
+  }
+
+  do_ss2.begin(9600);                                //set baud rate for software serial port_3 to 9600
+  while(!do_ss2){
+    //wait till Serial
+  }
+  delay(2000);
+  
+  sensorstring.reserve(30);                           //set aside some bytes for receiving data from Atlas Scientific product
+  do_send("sleep\r", false);
+
+  sensorstring2.reserve(30);                           //set aside some bytes for receiving data from Atlas Scientific product
+  do_send2("sleep\r", false);
 
   LoRa_ss.begin(9600);
   while(!LoRa_ss){
