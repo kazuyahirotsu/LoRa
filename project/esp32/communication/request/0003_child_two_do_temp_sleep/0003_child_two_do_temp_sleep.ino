@@ -190,13 +190,16 @@ void setup() {
   while(!do_ss){
     //wait till Serial
   }
-  sensorstring.reserve(30);                           //set aside some bytes for receiving data from Atlas Scientific product
-  do_send("sleep\r", false);
 
   do_ss2.begin(9600);                                //set baud rate for software serial port_3 to 9600
   while(!do_ss2){
     //wait till Serial
   }
+  delay(2000);
+  
+  sensorstring.reserve(30);                           //set aside some bytes for receiving data from Atlas Scientific product
+  do_send("sleep\r", false);
+
   sensorstring2.reserve(30);                           //set aside some bytes for receiving data from Atlas Scientific product
   do_send2("sleep\r", false);
 

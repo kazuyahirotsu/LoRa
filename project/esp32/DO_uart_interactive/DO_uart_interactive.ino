@@ -3,6 +3,7 @@
 // *OK,0
 // R
 #include <SoftwareSerial.h> 
+//SoftwareSerial do_ss(19, 18);
 SoftwareSerial do_ss(26, 25);
 
 String inputstring = "";                              //a string to hold incoming data from the PC
