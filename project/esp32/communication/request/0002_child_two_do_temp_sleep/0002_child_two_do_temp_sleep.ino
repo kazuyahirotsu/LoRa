@@ -16,7 +16,7 @@ SoftwareSerial do_ss2(26, 25);
 RTC_DS3231 rtc;
 
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-char* data0002;
+String data_to_send;
 
 String sensorstring = "";                             //a string to hold the data from the Atlas Scientific product
 String sensorstring2 = "";                             //a string to hold the data from the Atlas Scientific product
@@ -25,6 +25,8 @@ int received_message_num = 0;
 
 int now_minute=0;
 int before_minute=0;
+int initial_time;
+boolean time_to_sleep = false;
 
 void LoRa_read() {
   // just read message
@@ -38,27 +40,6 @@ void LoRa_read() {
   }
 }
 
-// void LoRa_read_data(int id) {
-//   //read and rewrites the data to send for each child
-//   if (id == 2){
-//     char message[30] = {'\0'};
-//     if (LoRa_ss.available())Serial.print("from LoRa >>");
-//     int idx = 0;
-//     while (LoRa_ss.available()) {
-//       char c = {LoRa_ss.read()};
-//       Serial.print(c);
-//       message[idx] = c;
-//       idx += 1;
-//       //strcat(message, c);
-//       delay(1);
-//     }
-//     data0002 = message;
-//     Serial.print(data0002);
-//   }else{
-//     Serial.print("No such id exists");
-//   }
-// }
-
 void LoRa_write(char msg[]) {
   // write message
   LoRa_ss.write(msg);
@@ -67,6 +48,7 @@ void LoRa_write(char msg[]) {
   delay(500);
   LoRa_read();
 }
+
 void LoRa_write_string(String msg) {
   // write message
   char str_array[msg.length()+1];
@@ -101,6 +83,7 @@ void do_send(String msg, boolean sensor_data){
       Serial.println("send: "+msg);
       waiting_for_respond = true;
       int t0 = rtc.now().unixtime();
+      delay(100);
 
       while(waiting_for_respond){
           while (do_ss.available()){                              //if the hardware serial port_0 receives a char
@@ -130,6 +113,7 @@ void do_send2(String msg, boolean sensor_data){
       Serial.println("send: "+msg);
       waiting_for_respond = true;
       int t0 = rtc.now().unixtime();
+      delay(100);
 
       while(waiting_for_respond){
           while (do_ss2.available()){                              //if the hardware serial port_0 receives a char
@@ -239,222 +223,172 @@ void setup() {
 
   // define reset
   pinMode(LoRa_Rst , OUTPUT);
-  delay(1000);
+  delay(100);
   digitalWrite(LoRa_Rst, HIGH);
-  delay(1000);
+  delay(100);
 
   // reset
   Serial.println("Reset");
   digitalWrite(LoRa_Rst, LOW);
-  delay(1000);
+  delay(100);
   digitalWrite(LoRa_Rst, HIGH);
-  delay(3000);
+  
+  // get data while waiting for lora to wakeup
+  do_send("wakeup\r", false);
+  do_send("r\r", true);
+  do_send("sleep\r", false);
+
+  do_send2("wakeup\r", false);
+  do_send2("r\r", true);
+  do_send2("sleep\r", false);
+
+  float reading = analogRead(TEMP);
+  Serial.println(reading);
+  float voltage = (reading*3.3)/ANALOG_MAX;
+  Serial.println(voltage);
+  String temp = String((voltage-1.058)/0.009);
+  Serial.println((voltage-1.058)/0.009);
+  Serial.println(temp);
+  data_to_send = "d,0002,"+sensorstring+","+sensorstring2+","+temp+","+String(rtc.now().unixtime());
 
   // read
   LoRa_read();
 
   // select processor mode
   LoRa_write("processor\r\n");
-  delay(1000);
-
-  // default config
-  // LoRa_write("load\r\n");
-  // delay(100);
-  
-  // baudrate 9600
-  LoRa_write("baudrate 1\r\n");
-  delay(100);
-  
-  // 125kHz
-  LoRa_write("bw 4\r\n");
   delay(100);
 
-  // spreading factor 11
-  LoRa_write("sf 11\r\n");
-  delay(100);
-
-  // channel 5
-  LoRa_write("channel 5\r\n");
-  delay(100);
-
-  // PAN
-  LoRa_write("panid 0001\r\n");
-  delay(100);
-
-  // own network id
-  LoRa_write("ownid 0002\r\n");
-  delay(100);
-
-  // destination network id (parent)
-  LoRa_write("dstid 0001\r\n");
-  delay(100);
-
-  // retry num
-  LoRa_write("retry 3\r\n");
-  delay(100);
-
-  // save
-  LoRa_write("save\r\n");
-  delay(10000);
+//  // default config
+//  LoRa_write("load\r\n");
+//  delay(100);
+//  
+//  // baudrate 9600
+//  LoRa_write("baudrate 1\r\n");
+//  delay(100);
+//  
+//  // 125kHz
+//  LoRa_write("bw 4\r\n");
+//  delay(100);
+//
+//  // spreading factor 11
+//  LoRa_write("sf 11\r\n");
+//  delay(100);
+//
+//  // channel 5
+//  LoRa_write("channel 5\r\n");
+//  delay(100);
+//
+//  // PAN
+//  LoRa_write("panid 0001\r\n");
+//  delay(100);
+//
+//  // own network id
+//  LoRa_write("ownid 0002\r\n");
+//  delay(100);
+//
+//  // destination network id (parent)
+//  LoRa_write("dstid 0001\r\n");
+//  delay(100);
+//
+//  // retry num
+//  LoRa_write("retry 3\r\n");
+//  delay(100);
+//
+//  // save
+//  LoRa_write("save\r\n");
+//  delay(10000);
 
   // into operation mode
   LoRa_write("start\r\n");
-  delay(1000);
-
-
+  delay(100);
+  initial_time = rtc.now().unixtime();
 }
 
 void loop() {
-    // DateTime now = rtc.now();
-    // now_minute = now.minute();
+    if (LoRa_ss.available()){
+      // get data from LoRa and parse it
+      Serial.print("from LoRa >>");
+      String data = LoRa_ss.readString();
+      Serial.print(data);
+      int index = split(data, ',', parsed_data);
+      // send data if this edge is requested to send data
+      if (parsed_data[1].equals("2")){
+        Serial.println("It's my turn!!");
+        
+        Serial.print("setting time to ");
+        Serial.println(parsed_data[2].toInt());
+        rtc.adjust(DateTime(parsed_data[2].toInt()));
+        Serial.print("time is now ");
+        Serial.println(String(rtc.now().unixtime()));
 
-////    if(now_minute!=before_minute){
-//    if(true){
-//        Serial.println(now.minute(), DEC);
-//        Serial.println("It's my turn!!");
-//
-//        do_send("wakeup\r", false);
-//        do_send("r\r", true);
-//        do_send("sleep\r", false);
-//
-//        do_send2("wakeup\r", false);
-//        do_send2("r\r", true);
-//        do_send2("sleep\r", false);
-//
-//        float reading = analogRead(TEMP);
-//        Serial.println(reading);
-//        float voltage = (reading*3.3)/ANALOG_MAX;
-//        Serial.println(voltage);
-//        String temp = String((voltage-1.058)/0.009);
-//        Serial.println((voltage-1.058)/0.009);
-//        Serial.println(temp);
-//
-//        LoRa_write_string(sensorstring+", "+sensorstring2+", "+temp);
-//        delay(500);
-//        LoRa_read();
-//    }
-//
-//    before_minute = now.minute();
-
-//   if (LoRa_ss.available()){
-//     DateTime now = rtc.now();
-//     // Serial.print(now.year(), DEC);
-//     // Serial.print('/');
-//     // Serial.print(now.month(), DEC);
-//     // Serial.print('/');
-//     // Serial.print(now.day(), DEC);
-//     // Serial.print(" (");
-//     // Serial.print(daysOfTheWeek[now.dayOfTheWeek()]);
-//     // Serial.print(") ");
-//     // Serial.print(now.hour(), DEC);
-//     // Serial.print(':');
-//     // Serial.print(now.minute(), DEC);
-//     // Serial.print(':');
-//     // Serial.print(now.second(), DEC);
-//     // Serial.println();
-    
-    
-    // get data from LoRa and parse it
-    Serial.print("from LoRa >>");
-    String data = LoRa_ss.readString();
-    Serial.print(data);
-    int index = split(data, ',', parsed_data);
-    // send data if this edge is requested to send data
-    if (parsed_data[0].equals("2")){
-      Serial.println("It's my turn!!");
-      
-
-      Serial.print("setting time to ");
-      Serial.println(parsed_data[1].toInt());
-      rtc.adjust(DateTime(parsed_data[1].toInt()));
-      Serial.print("time is now ");
-      Serial.println(String(rtc.now().unixtime()));
-      
-      do_send("wakeup\r", false);
-      do_send("r\r", true);
-      do_send("sleep\r", false);
-
-      do_send2("wakeup\r", false);
-      do_send2("r\r", true);
-      do_send2("sleep\r", false);
-
-      float reading = analogRead(TEMP);
-      Serial.println(reading);
-      float voltage = (reading*3.3)/ANALOG_MAX;
-      Serial.println(voltage);
-      String temp = String((voltage-1.058)/0.009);
-      Serial.println((voltage-1.058)/0.009);
-      Serial.println(temp);
-
-      LoRa_write_string("0002,"+sensorstring+","+sensorstring2+","+temp);
-      delay(3000);
-      LoRa_read();
-      
-      digitalWrite(13,LOW);
-
-      //we don't need the 32K Pin, so disable it
-      rtc.disable32K();
-
-      // Making it so, that the alarm will trigger an interrupt
-      pinMode(CLOCK_INTERRUPT_PIN, INPUT_PULLUP);
-      attachInterrupt(digitalPinToInterrupt(CLOCK_INTERRUPT_PIN), onAlarm, FALLING);
-
-      // set alarm 1, 2 flag to false (so alarm 1, 2 didn't happen so far)
-      // if not done, this easily leads to problems, as both register aren't reset on reboot/recompile
-      rtc.clearAlarm(1);
-      rtc.clearAlarm(2);
-
-      // stop oscillating signals at SQW Pin
-      // otherwise setAlarm1 will fail
-      rtc.writeSqwPinMode(DS3231_OFF);
-
-      // turn off alarm 2 (in case it isn't off already)
-      // again, this isn't done at reboot, so a previously set alarm could easily go overlooked
-      rtc.disableAlarm(2);
-
-      char date[10] = "hh:mm:ss";
-      rtc.now().toString(date);
-      Serial.print("now: ");
-      Serial.println(date);
-      
-      DateTime now = rtc.now();
-      int wakeup_minute = now.minute()+(10-now.minute()%10);
-      if(wakeup_minute==60){
-        wakeup_minute = 0;
+        LoRa_write_string(data_to_send);
+        delay(3000);
+        LoRa_read();
+        time_to_sleep = true;
       }
-      DateTime wakeup_time = DateTime(0, 0, 0, 0, wakeup_minute, 0);
-      Serial.print("alarm time: ");
-      Serial.print(wakeup_time.minute(), DEC);
-      Serial.print("m");
-      Serial.print(wakeup_time.second(), DEC);
-      Serial.println("s");
-      
-      // schedule an alarm on *0 minute
-      if(!rtc.setAlarm1(
-              wakeup_time,
-              DS3231_A1_Minute // this mode triggers the alarm when the seconds match. See Doxygen for other options
-      )) {
-          Serial.println("Error, alarm wasn't set!");
-      }else {
-          Serial.println("Alarm set");
-      }
-        esp_sleep_enable_ext0_wakeup(GPIO_NUM_4,0); //1 = High, 0 = Low
-      
-        //Go to sleep now
-        Serial.println("Going to sleep now");
-        esp_deep_sleep_start();
-        Serial.println("This will never be printed");
+//      if(rtc.now().minute() >= 2){
+//      // if(rtc.now().unixtime() - initial_time >= 120){ 
+//        time_to_sleep = true;
+//        Serial.print("waiting too long for request");
+//      }
+      if (time_to_sleep){
+        digitalWrite(13,LOW);
 
-    }else{
-      Serial.println("Not my turn :(");
+        //we don't need the 32K Pin, so disable it
+        rtc.disable32K();
+
+        // Making it so, that the alarm will trigger an interrupt
+        pinMode(CLOCK_INTERRUPT_PIN, INPUT_PULLUP);
+        attachInterrupt(digitalPinToInterrupt(CLOCK_INTERRUPT_PIN), onAlarm, FALLING);
+
+        // set alarm 1, 2 flag to false (so alarm 1, 2 didn't happen so far)
+        // if not done, this easily leads to problems, as both register aren't reset on reboot/recompile
+        rtc.clearAlarm(1);
+        rtc.clearAlarm(2);
+
+        // stop oscillating signals at SQW Pin
+        // otherwise setAlarm1 will fail
+        rtc.writeSqwPinMode(DS3231_OFF);
+
+        // turn off alarm 2 (in case it isn't off already)
+        // again, this isn't done at reboot, so a previously set alarm could easily go overlooked
+        rtc.disableAlarm(2);
+
+        char date[10] = "hh:mm:ss";
+        rtc.now().toString(date);
+        Serial.print("now: ");
+        Serial.println(date);
+        
+        DateTime now = rtc.now();
+        int wakeup_minute = now.minute()+(10-now.minute()%10);
+        if(wakeup_minute==60){
+          wakeup_minute = 0;
+        }
+        DateTime wakeup_time = DateTime(0, 0, 0, 0, wakeup_minute, 0);
+        Serial.print("alarm time: ");
+        Serial.print(wakeup_time.minute(), DEC);
+        Serial.print("m");
+        Serial.print(wakeup_time.second(), DEC);
+        Serial.println("s");
+        
+        // schedule an alarm on *0 minute
+        if(!rtc.setAlarm1(
+                wakeup_time,
+                DS3231_A1_Minute // this mode triggers the alarm when the seconds match. See Doxygen for other options
+        )) {
+            Serial.println("Error, alarm wasn't set!");
+        }else {
+            Serial.println("Alarm set");
+        }
+          esp_sleep_enable_ext0_wakeup(GPIO_NUM_4,0); //1 = High, 0 = Low
+        
+          //Go to sleep now
+          Serial.println("Going to sleep now");
+          esp_deep_sleep_start();
+          Serial.println("This will never be printed");
+
+      }else{
+        Serial.println("Not my turn :(");
+      }
     }
-    // if (parsed_data[0].equals("2")){
-    //   Serial.println("It's my turn!!");
-    //   char datetosend[16];
-    //   itoa(now.unixtime(), datetosend, 10);
-    //   strcat(datetosend, "\r\n");
-    //   LoRa_write(datetosend);
-    // }else{
-    //   Serial.println("Not my turn :(");
-    // }
   }
