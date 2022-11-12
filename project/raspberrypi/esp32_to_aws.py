@@ -140,38 +140,64 @@ def send(values):
   # dummy_value3 = 12+random.random()
   
   try:
-    record = [{
+    try:
+      float1 = float(str(values[1]))
+      value1_valid = True
+    except:
+      value1_valid = False
+    try:
+      float2 = float(str(values[2]))
+      value2_valid = True
+    except:
+      value2_valid = False
+    try:
+      float3 = float(str(values[3]))
+      value3_valid = True
+    except:
+      value3_valid = False
+    try:
+      float5 = float(str(values[5]))
+      value5_valid = True
+    except:
+      value5_valid = False
+
+    record = []
+    if (values[1] != "") and value1_valid:
+      record.append({
         'Dimensions': dimensions,
         'MeasureName': str(values[0])+'DO_1',
         'MeasureValueType': 'DOUBLE',
         'MeasureValue': str(values[1]),
-        'Time': str(current_milli_time()),
-        'TimeUnit': 'MILLISECONDS'
-    },
-    {
+        'Time': str(values[4]),
+        'TimeUnit': 'SECONDS'
+      })
+    if (values[2] != "") and value2_valid:
+      record.append({
         'Dimensions': dimensions,
         'MeasureName': str(values[0])+'DO_2',
         'MeasureValueType': 'DOUBLE',
         'MeasureValue': str(values[2]),
-        'Time': str(current_milli_time()),
-        'TimeUnit': 'MILLISECONDS'
-    },
-    {
+        'Time': str(values[4]),
+        'TimeUnit': 'SECONDS'
+    })
+    if (values[3] != "") and value3_valid:
+      record.append({
         'Dimensions': dimensions,
         'MeasureName': str(values[0])+'TEMP',
         'MeasureValueType': 'DOUBLE',
         'MeasureValue': str(values[3]),
-        'Time': str(current_milli_time()),
-        'TimeUnit': 'MILLISECONDS'
-    },
-    {
+        'Time': str(values[4]),
+        'TimeUnit': 'SECONDS'
+    })
+    if (values[5] != "") and value5_valid:
+      record.append({
         'Dimensions': dimensions,
         'MeasureName': str(values[0])+'RSSI',
         'MeasureValueType': 'DOUBLE',
-        'MeasureValue': str(values[4]),
-        'Time': str(current_milli_time()),
-        'TimeUnit': 'MILLISECONDS'
-    }]
+        'MeasureValue': str(values[5]),
+        'Time': str(values[4]),
+        'TimeUnit': 'SECONDS'
+    })
     result = write_client.write_records(DatabaseName=DatabaseName,
                                         TableName=TableName,
                                         Records=record,
@@ -192,8 +218,9 @@ def send(values):
 if __name__ == "__main__":
   setup()
   time_to_send = False
-#  send_minute = int(time.strftime("%M")) + (10-int(time.strftime("%M"))%10)
-  send_minute = int(time.strftime("%M")) + 1
+  send_minute = int(time.strftime("%M")) + (10-int(time.strftime("%M"))%10)
+  send_minute_now = send_minute
+#  send_minute = int(time.strftime("%M")) + 1
 
   if send_minute == 60:
     send_minute = 0
@@ -202,6 +229,7 @@ if __name__ == "__main__":
   while True:
     if int(time.strftime("%M")) == send_minute:
       time_to_send = True
+      send_minute_now = send_minute
       send_minute += 10
       # send_minute += 1
       if send_minute == 60:
@@ -209,10 +237,12 @@ if __name__ == "__main__":
       logging.info("next send time at "+str(send_minute)+"m")
 
     while time_to_send:
-      time_message = "7068,"+str(int(time.time())) + "\r\n"
+      time_message = "r,7068,"+str(int(time.time())) + "\r\n"
       send_req(time_message)
       time.sleep(3)
+      logging.info("getting ok")
       ok = show_res()
+      logging.info("getting ack")
       ack_0001 = show_res()
       if ok is not None:
         ok = ok.replace('\n', '').replace('\r', '')
@@ -221,18 +251,20 @@ if __name__ == "__main__":
       if ok == "OK" and ack_0001 == "0001":
         time_to_send = False
         logging.info("waiting for the data")
-      if int(time.strftime("%M")) >= send_minute+9:
+      if int(time.strftime("%M")) >= send_minute_now+5:
         time_to_send = False
+        logging.info("0001 not receiving time for 5 min")
 
     message = show_res()
     if message is not None:
-      message = message.replace('\n', ' ').replace('\r', '')
+      message = message.replace('\n', '').replace('\r', '')
       try:
         logging.info("raw message = "+str(message))
         logging.info(("RSSI= "+str(twosComplement_hex(message[:4]))+"dBm, message= "+message[12:]))
-        values = message[12:].split(',')
-        values.append(str(twosComplement_hex(message[:4])))
-        send(values)
+        if message[12] == "d":
+          values = message[14:].split(',')
+          values.append(str(twosComplement_hex(message[:4])))
+          send(values)
       except Exception as e:
         logging.info(e)
         continue
