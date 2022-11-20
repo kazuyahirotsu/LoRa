@@ -161,6 +161,9 @@ void onAlarm() {
 void setup() {
   pinMode(13,OUTPUT);
   digitalWrite(13,HIGH);
+
+  analogSetAttenuation(ADC_6db);
+  pinMode(TEMP,ANALOG);
   
   Serial.begin(9600);
   while(!Serial){
@@ -232,23 +235,36 @@ void setup() {
   digitalWrite(LoRa_Rst, LOW);
   delay(100);
   digitalWrite(LoRa_Rst, HIGH);
+
+  Serial.println("Start reading temp");
+  float temp_volts_sum = 0;
+  for(int i=0; i<1000; i++){
+    temp_volts_sum += (float)analogReadMilliVolts(TEMP);
+  }
+  float voltage = temp_volts_sum/(float)1000;
+  Serial.println(voltage);
+  String temp = String((voltage-1058)/9);
+  Serial.println(temp);
   
   // get data while waiting for lora to wakeup
   do_send("wakeup\r", false);
-  do_send("r\r", true);
+  do_send("rt "+temp+"\r", true);
   do_send("sleep\r", false);
 
   do_send2("wakeup\r", false);
-  do_send2("r\r", true);
+  do_send2("rt "+temp+"\r", true);
   do_send2("sleep\r", false);
 
-  float reading = analogRead(TEMP);
-  Serial.println(reading);
-  float voltage = (reading*3.3)/ANALOG_MAX;
-  Serial.println(voltage);
-  String temp = String((voltage-1.058)/0.009);
-  Serial.println((voltage-1.058)/0.009);
-  Serial.println(temp);
+//  float reading = analogRead(TEMP);
+//  Serial.println(reading);
+//  float voltage = (reading*3.3)/ANALOG_MAX;
+//  Serial.println(voltage);
+//  String temp = String((voltage-1.058)/0.009);
+//  Serial.println((voltage-1.058)/0.009);
+//  Serial.println(temp);
+
+
+
   data_to_send = "d,0002,"+sensorstring+","+sensorstring2+","+temp+","+String(rtc.now().unixtime());
 
   // read
