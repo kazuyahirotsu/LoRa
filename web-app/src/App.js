@@ -40,6 +40,7 @@ function App() {
   useEffect(() => {
     const initiallize = async () => {
       console.log(process.env.REACT_APP_AWS_ID);
+      
       await api.setConfiguration('ap-northeast-1', process.env.REACT_APP_AWS_ID, process.env.REACT_APP_AWS_SECRET)
     }
     initiallize()
