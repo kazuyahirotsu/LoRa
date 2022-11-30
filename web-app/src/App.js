@@ -39,10 +39,12 @@ function App() {
 
   useEffect(() => {
     const initiallize = async () => {
+      console.log(process.env.REACT_APP_AWS_ID);
       await api.setConfiguration('ap-northeast-1', process.env.REACT_APP_AWS_ID, process.env.REACT_APP_AWS_SECRET)
     }
     initiallize()
   }, [])
+
   const data_name = [
     ['0001DO_1','data_0001DO_1'],
     ['0001DO_2','data_0001DO_2'],
@@ -53,6 +55,7 @@ function App() {
     ['0003DO_1','data_0003DO_1'],
     ['0003DO_2','data_0003DO_2'],
     ['0003TEMP','data_0003TEMP'],]
+
   useEffect(() => {
     const fetch = async () => {
       data_name.map(async (d)=>{
