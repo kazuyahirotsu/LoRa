@@ -2,7 +2,7 @@ import React, { useEffect, useState} from 'react'
 import api from './api/timestream'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import moment from 'moment'
-import { CSVLink, CSVDownload } from "react-csv";
+import { CSVLink } from "react-csv";
 
 function App() {
   const [data, setData] = useState({
