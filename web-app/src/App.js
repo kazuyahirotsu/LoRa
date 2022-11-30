@@ -69,51 +69,74 @@ function App() {
   };
 
   return (
-    <div className="">
-      <div class="navbar bg-primary">
+    <div>
+      <div class="navbar bg-primary shadow-xl">
         <div class="md:navbar-start">
         </div>
         <div class="navbar-start md:navbar-center text-primary-content">
           <a class="normal-case md:text-3xl text-2xl ml-2 md:mx-auto">IZUNUMA</a>
         </div>
         <div class="navbar-end">
-        <div class="dropdown dropdown-end mr-2">
-          <label tabindex="0" class="btn btn-accent">
-            <p>export</p>
-          </label>
-          <div tabindex="0" class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
-            <div class="card-body">
-              <CSVLink data={data.data_0001DO_1} filename={"center_DO_1.csv"}><p className='text-base'>center DO 1</p></CSVLink>
-              <CSVLink data={data.data_0001DO_2} filename={"center_DO_2.csv"}><p className='text-base'>center DO 2</p></CSVLink>
-              <CSVLink data={data.data_0001TEMP} filename={"center_TEMP.csv"}><p className='text-base'>center TEMP</p></CSVLink>
-              <CSVLink data={data.data_0002DO_1} filename={"west_DO_1.csv"}><p className='text-base'>west DO 1</p></CSVLink>
-              <CSVLink data={data.data_0002DO_2} filename={"west_DO_2.csv"}><p className='text-base'>west DO 2</p></CSVLink>
-              <CSVLink data={data.data_0002TEMP} filename={"west_TEMP.csv"}><p className='text-base'>west TEMP</p></CSVLink>
-              <CSVLink data={data.data_0003DO_1} filename={"east_DO_1.csv"}><p className='text-base'>east DO 1</p></CSVLink>
-              <CSVLink data={data.data_0003DO_2} filename={"east_DO_2.csv"}><p className='text-base'>east DO 2</p></CSVLink>
-              <CSVLink data={data.data_0003TEMP} filename={"east_TEMP.csv"}><p className='text-base'>east TEMP</p></CSVLink>
+          <div class="dropdown dropdown-end mr-2">
+            <label tabindex="0" class="btn btn-accent">
+              <p>export</p>
+            </label>
+            <div tabindex="0" class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
+              <div class="card-body">
+                <CSVLink data={data.data_0001DO_1} filename={"center_DO_1.csv"}><p className='text-base'>center DO 1</p></CSVLink>
+                <CSVLink data={data.data_0001DO_2} filename={"center_DO_2.csv"}><p className='text-base'>center DO 2</p></CSVLink>
+                <CSVLink data={data.data_0001TEMP} filename={"center_TEMP.csv"}><p className='text-base'>center TEMP</p></CSVLink>
+                <CSVLink data={data.data_0002DO_1} filename={"west_DO_1.csv"}><p className='text-base'>west DO 1</p></CSVLink>
+                <CSVLink data={data.data_0002DO_2} filename={"west_DO_2.csv"}><p className='text-base'>west DO 2</p></CSVLink>
+                <CSVLink data={data.data_0002TEMP} filename={"west_TEMP.csv"}><p className='text-base'>west TEMP</p></CSVLink>
+                <CSVLink data={data.data_0003DO_1} filename={"east_DO_1.csv"}><p className='text-base'>east DO 1</p></CSVLink>
+                <CSVLink data={data.data_0003DO_2} filename={"east_DO_2.csv"}><p className='text-base'>east DO 2</p></CSVLink>
+                <CSVLink data={data.data_0003TEMP} filename={"east_TEMP.csv"}><p className='text-base'>east TEMP</p></CSVLink>
+              </div>
             </div>
           </div>
-        </div>
-
-              <select value={selectedTimerange} onChange={handleSelectChange} className="select">
-                {options.map(option => (
-                  <option key={option.value} value={option.value}>
-                    {option.text}
-                  </option>
-                ))}
-              </select>
-
-
-        </div>
+          <select value={selectedTimerange} onChange={handleSelectChange} className="select">
+            {options.map(option => (
+              <option key={option.value} value={option.value}>
+                {option.text}
+              </option>
+            ))}
+          </select>
       </div>
+    </div>
 
       <div className="text-center content-center">
 
         <div class="card w-11/12 md:w-5/6 bg-base-100 shadow-xl mx-auto mt-5">
           <div class="card-body px-1 md:px-10">
             <h2 class="card-title text-5xl">center</h2>
-            <p>DO</p>
+            <p className='text-xl font-semibold'>latest data</p>
+            <div class="stats shadow mb-3">
+              {data.data_0001DO_1[data.data_0001DO_1.length-1]?
+              <div class="stat">
+                <div class="stat-title">DO 1</div>
+                <div class="stat-value text-primary">{data.data_0001DO_1[data.data_0001DO_1.length-1].value}mg/L</div>
+                <div class="stat-desc">{moment(data.data_0001DO_1[data.data_0001DO_1.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+              </div>
+              :<></>}
+
+              {data.data_0001DO_2[data.data_0001DO_2.length-1]?
+              <div class="stat">
+                <div class="stat-title">DO 2</div>
+                <div class="stat-value text-primary">{data.data_0001DO_2[data.data_0001DO_2.length-1].value}mg/L</div>
+                <div class="stat-desc">{moment(data.data_0001DO_2[data.data_0001DO_2.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+              </div>
+              :<></>}
+
+              {data.data_0001TEMP[data.data_0001TEMP.length-1]?
+              <div class="stat">
+                <div class="stat-title">TEMP</div>
+                <div class="stat-value text-primary">{data.data_0001TEMP[data.data_0001TEMP.length-1].value}°C</div>
+                <div class="stat-desc">{moment(data.data_0001TEMP[data.data_0001TEMP.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+              </div>
+              :<></>}
+            </div>
+            <p className='text-xl font-semibold'>DO</p>
             <ResponsiveContainer width="100%" height={400}>
               <LineChart width={1000} height={400} className="mx-auto">
                 <Line type="monotone" dataKey="value" data={data.data_0001DO_1} name="DO1" stroke="#8884d8" dot={false}/>
@@ -141,7 +164,7 @@ function App() {
               </div>
             </div>
             :<></>}
-            <p>TEMP</p>
+            <p className='text-xl font-semibold'>TEMP</p>
             <ResponsiveContainer width="100%" height={400}>
               <LineChart width={1000} height={400} data={data.data_0001TEMP} className="mx-auto">
                 <Line type="monotone" dataKey="value" name="TEMP" stroke="#ffc658" dot={false}/>
@@ -166,7 +189,33 @@ function App() {
         <div class="card w-11/12 md:w-5/6 bg-base-100 shadow-xl mx-auto mt-5">
           <div class="card-body px-1 md:px-10">
             <h2 class="card-title text-5xl">west</h2>
-            <p>DO</p>
+            <p className='text-xl font-semibold'>latest data</p>
+            <div class="stats shadow">
+              {data.data_0002DO_1[data.data_0002DO_1.length-1]?
+              <div class="stat">
+                <div class="stat-title">DO 1</div>
+                <div class="stat-value text-primary">{data.data_0002DO_1[data.data_0002DO_1.length-1].value}mg/L</div>
+                <div class="stat-desc">{moment(data.data_0002DO_1[data.data_0002DO_1.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+              </div>
+              :<></>}
+
+              {data.data_0002DO_2[data.data_0002DO_2.length-1]?
+              <div class="stat">
+                <div class="stat-title">DO 2</div>
+                <div class="stat-value text-primary">{data.data_0002DO_2[data.data_0002DO_2.length-1].value}mg/L</div>
+                <div class="stat-desc">{moment(data.data_0002DO_2[data.data_0002DO_2.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+              </div>
+              :<></>}
+
+              {data.data_0002TEMP[data.data_0002TEMP.length-1]?
+              <div class="stat">
+                <div class="stat-title">TEMP</div>
+                <div class="stat-value text-primary">{data.data_0002TEMP[data.data_0002TEMP.length-1].value}°C</div>
+                <div class="stat-desc">{moment(data.data_0002TEMP[data.data_0002TEMP.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+              </div>
+              :<></>}
+            </div>
+            <p className='text-xl font-semibold'>DO</p>
             <ResponsiveContainer width="100%" height={400}>
               <LineChart width={1000} height={400} className="mx-auto">
                 <Line type="monotone" dataKey="value" data={data.data_0002DO_1} name="DO1" stroke="#8884d8" dot={false}/>
@@ -194,7 +243,7 @@ function App() {
               </div>
             </div>
             :<></>}
-            <p>TEMP</p>
+            <p className='text-xl font-semibold'>TEMP</p>
             <ResponsiveContainer width="100%" height={400}>
               <LineChart width={1000} height={400} data={data.data_0002TEMP} className="mx-auto">
                 <Line type="monotone" dataKey="value" name="TEMP" stroke="#ffc658" dot={false}/>
@@ -219,7 +268,33 @@ function App() {
         <div class="card w-11/12 md:w-5/6 bg-base-100 shadow-xl mx-auto mt-5">
           <div class="card-body px-1 md:px-10">
             <h2 class="card-title text-5xl">east</h2>
-            <p>DO</p>
+            <p className='text-xl font-semibold'>latest data</p>
+            <div class="stats shadow">
+              {data.data_0003DO_1[data.data_0003DO_1.length-1]?
+              <div class="stat">
+                <div class="stat-title">DO 1</div>
+                <div class="stat-value text-primary">{data.data_0003DO_1[data.data_0003DO_1.length-1].value}mg/L</div>
+                <div class="stat-desc">{moment(data.data_0003DO_1[data.data_0003DO_1.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+              </div>
+              :<></>}
+
+              {data.data_0003DO_2[data.data_0003DO_2.length-1]?
+              <div class="stat">
+                <div class="stat-title">DO 2</div>
+                <div class="stat-value text-primary">{data.data_0003DO_2[data.data_0003DO_2.length-1].value}mg/L</div>
+                <div class="stat-desc">{moment(data.data_0003DO_2[data.data_0003DO_2.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+              </div>
+              :<></>}
+
+              {data.data_0003TEMP[data.data_0003TEMP.length-1]?
+              <div class="stat">
+                <div class="stat-title">TEMP</div>
+                <div class="stat-value text-primary">{data.data_0003TEMP[data.data_0003TEMP.length-1].value}°C</div>
+                <div class="stat-desc">{moment(data.data_0003TEMP[data.data_0003TEMP.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+              </div>
+              :<></>}
+            </div>
+            <p className='text-xl font-semibold'>DO</p>
             <ResponsiveContainer width="100%" height={400}>
               <LineChart width={1000} height={400} className="mx-auto">
                 <Line type="monotone" dataKey="value" data={data.data_0003DO_1} name="DO1" stroke="#8884d8" dot={false}/>
@@ -247,7 +322,7 @@ function App() {
               </div>
             </div>
             :<></>}
-            <p>TEMP</p>
+            <p className='text-xl font-semibold'>TEMP</p>
             <ResponsiveContainer width="100%" height={400}>
               <LineChart width={1000} height={400} data={data.data_0003TEMP} className="mx-auto">
                 <Line type="monotone" dataKey="value" name="TEMP" stroke="#ffc658" dot={false}/>
