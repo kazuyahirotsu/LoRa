@@ -3,6 +3,7 @@ import api from './api/timestream'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import moment from 'moment'
 import { CSVLink } from "react-csv";
+import { CiExport } from "react-icons/ci";
 
 function App() {
   const [data, setData] = useState({
@@ -25,8 +26,13 @@ function App() {
     {value: '14d', text: '14d'},
   ];
   const [selectedTimerange, setSelectedTimerange] = useState(options[0].value);
-  const fetchData = async (measure_name,timerange) => {
-      const q = `SELECT * FROM izunuma.izunuma WHERE (measure_name='${measure_name}') AND time >= ago(${timerange}) ORDER BY time ASC`
+  const [timerangeStart, setTimerangeStart] = useState(moment(new Date()).subtract(24,'hours').format("YYYY-MM-DD HH:mm:ss"));
+  const [timerangeEnd, setTimerangeEnd] = useState(moment(new Date()).format("YYYY-MM-DD HH:mm:ss"));
+  const [textInputTimerangeStart, setTextInputTimerangeStart] = useState(moment(new Date()).subtract(24,'hours').format("YYYY-MM-DD HH:mm:ss"));
+  const [textInputTimerangeEnd, setTextInputTimerangeEnd] = useState(moment(new Date()).format("YYYY-MM-DD HH:mm:ss"));
+
+  const fetchData = async (measure_name,timerangeStart,timerangeEnd) => {
+      const q = `SELECT * FROM izunuma.izunuma WHERE (measure_name='${measure_name}') AND time BETWEEN '${moment(timerangeStart).subtract(9,'hours').format("YYYY-MM-DD HH:mm:ss")}' AND '${moment(timerangeEnd).subtract(9,'hours').format("YYYY-MM-DD HH:mm:ss")}' ORDER BY time ASC`
       const res = await api.rawQuery(q);
       const chartData = res.Rows.map((d)=>({
         time: moment(d.Data[2].ScalarValue.slice(0, -10),"YYYY-MM-DD HH:mm:ss").add(9, 'hours').valueOf(),
@@ -56,16 +62,37 @@ function App() {
   useEffect(() => {
     const fetch = async () => {
       data_name.map(async (d)=>{
-        const res = await fetchData(d[0],selectedTimerange);
+        const res = await fetchData(d[0],timerangeStart, timerangeEnd);
         setData((data) => ({ ...data, [d[1]]: res }));
       })
     }
     fetch()
-  }, [selectedTimerange])
+  }, [timerangeStart,timerangeEnd])
 
+  useEffect(() => {
+    if(selectedTimerange[selectedTimerange.length-1]==='h'){
+      setTimerangeStart(moment(new Date()).subtract(selectedTimerange.substr(0, selectedTimerange.indexOf('h')),'hours').format("YYYY-MM-DD HH:mm:ss"));
+      setTextInputTimerangeStart(moment(new Date()).subtract(selectedTimerange.substr(0, selectedTimerange.indexOf('h')),'hours').format("YYYY-MM-DD HH:mm:ss"));
+    }else if(selectedTimerange[selectedTimerange.length-1]==='d'){
+      setTimerangeStart(moment(new Date()).subtract(selectedTimerange.substr(0, selectedTimerange.indexOf('d')),'days').format("YYYY-MM-DD HH:mm:ss"));
+      setTextInputTimerangeStart(moment(new Date()).subtract(selectedTimerange.substr(0, selectedTimerange.indexOf('d')),'days').format("YYYY-MM-DD HH:mm:ss"));
+    }
+    setTimerangeEnd(moment(new Date()).format("YYYY-MM-DD HH:mm:ss"));
+    setTextInputTimerangeEnd(moment(new Date()).format("YYYY-MM-DD HH:mm:ss"));
+  }, [selectedTimerange])
 
   const handleSelectChange = e => {
     setSelectedTimerange(e.target.value);
+  };
+  const handleChangeTextInputTimerangeStart = e => {
+    setTextInputTimerangeStart(e.target.value);
+  };
+  const handleChangeTextInputTimerangeEnd = e => {
+    setTextInputTimerangeEnd(e.target.value);
+  };
+  const onSubmitTimerange = e => {
+    setTimerangeStart(textInputTimerangeStart);
+    setTimerangeEnd(textInputTimerangeEnd);
   };
 
   return (
@@ -77,9 +104,31 @@ function App() {
           <a class="normal-case md:text-3xl text-2xl ml-2 md:mx-auto">IZUNUMA</a>
         </div>
         <div class="navbar-end">
+          <select value={selectedTimerange} onChange={handleSelectChange} className="select mr-2">
+            {options.map(option => (
+              <option key={option.value} value={option.value}>
+                {option.text}
+              </option>
+            ))}
+          </select>
+          <div class="dropdown dropdown-end mr-2">
+            <label tabindex="0" class="btn">
+              <p>custom range</p>
+            </label>
+            <div tabindex="0" class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
+              <div class="card-body text-center">
+              <p className='text-accent'>YYYY-MM-DD HH:mm:ss</p>
+              <input className='input' type="text" value={textInputTimerangeStart} onChange={handleChangeTextInputTimerangeStart} />
+              <input className='input' type="text" value={textInputTimerangeEnd} onChange={handleChangeTextInputTimerangeEnd} />
+              <button className="btn" onClick={onSubmitTimerange}>
+                show
+              </button>
+              </div>
+            </div>
+          </div>
           <div class="dropdown dropdown-end mr-2">
             <label tabindex="0" class="btn btn-accent">
-              <p>export</p>
+              <CiExport />
             </label>
             <div tabindex="0" class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
               <div class="card-body">
@@ -95,18 +144,10 @@ function App() {
               </div>
             </div>
           </div>
-          <select value={selectedTimerange} onChange={handleSelectChange} className="select">
-            {options.map(option => (
-              <option key={option.value} value={option.value}>
-                {option.text}
-              </option>
-            ))}
-          </select>
       </div>
     </div>
 
       <div className="text-center content-center">
-
         <div class="card w-11/12 md:w-5/6 bg-base-100 shadow-xl mx-auto mt-5">
           <div class="card-body px-1 md:px-10">
             <h2 class="card-title text-5xl">center</h2>
@@ -148,7 +189,7 @@ function App() {
                 <Legend />
               </LineChart>
             </ResponsiveContainer>
-            {data.data_0001DO_1.length==0?
+            {data.data_0001DO_1.length===0?
             <div class="alert alert-error shadow-lg">
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -156,7 +197,7 @@ function App() {
               </div>
             </div>
             :<></>}
-            {data.data_0001DO_2.length==0?
+            {data.data_0001DO_2.length===0?
             <div class="alert alert-error shadow-lg">
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -175,7 +216,7 @@ function App() {
                 <Legend />
               </LineChart>
             </ResponsiveContainer>
-            {data.data_0001TEMP.length==0?
+            {data.data_0001TEMP.length===0?
             <div class="alert alert-error shadow-lg">
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -227,7 +268,7 @@ function App() {
                 <Legend />
               </LineChart>
             </ResponsiveContainer>
-            {data.data_0002DO_1.length==0?
+            {data.data_0002DO_1.length===0?
             <div class="alert alert-error shadow-lg">
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -235,7 +276,7 @@ function App() {
               </div>
             </div>
             :<></>}
-            {data.data_0002DO_2.length==0?
+            {data.data_0002DO_2.length===0?
             <div class="alert alert-error shadow-lg">
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -254,7 +295,7 @@ function App() {
                 <Legend />
               </LineChart>
             </ResponsiveContainer>
-            {data.data_0002TEMP.length==0?
+            {data.data_0002TEMP.length===0?
             <div class="alert alert-error shadow-lg">
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -306,7 +347,7 @@ function App() {
                 <Legend />
               </LineChart>
             </ResponsiveContainer>
-            {data.data_0003DO_1.length==0?
+            {data.data_0003DO_1.length===0?
             <div class="alert alert-error shadow-lg">
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -314,7 +355,7 @@ function App() {
               </div>
             </div>
             :<></>}
-            {data.data_0003DO_2.length==0?
+            {data.data_0003DO_2.length===0?
             <div class="alert alert-error shadow-lg">
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -333,7 +374,7 @@ function App() {
                 <Legend />
               </LineChart>
             </ResponsiveContainer>
-            {data.data_0003TEMP.length==0?
+            {data.data_0003TEMP.length===0?
             <div class="alert alert-error shadow-lg">
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
