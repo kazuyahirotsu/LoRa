@@ -22,13 +22,14 @@ function App() {
     {value: '6h', text: '6h'},
     {value: '1h', text: '1h'},
     {value: '7d', text: '7d'},
+    {value: '14d', text: '14d'},
   ];
   const [selectedTimerange, setSelectedTimerange] = useState(options[0].value);
   const fetchData = async (measure_name,timerange) => {
       const q = `SELECT * FROM izunuma.izunuma WHERE (measure_name='${measure_name}') AND time >= ago(${timerange}) ORDER BY time ASC`
       const res = await api.rawQuery(q);
       const chartData = res.Rows.map((d)=>({
-        time: moment(d.Data[2].ScalarValue.slice(0, -10),"YYYY-MM-DD HH:mm:ss").valueOf(),
+        time: moment(d.Data[2].ScalarValue.slice(0, -10),"YYYY-MM-DD HH:mm:ss").add(9, 'hours').valueOf(),
         value: d.Data[3].ScalarValue,
       }))
       return chartData
@@ -82,15 +83,15 @@ function App() {
           </label>
           <div tabindex="0" class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
             <div class="card-body">
-              <CSVLink data={data.data_0001DO_1} filename={"center_DO_1.csv"}>center DO 1</CSVLink>
-              <CSVLink data={data.data_0001DO_2} filename={"center_DO_2.csv"}>center DO 2</CSVLink>
-              <CSVLink data={data.data_0001TEMP} filename={"center_TEMP.csv"}>center TEMP</CSVLink>
-              <CSVLink data={data.data_0002DO_1} filename={"west_DO_1.csv"}>west DO 1</CSVLink>
-              <CSVLink data={data.data_0002DO_2} filename={"west_DO_2.csv"}>west DO 2</CSVLink>
-              <CSVLink data={data.data_0002TEMP} filename={"west_TEMP.csv"}>west TEMP</CSVLink>
-              <CSVLink data={data.data_0003DO_1} filename={"east_DO_1.csv"}>east DO 1</CSVLink>
-              <CSVLink data={data.data_0003DO_2} filename={"east_DO_2.csv"}>east DO 2</CSVLink>
-              <CSVLink data={data.data_0003TEMP} filename={"east_TEMP.csv"}>east TEMP</CSVLink>
+              <CSVLink data={data.data_0001DO_1} filename={"center_DO_1.csv"}><p className='text-base'>center DO 1</p></CSVLink>
+              <CSVLink data={data.data_0001DO_2} filename={"center_DO_2.csv"}><p className='text-base'>center DO 2</p></CSVLink>
+              <CSVLink data={data.data_0001TEMP} filename={"center_TEMP.csv"}><p className='text-base'>center TEMP</p></CSVLink>
+              <CSVLink data={data.data_0002DO_1} filename={"west_DO_1.csv"}><p className='text-base'>west DO 1</p></CSVLink>
+              <CSVLink data={data.data_0002DO_2} filename={"west_DO_2.csv"}><p className='text-base'>west DO 2</p></CSVLink>
+              <CSVLink data={data.data_0002TEMP} filename={"west_TEMP.csv"}><p className='text-base'>west TEMP</p></CSVLink>
+              <CSVLink data={data.data_0003DO_1} filename={"east_DO_1.csv"}><p className='text-base'>east DO 1</p></CSVLink>
+              <CSVLink data={data.data_0003DO_2} filename={"east_DO_2.csv"}><p className='text-base'>east DO 2</p></CSVLink>
+              <CSVLink data={data.data_0003TEMP} filename={"east_TEMP.csv"}><p className='text-base'>east TEMP</p></CSVLink>
             </div>
           </div>
         </div>
@@ -118,7 +119,7 @@ function App() {
                 <Line type="monotone" dataKey="value" data={data.data_0001DO_1} name="DO1" stroke="#8884d8" dot={false}/>
                 <Line type="monotone" dataKey="value" data={data.data_0001DO_2} name="DO2" stroke="#82ca9d" dot={false}/>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="time" type="number" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
+                <XAxis dataKey="time" type="number" interval="preserveStart" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
                 <YAxis type="number" domain={[0,20]}/>
                 <Tooltip labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
                 <Legend />
@@ -145,7 +146,7 @@ function App() {
               <LineChart width={1000} height={400} data={data.data_0001TEMP} className="mx-auto">
                 <Line type="monotone" dataKey="value" name="TEMP" stroke="#ffc658" dot={false}/>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="time" type="number" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
+                <XAxis dataKey="time" type="number" interval="preserveStart" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
                 <YAxis type="number" domain={[0,20]}/>
                 <Tooltip labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
                 <Legend />
@@ -171,7 +172,7 @@ function App() {
                 <Line type="monotone" dataKey="value" data={data.data_0002DO_1} name="DO1" stroke="#8884d8" dot={false}/>
                 <Line type="monotone" dataKey="value" data={data.data_0002DO_2} name="DO2" stroke="#82ca9d" dot={false}/>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="time" type="number" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
+                <XAxis dataKey="time" type="number" interval="preserveStart" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
                 <YAxis type="number" domain={[0,20]}/>
                 <Tooltip labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
                 <Legend />
@@ -198,7 +199,7 @@ function App() {
               <LineChart width={1000} height={400} data={data.data_0002TEMP} className="mx-auto">
                 <Line type="monotone" dataKey="value" name="TEMP" stroke="#ffc658" dot={false}/>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="time" type="number" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
+                <XAxis dataKey="time" type="number" interval="preserveStart" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
                 <YAxis type="number" domain={[0,20]}/>
                 <Tooltip labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
                 <Legend />
@@ -224,7 +225,7 @@ function App() {
                 <Line type="monotone" dataKey="value" data={data.data_0003DO_1} name="DO1" stroke="#8884d8" dot={false}/>
                 <Line type="monotone" dataKey="value" data={data.data_0003DO_2} name="DO2" stroke="#82ca9d" dot={false}/>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="time" type="number" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
+                <XAxis dataKey="time" type="number" interval="preserveStart" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
                 <YAxis type="number" domain={[0,20]}/>
                 <Tooltip labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
                 <Legend />
@@ -251,7 +252,7 @@ function App() {
               <LineChart width={1000} height={400} data={data.data_0003TEMP} className="mx-auto">
                 <Line type="monotone" dataKey="value" name="TEMP" stroke="#ffc658" dot={false}/>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="time" type="number" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
+                <XAxis dataKey="time" type="number" interval="preserveStart" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
                 <YAxis type="number" domain={[0,20]}/>
                 <Tooltip labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
                 <Legend />
