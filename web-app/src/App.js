@@ -17,6 +17,17 @@ function App() {
     data_0003DO_2:[],
     data_0003TEMP:[],
   })
+  const [latestData, setLatestData] = useState({
+    data_0001DO_1:[],
+    data_0001DO_2:[],
+    data_0001TEMP:[],
+    data_0002DO_1:[],
+    data_0002DO_2:[],
+    data_0002TEMP:[],
+    data_0003DO_1:[],
+    data_0003DO_2:[],
+    data_0003TEMP:[],
+  })
   const options = [
     {value: '24h', text: '24h'},
     {value: '12h', text: '12h'},
@@ -40,6 +51,15 @@ function App() {
       }))
       return chartData
   }
+  const fetchLatestData = async (measure_name) => {
+    const q = `SELECT * FROM izunuma.izunuma WHERE (measure_name='${measure_name}')  ORDER BY time DESC LIMIT 1`
+    const res = await api.rawQuery(q);
+    const chartData = res.Rows.map((d)=>({
+      time: moment(d.Data[2].ScalarValue.slice(0, -10),"YYYY-MM-DD HH:mm:ss").add(9, 'hours').valueOf(),
+      value: d.Data[3].ScalarValue,
+    }))
+    return chartData
+}
 
   useEffect(() => {
     const initiallize = async () => {
@@ -60,9 +80,16 @@ function App() {
     ['0003TEMP','data_0003TEMP'],]
 
   useEffect(() => {
+    const fetchLatest = async () => {
+      data_name.map(async (d)=>{
+        const res = await fetchLatestData(d[0]);
+        setLatestData((data) => ({ ...data, [d[1]]: res }));
+      })
+    }
+    fetchLatest()
     const fetch = async () => {
       data_name.map(async (d)=>{
-        const res = await fetchData(d[0],timerangeStart, timerangeEnd);
+        const res = await fetchData(d[0], timerangeStart, timerangeEnd);
         setData((data) => ({ ...data, [d[1]]: res }));
       })
     }
@@ -153,27 +180,27 @@ function App() {
             <h2 class="card-title text-5xl">center</h2>
             <p className='text-xl font-semibold'>latest data</p>
             <div class="stats shadow mb-3">
-              {data.data_0001DO_1[data.data_0001DO_1.length-1]?
+              {latestData.data_0001DO_1[latestData.data_0001DO_1.length-1]?
               <div class="stat">
                 <div class="stat-title">DO 1</div>
-                <div class="stat-value text-primary">{data.data_0001DO_1[data.data_0001DO_1.length-1].value}mg/L</div>
-                <div class="stat-desc">{moment(data.data_0001DO_1[data.data_0001DO_1.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+                <div class="stat-value text-primary">{latestData.data_0001DO_1[latestData.data_0001DO_1.length-1].value}mg/L</div>
+                <div class="stat-desc">{moment(latestData.data_0001DO_1[latestData.data_0001DO_1.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
               </div>
               :<></>}
 
-              {data.data_0001DO_2[data.data_0001DO_2.length-1]?
+              {latestData.data_0001DO_2[latestData.data_0001DO_2.length-1]?
               <div class="stat">
                 <div class="stat-title">DO 2</div>
-                <div class="stat-value text-primary">{data.data_0001DO_2[data.data_0001DO_2.length-1].value}mg/L</div>
-                <div class="stat-desc">{moment(data.data_0001DO_2[data.data_0001DO_2.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+                <div class="stat-value text-primary">{latestData.data_0001DO_2[latestData.data_0001DO_2.length-1].value}mg/L</div>
+                <div class="stat-desc">{moment(latestData.data_0001DO_2[latestData.data_0001DO_2.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
               </div>
               :<></>}
 
-              {data.data_0001TEMP[data.data_0001TEMP.length-1]?
+              {latestData.data_0001TEMP[latestData.data_0001TEMP.length-1]?
               <div class="stat">
                 <div class="stat-title">TEMP</div>
-                <div class="stat-value text-primary">{data.data_0001TEMP[data.data_0001TEMP.length-1].value}°C</div>
-                <div class="stat-desc">{moment(data.data_0001TEMP[data.data_0001TEMP.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+                <div class="stat-value text-primary">{latestData.data_0001TEMP[latestData.data_0001TEMP.length-1].value}°C</div>
+                <div class="stat-desc">{moment(latestData.data_0001TEMP[latestData.data_0001TEMP.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
               </div>
               :<></>}
             </div>
@@ -232,27 +259,27 @@ function App() {
             <h2 class="card-title text-5xl">west</h2>
             <p className='text-xl font-semibold'>latest data</p>
             <div class="stats shadow">
-              {data.data_0002DO_1[data.data_0002DO_1.length-1]?
+              {latestData.data_0002DO_1[latestData.data_0002DO_1.length-1]?
               <div class="stat">
                 <div class="stat-title">DO 1</div>
-                <div class="stat-value text-primary">{data.data_0002DO_1[data.data_0002DO_1.length-1].value}mg/L</div>
-                <div class="stat-desc">{moment(data.data_0002DO_1[data.data_0002DO_1.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+                <div class="stat-value text-primary">{latestData.data_0002DO_1[latestData.data_0002DO_1.length-1].value}mg/L</div>
+                <div class="stat-desc">{moment(latestData.data_0002DO_1[latestData.data_0002DO_1.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
               </div>
               :<></>}
 
-              {data.data_0002DO_2[data.data_0002DO_2.length-1]?
+              {latestData.data_0002DO_2[latestData.data_0002DO_2.length-1]?
               <div class="stat">
                 <div class="stat-title">DO 2</div>
-                <div class="stat-value text-primary">{data.data_0002DO_2[data.data_0002DO_2.length-1].value}mg/L</div>
-                <div class="stat-desc">{moment(data.data_0002DO_2[data.data_0002DO_2.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+                <div class="stat-value text-primary">{latestData.data_0002DO_2[latestData.data_0002DO_2.length-1].value}mg/L</div>
+                <div class="stat-desc">{moment(latestData.data_0002DO_2[latestData.data_0002DO_2.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
               </div>
               :<></>}
 
-              {data.data_0002TEMP[data.data_0002TEMP.length-1]?
+              {latestData.data_0002TEMP[latestData.data_0002TEMP.length-1]?
               <div class="stat">
                 <div class="stat-title">TEMP</div>
-                <div class="stat-value text-primary">{data.data_0002TEMP[data.data_0002TEMP.length-1].value}°C</div>
-                <div class="stat-desc">{moment(data.data_0002TEMP[data.data_0002TEMP.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+                <div class="stat-value text-primary">{latestData.data_0002TEMP[latestData.data_0002TEMP.length-1].value}°C</div>
+                <div class="stat-desc">{moment(latestData.data_0002TEMP[latestData.data_0002TEMP.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
               </div>
               :<></>}
             </div>
@@ -311,27 +338,27 @@ function App() {
             <h2 class="card-title text-5xl">east</h2>
             <p className='text-xl font-semibold'>latest data</p>
             <div class="stats shadow">
-              {data.data_0003DO_1[data.data_0003DO_1.length-1]?
+              {latestData.data_0003DO_1[latestData.data_0003DO_1.length-1]?
               <div class="stat">
                 <div class="stat-title">DO 1</div>
-                <div class="stat-value text-primary">{data.data_0003DO_1[data.data_0003DO_1.length-1].value}mg/L</div>
-                <div class="stat-desc">{moment(data.data_0003DO_1[data.data_0003DO_1.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+                <div class="stat-value text-primary">{latestData.data_0003DO_1[latestData.data_0003DO_1.length-1].value}mg/L</div>
+                <div class="stat-desc">{moment(latestData.data_0003DO_1[latestData.data_0003DO_1.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
               </div>
               :<></>}
 
-              {data.data_0003DO_2[data.data_0003DO_2.length-1]?
+              {latestData.data_0003DO_2[latestData.data_0003DO_2.length-1]?
               <div class="stat">
                 <div class="stat-title">DO 2</div>
-                <div class="stat-value text-primary">{data.data_0003DO_2[data.data_0003DO_2.length-1].value}mg/L</div>
-                <div class="stat-desc">{moment(data.data_0003DO_2[data.data_0003DO_2.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+                <div class="stat-value text-primary">{latestData.data_0003DO_2[latestData.data_0003DO_2.length-1].value}mg/L</div>
+                <div class="stat-desc">{moment(latestData.data_0003DO_2[latestData.data_0003DO_2.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
               </div>
               :<></>}
 
-              {data.data_0003TEMP[data.data_0003TEMP.length-1]?
+              {latestData.data_0003TEMP[latestData.data_0003TEMP.length-1]?
               <div class="stat">
                 <div class="stat-title">TEMP</div>
-                <div class="stat-value text-primary">{data.data_0003TEMP[data.data_0003TEMP.length-1].value}°C</div>
-                <div class="stat-desc">{moment(data.data_0003TEMP[data.data_0003TEMP.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
+                <div class="stat-value text-primary">{latestData.data_0003TEMP[latestData.data_0003TEMP.length-1].value}°C</div>
+                <div class="stat-desc">{moment(latestData.data_0003TEMP[latestData.data_0003TEMP.length-1].time).format("YYYY-MM-DD HH:mm:ss")}</div>
               </div>
               :<></>}
             </div>
