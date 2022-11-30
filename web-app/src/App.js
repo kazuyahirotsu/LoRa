@@ -212,7 +212,7 @@ function App() {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="time" type="number" interval="preserveStart" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
                 <YAxis type="number" domain={[0,20]}/>
-                <Tooltip labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
+                <Tooltip formatter={(value, name, props) => value+"mg/L"} labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
                 <Legend />
               </LineChart>
             </ResponsiveContainer>
@@ -239,7 +239,7 @@ function App() {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="time" type="number" interval="preserveStart" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
                 <YAxis type="number" domain={[0,20]}/>
-                <Tooltip labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
+                <Tooltip formatter={(value, name, props) => value+"°C"} labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
                 <Legend />
               </LineChart>
             </ResponsiveContainer>
@@ -291,7 +291,7 @@ function App() {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="time" type="number" interval="preserveStart" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
                 <YAxis type="number" domain={[0,20]}/>
-                <Tooltip labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
+                <Tooltip formatter={(value, name, props) => value+"mg/L"} labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
                 <Legend />
               </LineChart>
             </ResponsiveContainer>
@@ -318,7 +318,7 @@ function App() {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="time" type="number" interval="preserveStart" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
                 <YAxis type="number" domain={[0,20]}/>
-                <Tooltip labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
+                <Tooltip formatter={(value, name, props) => value+"°C"} labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
                 <Legend />
               </LineChart>
             </ResponsiveContainer>
@@ -370,7 +370,7 @@ function App() {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="time" type="number" interval="preserveStart" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
                 <YAxis type="number" domain={[0,20]}/>
-                <Tooltip labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
+                <Tooltip formatter={(value, name, props) => value+"mg/L"} labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
                 <Legend />
               </LineChart>
             </ResponsiveContainer>
@@ -397,7 +397,7 @@ function App() {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="time" type="number" interval="preserveStart" tickFormatter={(unixTimestamp) => moment(unixTimestamp).format("YYYY-MM-DD HH:mm:ss")} domain={['auto', 'auto']} scale="time"  allowDuplicatedCategory={false} angle={-45} textAnchor="end" tick={{ fontSize: '.7rem', color: 'white'}} height={100} className="text-white"/>
                 <YAxis type="number" domain={[0,20]}/>
-                <Tooltip labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
+                <Tooltip formatter={(value, name, props) => value+"°C"} labelFormatter={(label) => moment(label).format("YYYY-MM-DD HH:mm:ss")}/>
                 <Legend />
               </LineChart>
             </ResponsiveContainer>
