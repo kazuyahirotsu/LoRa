@@ -267,6 +267,14 @@ function App() {
             :<></>}
           </div>
         </div>
+        <div className="card w-11/12 md:w-5/6 bg-base-100 shadow-xl mx-auto mt-5">
+          <div className="card-body px-1 md:px-10 text-left">
+            <p>DO1: 水面下20cm</p>
+            <p>DO2: 地面上20cm</p>
+            <p>TEMP: 地面上20cm</p>
+            <p>DO1,2の水温補正にはTEMPを使っています</p>
+          </div>
+        </div>
       </div>
 
       <footer className="footer p-10 bg-neutral text-neutral-content mt-5 text-center content-center">
