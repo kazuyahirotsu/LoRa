@@ -71,13 +71,13 @@ def setup():
   time.sleep(1)
 
    # command g dstID
-  send_req("g FFFF\r\n")
+  send_req("g 0000\r\n")
   show_res()
   time.sleep(1)
 
   # command l ack off (2) 
   # command l ack on (1) 
-  send_req("l 1\r\n")
+  send_req("l 2\r\n")
   show_res()
   time.sleep(1)
    
