@@ -1,0 +1,11 @@
+// put this here -> /etc/systemd/system/izunuma.service
+
+[Unit]
+Description=rssi test
+After=multi-user.target
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/python3 /root/lora-gateway/hirotsu/LoRa/project/raspberrypi/send_7067.py
+[Install]
+WantedBy=multi-user.target
