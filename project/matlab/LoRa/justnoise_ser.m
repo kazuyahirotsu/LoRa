@@ -3,14 +3,20 @@ SF = 10 ;
 BW = 125e3 ;
 fc = 915e6 ;
 Power = 14 ;
-message = "000000000000000000000000000000000000000000" ;
+message = "0" ;
 zeroNum = strlength(message);
 Fs = 10e6 ;
 Fc = 921.5e6 ;
-res_justnoise_ser=zeros(2,61);
-for i=-39:0.1:-33
+
+low_snr = -45;
+high_snr = -30;
+snr_num = (high_snr - low_snr)*10 + 1;
+simulation_num = 2;
+res_justnoise_ser=zeros(2,snr_num);
+
+for i=low_snr:0.1:high_snr
     SERAve = 0;
-    for j=1:20
+    for j=1:simulation_num
         signalIQ = LoRa_Tx(message,BW,SF,Power,Fs,Fc - fc);
         Snr = i;
         noise = randn(size(signalIQ))*std(signalIQ)/db2mag(Snr);
@@ -25,11 +31,11 @@ for i=-39:0.1:-33
                 end
             end
         end
-        SERAve = SERAve + SER/20;
+        SERAve = SERAve + SER/simulation_num;
     end
-    res_justnoise_ser(1,int64((i+39)*10)+1)=i;
-    res_justnoise_ser(2,int64((i+39)*10)+1)=SERAve;
-    disp([num2str(((i+39)*10+1)*100/61) '% done' ])
+    res_justnoise_ser(1,int64((i-low_snr)*10)+1)=i;
+    res_justnoise_ser(2,int64((i-low_snr)*10)+1)=SERAve;
+    disp([num2str(((i-low_snr)*10+1)*100/snr_num) '% done' ])
 end
 %% plot
 figure
