@@ -113,7 +113,7 @@ void do_send(String msg, boolean sensor_data){
       delay(100);
 
       while(waiting_for_respond){
-          while (do_ss.available()){                              //if the hardware serial port_0 receives a char
+          while (do_ss.available()&&waiting_for_respond){                              //if the hardware serial port_0 receives a char
           Serial.print("received: ");
           if(sensor_data){
             sensorstring = do_ss.readStringUntil(13);           //read the string until we see a <CR>
@@ -124,11 +124,11 @@ void do_send(String msg, boolean sensor_data){
           }
           received_message_num += 1;
           }
-          if(received_message_num == 1){
+          if(received_message_num >= 1){
               received_message_num = 0;
               waiting_for_respond = false;
           }
-          if(rtc.now().unixtime() - t0 >= 5){
+          if(rtc.now().unixtime() - t0 >= 2){
             waiting_for_respond = false;
           }
           delay(100);
@@ -143,7 +143,7 @@ void do_send2(String msg, boolean sensor_data){
       delay(100);
 
       while(waiting_for_respond){
-          while (do_ss2.available()){                              //if the hardware serial port_0 receives a char
+          while (do_ss2.available()&&waiting_for_respond){                              //if the hardware serial port_0 receives a char
           Serial.print("received: ");
           if(sensor_data){
             sensorstring2 = do_ss2.readStringUntil(13);           //read the string until we see a <CR>
@@ -154,11 +154,11 @@ void do_send2(String msg, boolean sensor_data){
           }
           received_message_num += 1;
           }
-          if(received_message_num == 1){
+          if(received_message_num >= 1){
               received_message_num = 0;
               waiting_for_respond = false;
           }
-          if(rtc.now().unixtime() - t0 >= 5){
+          if(rtc.now().unixtime() - t0 >= 2){
             waiting_for_respond = false;
           }
           delay(100);
@@ -335,15 +335,15 @@ void setup() {
 //  // own network id
 //  LoRa_write("ownid 0001\r\n");
 //  delay(100);
-
+//
 //  // destination network id (parent)
 //  LoRa_write("dstid FFFF\r\n");
 //  delay(100);
-
+//
 //  // retry num
 //  LoRa_write("retry 3\r\n");
 //  delay(100);
-
+//
 //  // save
 //  LoRa_write("save\r\n");
 //  delay(10000);
