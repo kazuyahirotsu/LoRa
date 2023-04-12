@@ -1,9 +1,0 @@
-DO_uart.inoでdelay(100);だと速すぎた
-受け取るのに400~500msかかる
-send: r
-send: r
-send: r
-send: r
-send: r
-received: 10.77
-received: *OK
