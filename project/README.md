@@ -1,32 +1,36 @@
 ## esp32
 
-This folder contains ino files for esp32
+This folder contains ino files for esp32. 
 you might need to add some libraries to use them on Arduino app
 
 ## GPS-visualization-Python
 
-This foler contains python scripts for visualizing test result csv files with raspberrypi 
+This folder contains python scripts for visualizing csv files of the tests with raspberrypi 
+
+## izunuma_analysis
+
+This folder contains codes for analysis of izunuma deployment
 
 ## matlab
 
-This foler contains matlab scripts for simulating LoRa and mpsk
+This folder contains matlab scripts for simulating LoRa and mpsk
 
-## rangetest_results
+## network_simulation
 
-This foler contains test result csv files with raspberrypi
+This folder contains python scripts for simulating custom mac layer protocols
 
 ## raspberrypi
 
-This foler contains python scripts for receiving data from esp32 with LoRa and uploading to AWS timestream
+This folder contains python scripts for base node operation and test with raspberrypi
 
 ## relay
 
-This foler contains python scripts for simulating the time length of different methods for gathering data with relay
+This folder contains python scripts for basic simulation of relay
 
 ## solar
 
-This foler contains python scripts for testing a solar panel and a battery with raspberrypi
+This folder contains python scripts for testing a solar panel and a battery with raspberrypi
 
 ## weather
 
-This foler contains python scripts for simulating battery life in certain place
+This folder contains python scripts for simulating battery life in certain place
