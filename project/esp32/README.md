@@ -72,6 +72,8 @@ I tried [this mosfet](https://akizukidenshi.com/catalog/g/gI-07597/) and [this r
     - implimentation of communication methods
     - request method and timeslot method
     - file name indicates which feature that file has
+- deployment
+    - latest version of the code for deployment
 - DO_uart
     - send command to DO sensor in script
 - DO_uart_interactive
