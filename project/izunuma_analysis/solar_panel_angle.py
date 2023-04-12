@@ -7,7 +7,7 @@ min_diff = 10**6
 min_c = 0
 min_d = 0
 a = np.radians(30)
-b = np.radians(75)
+b = np.radians(60)
 
 for c_change in range(1,89):
     for d_change in range(1,89):
@@ -48,8 +48,9 @@ v3 = [v2[0]+v2[3], v2[1]+v2[4], v2[2]+v2[5], 1, np.tan(a-c-d), np.tan(b)*np.cos(
 v3 = [v2[0]+v2[3], v2[1]+v2[4], v2[2]+v2[5], 1/np.linalg.norm(np.array(v3[3:])), np.tan(a-c-d)/np.linalg.norm(np.array(v3[3:])), np.tan(b)*np.cos(a-c)*(np.tan(a-c)*np.tan(a-c-d)+1)/(np.cos(c)*np.linalg.norm(np.array(v3[3:])))]
 
 v1_ref = [v1[3], v1[4], v1[5], -v1[3], -v1[4], (v1[3]**2 + v1[4]**2) / v1[5]]
-
-soa = np.array([optimal_v,v1,v2,v3,v1_ref])
+soa0 = np.array([optimal_v])
+soa = np.array([v1,v2])
+soa1 = np.array([v3])
 
 v3_2 = v3[3:]/np.linalg.norm(np.array(v3[3:]))
 optimal_v_2 = optimal_v[3:]/np.linalg.norm(np.array(optimal_v[3:]))
@@ -63,11 +64,18 @@ print("diff="+str(np.linalg.norm(v3_2-optimal_v_2)))
 
 
 print(soa)
+X0, Y0, Z0, U0, V0, W0 = zip(*soa0)
 X, Y, Z, U, V, W = zip(*soa)
+X1, Y1, Z1, U1, V1, W1 = zip(*soa1)
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
+ax.quiver(X0, Y0, Z0, U0, V0, W0, color="orange")
 ax.quiver(X, Y, Z, U, V, W)
+ax.quiver(X1, Y1, Z1, U1, V1, W1, color="green")
 ax.set_xlim([-2, 2])
 ax.set_ylim([-2, 2])
 ax.set_zlim([0, 2])
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+ax.set_zlabel("z")
 plt.show()
