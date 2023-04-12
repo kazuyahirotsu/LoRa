@@ -51,6 +51,6 @@ pip-selfcheck.json
 # End of https://www.toptal.com/developers/gitignore/api/virtualenv,matlab
 
 .DS_Store
-*.ipynb
+
 *.docx
 *.pdf
