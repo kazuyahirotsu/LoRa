@@ -54,3 +54,4 @@ pip-selfcheck.json
 *.iso
 *.docx
 *.pdf
+.vscode
